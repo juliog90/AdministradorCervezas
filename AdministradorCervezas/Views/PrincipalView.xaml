@@ -5,8 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="PrincipalView" Height="300" Width="300">
+        Title="Administrador Cervezas" Height="600" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="CargaCervezas" Grid.Row="0">Cervezas</Button>
+            <Button Grid.Row="1">Tipos</Button>
+            <Button Grid.Row="2">Paises</Button>
+            <Button Grid.Row="3">Ordenes</Button>
+            <Button Grid.Row="4">Ajustes</Button>
+            <Button Grid.Row="5">Ayuda</Button>
+            <Button Grid.Row="6">Acerca De</Button>
+        </Grid>
+        <ContentControl Grid.Column="2"
+                        x:Name="ActiveItem">
+        </ContentControl>
     </Grid>
 </Window>

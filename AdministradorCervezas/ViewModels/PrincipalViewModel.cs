@@ -9,5 +9,9 @@ namespace AdministradorCervezas.ViewModels
 {
     class PrincipalViewModel : Conductor<object>
     {
+        public void CargaCervezas()
+        {
+            ActivateItem(new DatosCervezasViewModel());
+        }
     }
 }
