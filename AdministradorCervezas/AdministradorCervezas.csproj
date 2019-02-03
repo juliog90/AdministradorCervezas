@@ -92,6 +92,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Enumeradores\CategoryType.cs" />
+    <Compile Include="Enumeradores\Color.cs" />
+    <Compile Include="Enumeradores\Fermentation.cs" />
+    <Compile Include="Enumeradores\MeasurementUnit.cs" />
+    <Compile Include="Enumeradores\PresentationType.cs" />
     <Compile Include="ViewModels\PrincipalViewModel.cs" />
     <Compile Include="Views\PrincipalView.xaml.cs">
       <DependentUpon>PrincipalView.xaml</DependentUpon>
