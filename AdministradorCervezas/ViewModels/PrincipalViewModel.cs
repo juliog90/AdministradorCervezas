@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using AdministradorCervezas.Views;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,21 @@ namespace AdministradorCervezas.ViewModels
         public void CargaCervezas()
         {
             ActivateItem(new DatosCervezasViewModel());
+        }
+
+        public void CargaMarcas()
+        {
+            ActivateItem(new DatosMarcasViewModel());
+        }
+
+        public void CargaClientes()
+        {
+            ActivateItem(new DatosClientesViewModel());
+        }
+
+        public void CargaOrdenes()
+        {
+            ActivateItem(new DatosOrdenesViewModel());
         }
     }
 }

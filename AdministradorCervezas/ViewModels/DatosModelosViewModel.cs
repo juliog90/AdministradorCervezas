@@ -1,0 +1,21 @@
+﻿using Caliburn.Micro;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AdministradorCervezas.ViewModels
+{
+    public class DatosModelosViewModel : Screen
+    {
+        //private BindableCollection<Model myVar;
+
+        //public BindableCollection<Model MyProperty
+        //{
+        //    get { return myVar; }
+        //    set { myVar = value; }
+        //}
+
+    }
+}
