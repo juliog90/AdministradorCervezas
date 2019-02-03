@@ -98,6 +98,7 @@
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
     <Compile Include="ViewModels\DatosCervezasViewModel.cs" />
+    <Compile Include="ViewModels\DatosMarcasViewModel.cs" />
     <Compile Include="ViewModels\PrincipalViewModel.cs" />
     <Compile Include="Views\DatosCervezasView.xaml.cs">
       <DependentUpon>DatosCervezasView.xaml</DependentUpon>

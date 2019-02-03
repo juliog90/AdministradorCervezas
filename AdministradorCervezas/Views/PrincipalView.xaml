@@ -1,4 +1,5 @@
 ﻿<Window x:Class="AdministradorCervezas.Views.PrincipalView"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,14 +8,36 @@
         mc:Ignorable="d"
         Title="Administrador Cervezas" Height="600" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
-        <Grid>
+        
+        <!--Titulo Ajustes y Ayuda-->
+
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.ColumnSpan="2">Melchor x Javier</TextBlock>
+            <Button Grid.Column="1">Ayuda</Button>
+            <Button Grid.Column="2">Salir</Button>
+        </Grid>
+
+        <!--Menu Botones-->
+
+        <Grid Grid.Row="2" Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -22,15 +45,45 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Button x:Name="CargaCervezas" Grid.Row="0">Cervezas</Button>
-            <Button Grid.Row="1">Tipos</Button>
-            <Button Grid.Row="2">Paises</Button>
-            <Button Grid.Row="3">Ordenes</Button>
-            <Button Grid.Row="4">Ajustes</Button>
-            <Button Grid.Row="5">Ayuda</Button>
-            <Button Grid.Row="6">Acerca De</Button>
+            <Button Grid.Row="1">Marcas</Button>
+            <Button Grid.Row="2">Modelos</Button>
+            <Button Grid.Row="3">Clientes</Button>
+            <Button Grid.Row="4">Ordenes</Button>
         </Grid>
-        <ContentControl Grid.Column="2"
-                        x:Name="ActiveItem">
-        </ContentControl>
+
+        <!--Contenido y Botones Inferiores -->
+
+        <Grid Grid.Column="2"
+              Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <ContentControl Grid.Row="0"
+                            Grid.Column="1"
+                            x:Name="ActiveItem">
+            </ContentControl>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Column="1"
+                        Grid.Row="1">Agregar</Button>
+                <Button Grid.Column="2"
+                        Grid.Row="1">Editar</Button>
+                <Button Grid.Column="3"
+                        Grid.Row="1">Borrar</Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

@@ -7,7 +7,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="600">
     <Grid>
-       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
         <!--SelectionMode: Solo permite seleccionar un elemento-->
         <!--AutoGenerateColumns: No genera columnas automaticamente-->
         <!--CanUserAddRows: No permite que el usuario agregue Filas-->
@@ -15,7 +19,9 @@
                   Name="Cervezas"
                   SelectionMode="Single" 
                   AutoGenerateColumns="False"
-                  CanUserAddRows="False">
+                  CanUserAddRows="False"
+                  Grid.Row="0"
+                  Grid.Column="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Brand.Country}" Header="Pais" Width="auto"/>
