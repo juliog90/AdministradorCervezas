@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using AdministradorCervezas.ViewModels;
+using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,13 @@ namespace AdministradorCervezas.ViewModels
         public void CambioSeleccion()
         {
             
+        }
+
+        public void Agregar()
+        {
+            AdministrarCervezaModelView administrarCervezas = new AdministrarCervezaModelView();
+            IWindowManager manager = new WindowManager();
+            manager.ShowDialog(administrarCervezas, null, null);
         }
     }
 }

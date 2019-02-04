@@ -39,7 +39,7 @@
                 <DataGridTextColumn Binding="{Binding Fermlevel}" Header="Fermentado" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding GradoAlcohol }" Header="Grado" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding MeasurementUnit}" Header="Medida" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Image}" Header="Imagen" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Image}" Header="Imagen" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="3"
