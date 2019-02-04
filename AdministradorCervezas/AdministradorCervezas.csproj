@@ -97,6 +97,7 @@
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
+    <Compile Include="Messages\CambioEnContenido.cs" />
     <Compile Include="ViewModels\DatosCervezasViewModel.cs" />
     <Compile Include="ViewModels\DatosClientesViewModel.cs" />
     <Compile Include="ViewModels\DatosMarcasViewModel.cs" />

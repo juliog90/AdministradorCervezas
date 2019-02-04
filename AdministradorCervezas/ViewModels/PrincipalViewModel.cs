@@ -1,4 +1,6 @@
-﻿using AdministradorCervezas.Views;
+﻿using AdministradorCervezas.Messages;
+using AdministradorCervezas.ViewModels;
+using AdministradorCervezas.Views;
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
@@ -8,8 +10,29 @@ using System.Threading.Tasks;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class PrincipalViewModel : Conductor<object>
+    class PrincipalViewModel : Conductor<object>, IHandle<CambioEnContenido>
     {
+
+        private Beer _cervezaActual;
+        private IEventAggregator _events;
+
+        public DatosCervezasViewModel datosCerveza
+        {
+            get;
+            set;
+        }
+
+        public PrincipalViewModel()
+        {
+            IEventAggregator events = new EventAggregator();
+            datosCerveza = new DatosCervezasViewModel(events);
+        }
+
+        public PrincipalViewModel(IEventAggregator events)
+        {
+            _events = events;
+            _events.Subscribe(this);
+        }
 
         public void CargaCervezas()
         {
@@ -29,6 +52,21 @@ namespace AdministradorCervezas.ViewModels
         public void CargaOrdenes()
         {
             ActivateItem(new DatosOrdenesViewModel());
+        }
+
+        public void Editar()
+        {
+
+        }
+
+        public void CanEditar()
+        {
+            return ;
+        }
+
+        public void Handle(CambioEnContenido message)
+        {
+            _cervezaActual = (Beer)message;
         }
     }
 }

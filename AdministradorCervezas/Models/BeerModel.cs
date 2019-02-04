@@ -120,11 +120,12 @@ using MySql.Data.MySqlClient;
             _id = (int)row["be_id"];
             _gradoAlcohol = (double)row["be_grd_alcoh"];
             _presentation = (PresentationType)(int)row["be_presentation"];
-            _fermentation = (Fermentation)row["be_nicel_ferm"];
+            _fermentation = (Fermentation)row["be_level_ferm"];
             _measurementUnit = (MeasurementUnit)row["be_unitMeas"];
             _content = (double)row["be_content"];
-            _brand = (Brand)row["br_code"];
-            _clasification = (Clasification)row["cla_code"];
+                
+            _brand = (new Brand((string)row["br_code"]));
+            _clasification = (new Clasification((string)row["cla_code"]));
             _price = (double)row["be_price"];
 
         }
@@ -138,7 +139,6 @@ using MySql.Data.MySqlClient;
     /// <param name="name"></param>
     public Beer(int id, double gradoalcohol,PresentationType presentation, Fermentation fermentation,MeasurementUnit measurementUnit,double content, Brand brand, Clasification clasification,double price, string image)
     {
-
         _id = id;
         _gradoAlcohol = gradoalcohol;
         _presentation = presentation;

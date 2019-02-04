@@ -13,7 +13,14 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <DataGrid x:Name="Ordenes"
-                   Grid.Row="0">
+                   Grid.Row="0"
+                   SelectedItem="{Binding Path=OrdenSeleccionada, Mode=OneWayToSource}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="OrdenSeleccionada_AllDetails" 
+                  Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto" />
             </DataGrid.Columns>

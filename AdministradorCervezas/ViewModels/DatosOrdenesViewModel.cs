@@ -10,6 +10,7 @@ namespace AdministradorCervezas.ViewModels
     class DatosOrdenesViewModel : Screen
     {
         private BindableCollection<Order> _ordenes = new BindableCollection<Order>(Order.GetAll());
+        private Order _ordenSeleccionada;
 
         public BindableCollection<Order> Ordenes
         {
@@ -17,14 +18,15 @@ namespace AdministradorCervezas.ViewModels
             set { _ordenes = value; }
         }
 
-        private Order _ordenSeleccionada;
-
         public Order OrdenSeleccionada
         {
             get { return _ordenSeleccionada; }
-            set { _ordenSeleccionada = value; }
+            set
+            {
+                _ordenSeleccionada = value;
+                // Le avisa que hubo un cambio
+                NotifyOfPropertyChange(() => OrdenSeleccionada);
+            }
         }
-
-
     }
 }

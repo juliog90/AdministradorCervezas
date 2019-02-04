@@ -21,7 +21,8 @@
                   AutoGenerateColumns="False"
                   CanUserAddRows="False"
                   Grid.Row="0"
-                  Grid.Column="1">
+                  Grid.Column="1"
+                  SelectedItem="CervezaSeleccionada">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto"/>
                 <DataGridTextColumn Binding="{Binding Brand.Country}" Header="Pais" Width="auto"/>

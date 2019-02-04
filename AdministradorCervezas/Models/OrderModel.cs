@@ -35,13 +35,44 @@ public class Order
         get { return _deliverydate; }
     }
 
-    public Customer Customer {
+    public Customer Customer
+    {
         get { return _customer; }
     }
 
+    public List<OrderDetail> AllDetails
+    {
+        get
+        {
+            List<OrderDetail> details = new List<OrderDetail>();
+            //query
+            string query = @"select ord_id, be_id, ordDet_quantity, ordDet_UnitPrice from orderdetail where ord_id =@ID";
+
+            //command
+            MySqlCommand command = new MySqlCommand(query);
+            //parameter 
+            command.Parameters.AddWithValue("@ID", _id);
+            //execute command
+            DataTable table = MySqlConnection.ExecuteQuery(command);
+            //check if rows found 
+            if (table.Rows.Count > 0)
+            {
+                foreach (DataRow row in table.Rows)
+                {
+                    OrderDetail currentDetail = new OrderDetail();
+                    //read the values of the the field
+                    currentDetail.Beer = (new Beer((int)row["be_id"]));
+                    currentDetail.Quantity = (int)row["ordDet_quantity"];
+                    currentDetail.UnitPrice = (double)row["ordDet_UnitPrice"];
+                    details.Add(currentDetail); 
+                }
+            }
+
+            return details;
+        }
+    }
+
     #endregion
-
-
     public Order(int id)
     {
         //query
@@ -74,16 +105,17 @@ public class Order
         //execute again command        
         table = MySqlConnection.ExecuteQuery(command);
 
-       
 
-        foreach (DataRow row in table.Rows) {
-            Brand brand = new Brand((string)row["br_code"],(string)row["br_name"]);
+
+        foreach (DataRow row in table.Rows)
+        {
+            Brand brand = new Brand((string)row["br_code"], (string)row["br_name"]);
             Clasification clasification = new Clasification((string)row["cla_code"], (string)row["cla_name"]);
-            Beer beer = new Beer((int)row["be_id"], (double)row["be_grd_alcoh"], (PresentationType)(int)row["be_presentation"], (Fermentation)(int)row["be_level_ferm"], (MeasurementUnit)(int)row["be_unitMeas"], (double)row["be_content"],brand,clasification,(double)row["be_price"],(string)row["be_image"]);
-            OrderDetail detail = new OrderDetail(beer,(int)row["ordDet_quantity"], (double)row["ordDet_UnitPrice"]);
+            Beer beer = new Beer((int)row["be_id"], (double)row["be_grd_alcoh"], (PresentationType)(int)row["be_presentation"], (Fermentation)(int)row["be_level_ferm"], (MeasurementUnit)(int)row["be_unitMeas"], (double)row["be_content"], brand, clasification, (double)row["be_price"], (string)row["be_image"]);
+            OrderDetail detail = new OrderDetail(beer, (int)row["ordDet_quantity"], (double)row["ordDet_UnitPrice"]);
         }
 
-        
+
 
     }
 
@@ -108,7 +140,7 @@ public class Order
         //execute query
         DataTable table = MySqlConnection.ExecuteQuery(command);
         //iterate rows
-        
+
         foreach (DataRow row in table.Rows)
         {
             //read fields
@@ -116,8 +148,8 @@ public class Order
             DateTime requestdate = (DateTime)row["ord_request_date"];
             DateTime deliverydate = (DateTime)row["ord_delivery_date"];
             Customer customer = new Customer((int)row["cus_id"]);
-            list.Add(new Order (id, requestdate, deliverydate, customer));
-            
+            list.Add(new Order(id, requestdate, deliverydate, customer));
+
         }
         //return list
         return list;
@@ -132,7 +164,7 @@ public class Order
         string query = @"SELECT ord_id,ord_request_date,ord_delivery_date,cus_id from Orders Where ord_delivery_date=@DATE";
         //command
         MySqlCommand command = new MySqlCommand(query);
-        command.Parameters.AddWithValue("@DATE",d.Year+"/"+d.Month+"/"+d.Day);
+        command.Parameters.AddWithValue("@DATE", d.Year + "/" + d.Month + "/" + d.Day);
         //execute query
         DataTable table = MySqlConnection.ExecuteQuery(command);
         //iterate rows
