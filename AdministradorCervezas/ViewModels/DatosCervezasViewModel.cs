@@ -9,23 +9,10 @@ namespace AdministradorCervezas.ViewModels
 {
     public class DatosCervezasViewModel : Screen
     {
-        private IEventAggregator _events;
-
         // convertimos la lista del modelo a un coleccion mas util para Caliburn
         private BindableCollection<Beer> _cervezas = new BindableCollection<Beer>(Beer.GetAll());
 
         private Beer _cervezaSeleccionada;
-
-        public DatosCervezasViewModel(IEventAggregator events)
-        {
-            _events = events;
-            _events.Subscribe(this);
-        }
-
-        public DatosCervezasViewModel()
-        {
-            
-        }
 
         public BindableCollection<Beer> Cervezas
         {
@@ -35,10 +22,16 @@ namespace AdministradorCervezas.ViewModels
         public Beer CervezaSeleccionada
         {
             get { return _cervezaSeleccionada; }
-            set { _cervezaSeleccionada = value; }
+            set
+            {
+                _cervezaSeleccionada = value;
+                NotifyOfPropertyChange(() => CervezaSeleccionada);
+            }
         }
 
-        public BindableCollection<Beer> Cervezas
-
+        public void CambioSeleccion()
+        {
+            
+        }
     }
 }
