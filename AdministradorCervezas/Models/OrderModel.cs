@@ -8,17 +8,16 @@ using MySql.Data.MySqlClient;
 public class Order
 {
 
-    #region Attribute
+    #region Attributes
 
     private int _id;
     private DateTime _requestdate;
     private DateTime _deliverydate;
-     private List<OrderDetail> _detail;
     private Customer _customer;
 
     #endregion
 
-    #region properties
+    #region Properties
 
     public int Id
     {
@@ -35,49 +34,12 @@ public class Order
     {
         get { return _deliverydate; }
     }
-    public List<OrderDetail> Detail
-    {
-        get { return _detail; }
-    }
-
 
     public Customer Customer {
         get { return _customer; }
     }
 
-    public double SalesTax{
-        get{ return SubTotal * 0.16; }
-    }
-
-    public double SubTotal {
-       
-        get {
-           
-            double ammount=0;
-            foreach (OrderDetail o in  _detail) {
-                ammount += o.Ammount;
-            }
-
-            return ammount;
-        }
-    }
-
-    public double Total {
-        get { return SubTotal + SalesTax; }
-    }
-
     #endregion
-
-    #region Constructors
-    //Create an empty object
-    public Order()
-    {
-        _id = 0;
-        _requestdate = new DateTime();
-        _deliverydate = new DateTime();
-        _customer = new Customer();
-        _detail = new List<OrderDetail>();
-    }
 
 
     public Order(int id)
@@ -112,31 +74,26 @@ public class Order
         //execute again command        
         table = MySqlConnection.ExecuteQuery(command);
 
-        //get values of this sale
-        _detail = new List<OrderDetail>();
+       
 
         foreach (DataRow row in table.Rows) {
             Brand brand = new Brand((string)row["br_code"],(string)row["br_name"]);
             Clasification clasification = new Clasification((string)row["cla_code"], (string)row["cla_name"]);
             Beer beer = new Beer((int)row["be_id"], (double)row["be_grd_alcoh"], (PresentationType)(int)row["be_presentation"], (Fermentation)(int)row["be_level_ferm"], (MeasurementUnit)(int)row["be_unitMeas"], (double)row["be_content"],brand,clasification,(double)row["be_price"],(string)row["be_image"]);
             OrderDetail detail = new OrderDetail(beer,(int)row["ordDet_quantity"], (double)row["ordDet_UnitPrice"]);
-            _detail.Add(detail);
         }
 
         
 
     }
 
-    public Order(int id, DateTime requestdate, DateTime deliverydate, Customer customer,List<OrderDetail> detail)
+    public Order(int id, DateTime requestDate, DateTime deliveryDate, Customer customer)
     {
         _id = id;
-        _requestdate = requestdate;
-        _deliverydate = deliverydate;
+        _requestdate = requestDate;
+        _deliverydate = deliveryDate;
         _customer = customer;
-        _detail = detail;
     }
-
-    #endregion
 
     #region Instance Methods
     public static List<Order> GetAll()
@@ -159,8 +116,7 @@ public class Order
             DateTime requestdate = (DateTime)row["ord_request_date"];
             DateTime deliverydate = (DateTime)row["ord_delivery_date"];
             Customer customer = new Customer((int)row["cus_id"]);
-            Order ord = new Order(id);
-            list.Add(new Order (id, requestdate, deliverydate, customer,ord._detail));
+            list.Add(new Order (id, requestdate, deliverydate, customer));
             
         }
         //return list
@@ -189,7 +145,7 @@ public class Order
             DateTime deliverydate = (DateTime)row["ord_delivery_date"];
             Customer customer = new Customer((int)row["cus_id"]);
             Order ord = new Order(id);
-            list.Add(new Order(id, requestdate, deliverydate, customer, ord._detail));
+            list.Add(new Order(id, requestdate, deliverydate, customer));
 
         }
         //return list
@@ -205,7 +161,7 @@ public class Order
     /// <returns></returns>
     public override string ToString()
     {
-        return "Request: " + _requestdate.ToShortDateString() + "\nDelivery: " + _deliverydate.ToShortDateString() + "\nCustomer: " + _customer.FullName + "\nSub Total: " + SubTotal.ToString("C")+"\nSalesTax:"+SalesTax.ToString("C")+"\nTotal: "+Total.ToString("C");
+        return "Request: " + _requestdate.ToShortDateString() + "\nDelivery: " + _deliverydate.ToShortDateString() + "\nCustomer: " + _customer.FullName + "\nSub Total: ";
     }
 
 
