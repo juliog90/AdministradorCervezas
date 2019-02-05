@@ -3,20 +3,121 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="AdministrarCervezaView" Height="700" Width="500">
+        Title="Agregar Cerveza" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition Height="3*"/>
+            <RowDefinition />
+            <RowDefinition Height="10" />
         </Grid.RowDefinitions>
+
+        <!--Primera Columna
+        Etiquetas-->
+        <Label Grid.Column="1"
+               Grid.Row="1">Marca:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="2">Pais:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="3">Tipo:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="4">Fermentado:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="5">Clasificación:</Label>
+
+        <!--Entradas de Datos-->
+        <ComboBox Grid.Column="2"
+                  Grid.Row="1"
+                  x:Name="Marcas"
+                  SelectedItem="{Binding Path=MarcaSeleccionada, Mode=OneWayToSource}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="2"
+                  x:Name="Paises"
+                  SelectedItem="{Binding Path=PaisSeleccionado, Mode=OneWayToSource}"
+                  DisplayMemberPath="Name"
+               ></ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="3"
+                  x:Name="Tipos"
+                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=OneWayToSource}">
+        </ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="4"
+                  x:Name="TiposFermentacion"
+                  SelectedItem="{Binding Path=TiposFermentacionSeleccionado, Mode=OneWayToSource}">
+        </ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="5"
+                  x:Name="Clasificaciones"
+                  SelectedItem="{Binding Path=ClasificacionSeleccionada, Mode=OneWayToSource}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+
+        <!--2da Columna-->
+        <!--Etiquetas-->
+        <Label Grid.Column="3"
+               Grid.Row="1">Unidad de Medida</Label>
+        <Label Grid.Column="3"
+               Grid.Row="2">Grado de Alcohol:</Label>
+        <Label Grid.Column="3"
+               Grid.Row="3">Precio:</Label>
+        <Label Grid.Column="3"
+               Grid.Row="4">Contenido:</Label>
+        <!--Entradas de Datos-->
+        <ComboBox Grid.Column="4"
+                  Grid.Row="1"
+                  x:Name="UnidadesDeMedida"
+                  SelectedItem="{Binding Path=UnidadDeMedidaSeleccionada, Mode=OneWayToSource}">
+        </ComboBox>
+        <TextBox Grid.Column="4"
+                  Grid.Row="2"
+                  x:Name="GradoAlcohol">
+        </TextBox>
+        <TextBox Grid.Column="4"
+                 Grid.Row="3"
+                 x:Name="Precio">
+        </TextBox>
+        <TextBox Grid.Column="4"
+                 Grid.Row="4"
+                 x:Name="Contenido">
+        </TextBox>
+        <Image Grid.Column="3"
+               Grid.ColumnSpan="2"
+               Grid.Row="5"
+               Grid.RowSpan="2"
+               x:Name="ImagenCerveza">
+        </Image>
+        <Button x:Name="CargarImagen"
+                Grid.Row="7"
+                Grid.ColumnSpan="2"
+                Grid.Column="3">
+            Cargar Imagen
+        </Button>
+        
+        <!--Botones Aceptar y Reiniciar-->
+        <Button x:Name="Aceptar"
+                Grid.Row="7"
+                Grid.Column="2">Aceptar</Button>
+        <Button x:Name="Reiniciar"
+                Grid.Row="7"
+                Grid.Column="1">Reiniciar</Button>
     </Grid>
 </Window>

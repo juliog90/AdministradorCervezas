@@ -1,5 +1,4 @@
-﻿using AdministradorCervezas.Messages;
-using AdministradorCervezas.ViewModels;
+﻿using AdministradorCervezas.ViewModels;
 using AdministradorCervezas.Views;
 using Caliburn.Micro;
 using System;
