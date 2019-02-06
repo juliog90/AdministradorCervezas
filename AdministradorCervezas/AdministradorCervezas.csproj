@@ -199,6 +199,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\background.jpg" />
     <Content Include="ScriptBaseDatos\brewery.sql" />
   </ItemGroup>
   <ItemGroup />

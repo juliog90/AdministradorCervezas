@@ -13,16 +13,32 @@
             <RowDefinition />
         </Grid.RowDefinitions>
         <DataGrid x:Name="Ordenes"
-                   Grid.Row="0"
-                   SelectedItem="{Binding Path=OrdenSeleccionada, Mode=OneWayToSource}">
+                    Grid.Row="0"
+                    SelectionMode="Single" 
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    CanUserAddRows="False"
+                    Grid.Column="1"
+                    SelectedItem="{Binding Path=OrdenSeleccionada, Mode=OneWayToSource}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Customer.FullName}" Header="Cliente" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Requestdate, StringFormat=\{0:dd/MM/yy\}}" Header="Fecha de Pedido" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Deliverydate, StringFormat=\{0:dd/MM/yy\}}" Header="Fecha de Entrega" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Total}" Header="Venta Total" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
-        <DataGrid x:Name="OrdenSeleccionada_AllDetails" 
-                  Grid.Row="2">
+        <DataGrid x:Name="OrdenSeleccionada_AllDetails"
+                    SelectionMode="Single" 
+                    AutoGenerateColumns="False"
+                    IsReadOnly="True"
+                    CanUserAddRows="False"
+                    Grid.Column="1"
+                    Grid.Row="2">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Beer.Brand.Name}" Header="Marca" Width="auto" />
+                <DataGridTextColumn Binding="{Binding UnitPrice}" Header="Precio Unitario" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="Cantidad" Width="auto" />
+                <DataGridTextColumn Binding="{Binding Ammount}" Header="SubTotal" Width="*" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

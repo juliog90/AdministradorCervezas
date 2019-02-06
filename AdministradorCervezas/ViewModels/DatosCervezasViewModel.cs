@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -14,10 +16,13 @@ namespace AdministradorCervezas.ViewModels
         private BindableCollection<Beer> _cervezas = new BindableCollection<Beer>(Beer.GetAll());
 
         private Beer _cervezaSeleccionada;
+        private ImageSource _cervezaImagen; 
+
 
         public BindableCollection<Beer> Cervezas
         {
             get { return _cervezas; }
+            set { _cervezas = value; }
         }
 
         public Beer CervezaSeleccionada
@@ -28,12 +33,22 @@ namespace AdministradorCervezas.ViewModels
                 _cervezaSeleccionada = value;
                 NotifyOfPropertyChange(() => CervezaSeleccionada);
                 NotifyOfPropertyChange(() => PuedeEditar);
+                
             }
         }
 
-        public void CambioSeleccion()
+        public ImageSource CervezaImagen
         {
-            
+            get
+            {
+                return _cervezaImagen;
+            }
+            set
+            {
+                _cervezaImagen = value;
+                NotifyOfPropertyChange(() => CervezaImagen);
+                CargaImagen();
+            }
         }
 
         public void Agregar()
@@ -56,6 +71,18 @@ namespace AdministradorCervezas.ViewModels
             {
                 return CervezaSeleccionada != null;
             }
+        }
+
+        public void CargaImagen()
+        {
+            CervezaImagen = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + CervezaSeleccionada.Image, UriKind.Absolute));
+        }
+
+        public void Borrar()
+        {
+            CervezaSeleccionada.Delete();
+            Cervezas = null;
+            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
         }
     }
 }
