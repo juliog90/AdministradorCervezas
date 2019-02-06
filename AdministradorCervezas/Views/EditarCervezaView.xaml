@@ -1,0 +1,137 @@
+﻿<Window x:Class="AdministradorCervezas.Views.EditarCervezaView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:local="clr-namespace:AdministradorCervezas.Views"
+        mc:Ignorable="d"
+        Title="Agregar Cerveza" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="3*"/>
+            <RowDefinition />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+
+        <!--Primera Columna
+        Etiquetas-->
+        <Label Grid.Column="1"
+               Grid.Row="1">Marca:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="2">Pais:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="3">Tipo:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="4">Fermentado:</Label>
+        <Label Grid.Column="1"
+               Grid.Row="5">Clasificación:</Label>
+
+        <!--Entradas de Datos-->
+        <ComboBox Grid.Column="2"
+                  Grid.Row="1"
+                  x:Name="Marcas"
+                  SelectedItem="{Binding Path=MarcaSeleccionada, Mode=TwoWay}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="2"
+                  x:Name="Paises"
+                  IsEnabled="{Binding PuedesSeleccionarPaises}"
+                  SelectedItem="{Binding Path=PaisSeleccionado, Mode=TwoWay}"
+                  DisplayMemberPath="Name"
+               ></ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="3"
+                  x:Name="Tipos"
+                  IsEnabled="{Binding PuedesSeleccionarTipos}"
+                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=TwoWay}">
+        </ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="4"
+                  x:Name="TiposFermentacion"
+                  IsEnabled="{Binding PuedesSeleccionarFermentado}"
+                  SelectedItem="{Binding Path=TiposFermentacionSeleccionado, Mode=TwoWay}">
+        </ComboBox>
+        <ComboBox Grid.Column="2"
+                  Grid.Row="5"
+                  x:Name="Clasificaciones"
+                  IsEnabled="{Binding Path=PuedesSeleccionarClasificacion}"
+                  SelectedItem="{Binding Path=ClasificacionSeleccionada, Mode=TwoWay}"
+                  DisplayMemberPath="Name">
+        </ComboBox>
+
+        <!--2a Columna de controles-->
+        <!--Etiquetas-->
+        <Label Grid.Column="4"
+               Grid.Row="1">Unidad de Medida</Label>
+        <Label Grid.Column="4"
+               Grid.Row="2">Grado de Alcohol:</Label>
+        <Label Grid.Column="4"
+               Grid.Row="3">Precio:</Label>
+        <Label Grid.Column="4"
+               Grid.Row="4">Contenido:</Label>
+        <!--Entradas de Datos-->
+        <ComboBox Grid.Column="5"
+                  Grid.Row="1"
+                  x:Name="UnidadesDeMedida"
+                  IsEnabled="{Binding Path=PuedesSeleccionarUnidadesDeMedida}"
+                  SelectedItem="{Binding Path=UnidadDeMedidaSeleccionada, Mode=TwoWay}">
+        </ComboBox>
+        <TextBox Grid.Column="5"
+                 Grid.Row="2"
+                 IsEnabled="{Binding Path=PuedesSeleccionarGradoAlcohol}"
+                 x:Name="GradoAlcohol">
+        </TextBox>
+        <TextBox Grid.Column="5"
+                 Grid.Row="3"
+                 IsEnabled="{Binding Path=PuedesSeleccionarPrecio}"
+                 x:Name="Precio">
+        </TextBox>
+        <TextBox Grid.Column="5"
+                 Grid.Row="4"
+                 IsEnabled="{Binding Path=PuedesSeleccionarContenido}"
+                 x:Name="Contenido">
+        </TextBox>
+        <Image Grid.Column="4"
+               Grid.ColumnSpan="2"
+               Grid.Row="5"
+               Grid.RowSpan="2"
+               Source="{Binding ImagenCerveza}"
+               Stretch="Uniform">
+        </Image>
+        <Button x:Name="CargarImagen"
+                IsEnabled="{Binding PuedesCargarImagen}"
+                Grid.Row="7"
+                Grid.ColumnSpan="2"
+                Grid.Column="4">
+            Cargar Imagen
+        </Button>
+        
+        <!--Botones Aceptar y Reiniciar-->
+        <Button x:Name="Guardar"
+                Grid.Row="7"
+                Grid.Column="2"
+                IsEnabled="{Binding PuedesCrearCerveza}">Guardar</Button>
+        <Button x:Name="Reiniciar"
+                Grid.Row="7"
+                Grid.Column="1"
+                IsEnabled="{Binding PuedesVaciarCampos}">Reiniciar</Button>
+    </Grid>
+</Window>

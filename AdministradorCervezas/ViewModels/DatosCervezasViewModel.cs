@@ -38,8 +38,15 @@ namespace AdministradorCervezas.ViewModels
         public void Agregar()
         {
             AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel();
-            IWindowManager manager = new WindowManager();
-            manager.ShowDialog(administrarCervezas, null, null);
+            IWindowManager manejador1 = new WindowManager();
+            manejador1.ShowDialog(administrarCervezas, null, null);
+        }
+
+        public void Editar()
+        {
+            EditarCervezaViewModel administrarCervezas = new EditarCervezaViewModel();
+            IWindowManager manejador2 = new WindowManager();
+            manejador2.ShowDialog(administrarCervezas, null, null);
         }
     }
 }

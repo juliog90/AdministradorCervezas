@@ -98,6 +98,10 @@
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
+    <Compile Include="Views\EditarCervezaView.xaml.cs">
+      <DependentUpon>EditarCervezaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\EditarCervezaViewModel.cs" />
     <Compile Include="ViewModels\AdministrarCervezaViewModel.cs" />
     <Compile Include="ViewModels\DatosCervezasViewModel.cs" />
     <Compile Include="ViewModels\DatosClientesViewModel.cs" />
@@ -165,6 +169,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\EditarCervezaView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AdministrarCervezaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
