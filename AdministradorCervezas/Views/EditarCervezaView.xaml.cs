@@ -17,9 +17,9 @@ namespace AdministradorCervezas.Views
     /// <summary>
     /// Interaction logic for AdministrarCervezaView.xaml
     /// </summary>
-    public partial class AdministrarCervezaView : Window
+    public partial class EditarCervezaView : Window
     {
-        public AdministrarCervezaView()
+        public EditarCervezaView()
         {
             InitializeComponent();
         }
