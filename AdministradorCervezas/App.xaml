@@ -29,12 +29,13 @@
                     </Style>
                     <Style TargetType="DataGrid">
                         <Setter Property="FontSize" Value="13"/>
-                        <Setter Property="BorderBrush" Value="PaleTurquoise"/>
-                        <Setter Property="HorizontalGridLinesBrush" Value="LightBlue"/>
-                        <Setter Property="VerticalGridLinesBrush" Value="LightBlue"/>
+                        <Setter Property="Background" Value="#ECEFF1"/>
+
                         <Setter Property="FontFamily" Value="Verdana"/>
                     </Style>
                     <Style TargetType="Button">
+                        <!--<Setter Property="Margin" Value="10,10,5,5"/>-->
+                        <!--<Setter Property="Background" Value="#FFF7E5A2" />-->
                         <Setter Property="FontFamily" Value="Arial Black"/>
                         <Setter Property="BorderBrush" Value="Brown"/>
                     </Style>
@@ -49,6 +50,7 @@
                     </Style>
                     <Style TargetType="Label">
                         <Setter Property="FontFamily" Value="Arial Black" />
+                        <Setter Property="FontSize" Value="13"/>
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
