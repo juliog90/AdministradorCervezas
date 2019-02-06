@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
@@ -13,6 +14,7 @@ namespace AdministradorCervezas.ViewModels
 {
     class AdministrarCervezaViewModel : Screen, INotifyPropertyChanged
     {
+        // Atributos de clase
         // Colecciones de Datos
         private BindableCollection<Brand> _marcas = new BindableCollection<Brand>(Brand.GetAll());
         private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
@@ -20,7 +22,7 @@ namespace AdministradorCervezas.ViewModels
         private BindableCollection<string> _tipos = new BindableCollection<string>(Enum.GetNames(typeof(PresentationType)));
         private BindableCollection<string> _tiposFermentacion = new BindableCollection<string>(Enum.GetNames(typeof(Fermentation)));
         private BindableCollection<string> _unidadesDeMedida = new BindableCollection<string>(Enum.GetNames(typeof(MeasurementUnit)));
-        
+
         // Datos Unicos
         private double _contenido;
         private double _precio;
@@ -39,7 +41,9 @@ namespace AdministradorCervezas.ViewModels
         private string _name;
 
         //imagenes servidor
-        private string _fuenteImagenes = @"http://localhost/the_brewery/images/";
+        private string _fuenteImagenes = @"ftp://localhost/images/";
+        private string _rutaImagen;
+        private string _extensionImagen;
 
         // Propiedades
         public BindableCollection<string> UnidadesDeMedida
@@ -48,36 +52,52 @@ namespace AdministradorCervezas.ViewModels
             set { _unidadesDeMedida = value; }
         }
 
+        /// <summary>
+        /// Tipos de Presentacion
+        /// </summary>
         public BindableCollection<string> Tipos
         {
             get { return _tipos; }
             set { _tipos = value; }
         }
 
+        /// <summary>
+        /// Tipos de Fermentacion
+        /// </summary>
         public BindableCollection<string> TiposFermentacion
         {
             get { return _tiposFermentacion; }
             set { _tiposFermentacion = value; }
         }
 
+        /// <summary>
+        /// Marcas
+        /// </summary>
         public BindableCollection<Brand> Marcas
         {
             get { return _marcas; }
             set { _marcas = value; }
         }
 
+        /// <summary>
+        /// Clasificaciones
+        /// </summary>
         public BindableCollection<Clasification> Clasificaciones
         {
             get { return _clasificaciones; }
             set { _clasificaciones = value; }
         }
 
+        /// <summary>
+        /// Paises
+        /// </summary>
         public BindableCollection<Country> Paises
         {
             get { return _paises; }
-            set {
-                    _paises = value;
-                }
+            set
+            {
+                _paises = value;
+            }
         }
 
         /// <summary>
@@ -135,7 +155,7 @@ namespace AdministradorCervezas.ViewModels
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
             }
         }
-        
+
         /// <summary>
         /// Tipo de Fermentacion Seleccionado
         /// </summary>
@@ -210,6 +230,7 @@ namespace AdministradorCervezas.ViewModels
                 _marcaSeleccionada = value;
                 NotifyOfPropertyChange(() => MarcaSeleccionada);
                 NotifyOfPropertyChange(() => PuedesSeleccionarPaises);
+                NotifyOfPropertyChange(() => PuedesVaciarCampos);
             }
         }
 
@@ -247,8 +268,11 @@ namespace AdministradorCervezas.ViewModels
         {
             // Escogemos la imagen
             OpenFileDialog cargaImg = new OpenFileDialog();
+
             if (cargaImg.ShowDialog() == true)
             {
+                _rutaImagen = cargaImg.FileName;
+                _extensionImagen = _rutaImagen.Split('.')[1];
                 // la pasamos a la interfaz
                 ImagenCerveza = new BitmapImage(new Uri(cargaImg.FileName, UriKind.Absolute));
             }
@@ -258,7 +282,7 @@ namespace AdministradorCervezas.ViewModels
         /// Guardamos la cerveza creada en la base de datos
         /// </summary>
         public void Guardar()
-        { 
+        {
             Beer nueva = new Beer();
             nueva.Brand = MarcaSeleccionada;
             nueva.Clasification = ClasificacionSeleccionada;
@@ -270,8 +294,20 @@ namespace AdministradorCervezas.ViewModels
             nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
             nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
             nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
-            // Agregamos
+            // Subimos imagen a servidor
+            // datos ftp
+            string ftpuser = "ftpuser";
+            string pass = "";
+            string rutaFTPImagen = _fuenteImagenes + nueva.Image;
+
+            // cliente ftp
+            WebClient client = new WebClient();
+            client.Credentials = new NetworkCredential(ftpuser, pass);
+            client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
+            // Agregamos a base de datos
             nueva.Add();
+            // Reiniciamos la forma
+            Reiniciar();
         }
 
         /// <summary>
@@ -393,6 +429,9 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        /// <summary>
+        /// Determina si puedes guardar la cerveza
+        /// </summary>
         public bool PuedesCrearCerveza
         {
             get
@@ -401,38 +440,52 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        /// <summary>
+        /// Determina si puedes reiniciar la forma
+        /// </summary>
+        public bool PuedesVaciarCampos
+        {
+            get
+            {
+                return MarcaSeleccionada != null;
+            }
+        }
+
 
         // metodos para la clase
         private string generaNombreImagen()
         {
+            // Obtenemos lista de cervezaas
             List<Beer> cervezas = Beer.GetAll();
+            // Prefijo de Nombre de Imagen
             string prefijo = "beer";
-            // no sirve contador???
-            int contader = 0;
-            string nuevoNombre; 
-            int existente = 0;
+            // Contador que cambia nombre de imagen prefijo+contador = nombre
+            int contador = 0;
+            // Guarda el nuevo nombre
+            string nuevoNombre;
+            // Guarda si existe una imagen de igual nombre
+            bool existe = false;
 
-            foreach(Beer cerveza in cervezas)
+            foreach (Beer cerveza in cervezas)
             {
-                nuevoNombre = prefijo + contader;
-                existente = 0;
-                
-                foreach(Beer cerveza2 in cervezas)
+                nuevoNombre = prefijo + contador;
+                existe = false;
+
+                foreach (Beer cerveza2 in cervezas)
                 {
                     if (nuevoNombre == cerveza2.Image)
                     {
-                        existente++;
+                        existe = true;
                     }
-                } 
-
-                if(existente == 0)
-                {
-                    return nuevoNombre;
                 }
-
-                contader++;
+                if (!existe)
+                {
+                    // si no existe devolvemos el nombre de la imagen
+                    return nuevoNombre + "." + _extensionImagen;
+                }
+                // le sumamos uno al nombre de la imagen
+                contador++;
             }
-
             return null;
         }
     }

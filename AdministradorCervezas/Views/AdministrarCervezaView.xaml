@@ -127,9 +127,11 @@
         <!--Botones Aceptar y Reiniciar-->
         <Button x:Name="Guardar"
                 Grid.Row="7"
-                Grid.Column="2">Guardar</Button>
+                Grid.Column="2"
+                IsEnabled="{Binding PuedesCrearCerveza}">Guardar</Button>
         <Button x:Name="Reiniciar"
                 Grid.Row="7"
-                Grid.Column="1">Reiniciar</Button>
+                Grid.Column="1"
+                IsEnabled="{Binding PuedesVaciarCampos}">Reiniciar</Button>
     </Grid>
 </Window>

@@ -92,6 +92,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CustomControls\TextBoxNumeros.cs" />
     <Compile Include="Enumeradores\CategoryType.cs" />
     <Compile Include="Enumeradores\Color.cs" />
     <Compile Include="Enumeradores\Fermentation.cs" />
