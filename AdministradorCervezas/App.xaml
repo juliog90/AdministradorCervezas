@@ -36,8 +36,12 @@
                     <Style TargetType="Button">
                         <!--<Setter Property="Margin" Value="10,10,5,5"/>-->
                         <!--<Setter Property="Background" Value="#FFF7E5A2" />-->
-                        <Setter Property="FontFamily" Value="Arial Black"/>
-                        <Setter Property="BorderBrush" Value="Brown"/>
+                        <Setter Property="FontFamily" Value="Bell MT"/>
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="BorderBrush" Value="white"/>
+                        <Setter Property="Margin" Value="1"/>
+                        <Setter Property="Background" Value="#CFD8DC"/>
+                        <Setter Property="BorderBrush" Value="#ECEFF1"/>
                     </Style>
 
                     <Style TargetType="ComboBox">
