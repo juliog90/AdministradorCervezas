@@ -35,8 +35,6 @@
                         <Setter Property="FontFamily" Value="Verdana"/>
                     </Style>
                     <Style TargetType="Button">
-                        <!--<Setter Property="Margin" Value="10,10,5,5"/>-->
-                        <!--<Setter Property="Background" Value="#FFF7E5A2" />-->
                         <Setter Property="FontFamily" Value="Arial Black"/>
                         <Setter Property="BorderBrush" Value="Brown"/>
                     </Style>

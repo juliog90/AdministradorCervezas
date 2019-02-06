@@ -27,6 +27,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _cervezaSeleccionada = value;
                 NotifyOfPropertyChange(() => CervezaSeleccionada);
+                NotifyOfPropertyChange(() => PuedeEditar);
             }
         }
 
@@ -44,9 +45,17 @@ namespace AdministradorCervezas.ViewModels
 
         public void Editar()
         {
-            EditarCervezaViewModel administrarCervezas = new EditarCervezaViewModel();
+            EditarCervezaViewModel editarCervezas = new EditarCervezaViewModel(CervezaSeleccionada);
             IWindowManager manejador2 = new WindowManager();
-            manejador2.ShowDialog(administrarCervezas, null, null);
+            manejador2.ShowDialog(editarCervezas, null, null);
+        }
+
+        public bool PuedeEditar
+        {
+            get
+            {
+                return CervezaSeleccionada != null;
+            }
         }
     }
 }

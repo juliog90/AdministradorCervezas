@@ -28,6 +28,8 @@ namespace AdministradorCervezas.ViewModels
         private double _precio;
         private double _gradoAlcohol;
         private ImageSource _imagenCerveza;
+        private string _imagenNombre;
+        private Beer _editarCerveza;
 
         // Actualmente seleccionado
         private Brand _marcaSeleccionada;
@@ -50,6 +52,21 @@ namespace AdministradorCervezas.ViewModels
         {
             get { return _unidadesDeMedida; }
             set { _unidadesDeMedida = value; }
+        }
+
+        public EditarCervezaViewModel(Beer editarCerveza)
+        {
+            _editarCerveza = editarCerveza;
+            MarcaSeleccionada = editarCerveza.Brand;
+            ClasificacionSeleccionada = editarCerveza.Clasification;
+            PaisSeleccionado = editarCerveza.Brand.Country;
+            Contenido = editarCerveza.Content;
+            Precio = editarCerveza.Price;
+            GradoAlcohol = editarCerveza.GradoAlcohol;
+            ImagenCerveza = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + editarCerveza.Image, UriKind.Absolute));
+            UnidadDeMedidaSeleccionada = nameof(editarCerveza.MeasurementUnit);
+            TiposFermentacionSeleccionado = nameof(editarCerveza.Fermlevel);
+            TipoSeleccionado = nameof(editarCerveza.Presentation);
         }
 
         /// <summary>
@@ -97,7 +114,7 @@ namespace AdministradorCervezas.ViewModels
             set
             {
                 _paises = value;
-            }
+           }
         }
 
         /// <summary>
@@ -307,24 +324,25 @@ namespace AdministradorCervezas.ViewModels
             // Agregamos a base de datos
             nueva.Add();
             // Reiniciamos la forma
-            Reiniciar();
+            Reiniciar(_editarCerveza.Id);
         }
 
         /// <summary>
         /// Reiniciamos el Formulario
         /// </summary>
-        public void Reiniciar()
+        public void Reiniciar(int beer_id)
         {
-            MarcaSeleccionada = null;
-            ClasificacionSeleccionada = null;
-            PaisSeleccionado = null;
-            Contenido = 0;
-            Precio = 0;
-            GradoAlcohol = 0;
-            ImagenCerveza = null;
-            UnidadDeMedidaSeleccionada = null;
-            TiposFermentacionSeleccionado = null;
-            TipoSeleccionado = null;
+            Beer editarCerveza = new Beer(_editarCerveza.Id);
+            MarcaSeleccionada = editarCerveza.Brand;
+            ClasificacionSeleccionada = editarCerveza.Clasification;
+            PaisSeleccionado = editarCerveza.Brand.Country;
+            Contenido = editarCerveza.Content;
+            Precio = editarCerveza.Price;
+            GradoAlcohol = editarCerveza.GradoAlcohol;
+            ImagenCerveza = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + editarCerveza.Image, UriKind.Absolute));
+            UnidadDeMedidaSeleccionada = nameof(editarCerveza.MeasurementUnit);
+            TiposFermentacionSeleccionado = nameof(editarCerveza.Fermlevel);
+            TipoSeleccionado = nameof(editarCerveza.Presentation);
         }
 
         // logica de activacion de controles
@@ -406,7 +424,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-
         /// <summary>
         /// Determina si puedes escoger un contenido
         /// </summary>
@@ -451,6 +468,44 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        public Beer EditarCerveza
+        {
+            get
+            {
+                return _editarCerveza;
+            }
+
+            set
+            {
+                _editarCerveza = value;
+            }
+        }
+
+        public string ImagenNombre
+        {
+            get
+            {
+                return ImagenNombre1;
+            }
+
+            set
+            {
+                ImagenNombre1 = value;
+            }
+        }
+
+        public string ImagenNombre1
+        {
+            get
+            {
+                return _imagenNombre;
+            }
+
+            set
+            {
+                _imagenNombre = value;
+            }
+        }
 
         // metodos para la clase
         private string generaNombreImagen()
