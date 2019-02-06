@@ -2,15 +2,16 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarCervezaViewModel : Screen
+    class AdministrarCervezaViewModel : Screen, INotifyPropertyChanged
     {
         // Colecciones de Datos
         private BindableCollection<Brand> _marcas = new BindableCollection<Brand>(Brand.GetAll());
@@ -24,7 +25,7 @@ namespace AdministradorCervezas.ViewModels
         private double _contenido;
         private double _precio;
         private double _gradoAlcohol;
-        private BitmapImage _imagenCerveza = new BitmapImage();
+        private ImageSource _imagenCerveza;
 
         // Actualmente seleccionado
         private Brand _marcaSeleccionada;
@@ -32,6 +33,7 @@ namespace AdministradorCervezas.ViewModels
         private string _tiposFermentacionSeleccionado;
         private string _unidadDeMedidaSeleccionada;
         private Country _paisSeleccionado;
+        private Clasification _clasificacionSeleccionada;
 
         //Nombre Marca, Pais, Tipo y Clasificacion
         private string _name;
@@ -78,52 +80,125 @@ namespace AdministradorCervezas.ViewModels
                 }
         }
 
+        /// <summary>
+        /// Contenido
+        /// </summary>
         public double Contenido
         {
             get { return _contenido; }
-            set { _contenido = value; }
+            set
+            {
+                _contenido = value;
+                NotifyOfPropertyChange(() => Contenido);
+                NotifyOfPropertyChange(() => PuedesCargarImagen);
+            }
         }
 
+        /// <summary>
+        /// Precio
+        /// </summary>
         public double Precio
         {
             get { return _gradoAlcohol; }
-            set { _gradoAlcohol = value; }
+            set
+            {
+                _gradoAlcohol = value;
+                NotifyOfPropertyChange(() => Precio);
+                NotifyOfPropertyChange(() => PuedesSeleccionarContenido);
+            }
         }
 
+        /// <summary>
+        /// Grado de Alcohol
+        /// </summary>
         public double GradoAlcohol
         {
             get { return _precio; }
-            set { _precio = value; }
+            set
+            {
+                _precio = value;
+                NotifyOfPropertyChange(() => GradoAlcohol);
+                NotifyOfPropertyChange(() => PuedesSeleccionarPrecio);
+            }
         }
 
-        public BitmapImage ImagenCerveza
+        /// <summary>
+        /// Imagen Seleccionada
+        /// </summary>
+        public ImageSource ImagenCerveza
         {
             get { return _imagenCerveza; }
             set
             {
                 _imagenCerveza = value;
                 NotifyOfPropertyChange(() => ImagenCerveza);
+                NotifyOfPropertyChange(() => PuedesCrearCerveza);
             }
         }
         
+        /// <summary>
+        /// Tipo de Fermentacion Seleccionado
+        /// </summary>
         public string TiposFermentacionSeleccionado
         {
             get { return _tiposFermentacionSeleccionado; }
-            set { _tiposFermentacionSeleccionado = value; }
+            set
+            {
+                _tiposFermentacionSeleccionado = value;
+                NotifyOfPropertyChange(() => TiposFermentacionSeleccionado);
+                NotifyOfPropertyChange(() => PuedesSeleccionarClasificacion);
+            }
         }
 
+        /// <summary>
+        /// Tipo de Presentacion Seleccionado
+        /// </summary>
         public string TipoSeleccionado
         {
             get { return _tipoSeleccionado; }
-            set { _tipoSeleccionado = value; }
+            set
+            {
+                _tipoSeleccionado = value;
+                NotifyOfPropertyChange(() => TipoSeleccionado);
+                NotifyOfPropertyChange(() => PuedesSeleccionarFermentado);
+            }
         }
 
+        /// <summary>
+        /// Clasificacion Seleccionada
+        /// </summary>
+        public Clasification ClasificacionSeleccionada
+        {
+            get
+            {
+                return _clasificacionSeleccionada;
+            }
+
+            set
+            {
+                _clasificacionSeleccionada = value;
+                NotifyOfPropertyChange(() => ClasificacionSeleccionada);
+                NotifyOfPropertyChange(() => PuedesSeleccionarUnidadesDeMedida);
+            }
+        }
+
+        /// <summary>
+        /// Unidad de Medida Seleccionada
+        /// </summary>
         public string UnidadDeMedidaSeleccionada
         {
             get { return _unidadDeMedidaSeleccionada; }
-            set { _unidadDeMedidaSeleccionada = value; }
+            set
+            {
+                _unidadDeMedidaSeleccionada = value;
+                NotifyOfPropertyChange(() => UnidadDeMedidaSeleccionada);
+                NotifyOfPropertyChange(() => PuedesSeleccionarGradoAlcohol);
+            }
         }
 
+        /// <summary>
+        /// Marca Seleccionada
+        /// </summary>
         public Brand MarcaSeleccionada
         {
             get
@@ -134,19 +209,27 @@ namespace AdministradorCervezas.ViewModels
             {
                 _marcaSeleccionada = value;
                 NotifyOfPropertyChange(() => MarcaSeleccionada);
+                NotifyOfPropertyChange(() => PuedesSeleccionarPaises);
             }
         }
 
+        /// <summary>
+        /// Pais seleccionado
+        /// </summary>
         public Country PaisSeleccionado
         {
             get { return _paisSeleccionado; }
             set
             {
                 _paisSeleccionado = value;
-                NotifyOfPropertyChange(() => Name);
+                NotifyOfPropertyChange(() => PaisSeleccionado);
+                NotifyOfPropertyChange(() => PuedesSeleccionarTipos);
             }
         }
 
+        /// <summary>
+        /// Guarda el nombre de los enumeradores
+        /// </summary>
         public string Name
         {
             get { return _name; }
@@ -158,20 +241,169 @@ namespace AdministradorCervezas.ViewModels
         }
 
         // Botones
+
+        // Cargamos imagen local
         public void CargarImagen()
         {
             // Escogemos la imagen
             OpenFileDialog cargaImg = new OpenFileDialog();
-            string rutaImagenLocal;
             if (cargaImg.ShowDialog() == true)
             {
-                rutaImagenLocal = cargaImg.FileName;
-                ImagenCerveza.CacheOption = BitmapCacheOption.OnLoad;
-                ImagenCerveza.UriSource = new Uri(rutaImagenLocal);
+                // la pasamos a la interfaz
+                ImagenCerveza = new BitmapImage(new Uri(cargaImg.FileName, UriKind.Absolute));
             }
         }
 
-        public string generaNombreImagen()
+        /// <summary>
+        /// Guardamos la cerveza creada en la base de datos
+        /// </summary>
+        public void Guardar()
+        { 
+            Beer nueva = new Beer();
+            nueva.Brand = MarcaSeleccionada;
+            nueva.Clasification = ClasificacionSeleccionada;
+            nueva.Content = Contenido;
+            nueva.Price = Precio;
+            nueva.GradoAlcohol = GradoAlcohol;
+            nueva.Image = generaNombreImagen();
+            // Convertimos de String a Enum
+            nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
+            nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
+            nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
+            // Agregamos
+            nueva.Add();
+        }
+
+        /// <summary>
+        /// Reiniciamos el Formulario
+        /// </summary>
+        public void Reiniciar()
+        {
+            MarcaSeleccionada = null;
+            ClasificacionSeleccionada = null;
+            PaisSeleccionado = null;
+            Contenido = 0;
+            Precio = 0;
+            GradoAlcohol = 0;
+            ImagenCerveza = null;
+            UnidadDeMedidaSeleccionada = null;
+            TiposFermentacionSeleccionado = null;
+            TipoSeleccionado = null;
+        }
+
+        // logica de activacion de controles
+
+        /// <summary>
+        /// Determina si puedes seleccionar paises
+        /// </summary>
+        public bool PuedesSeleccionarPaises
+        {
+            get
+            {
+                return MarcaSeleccionada != null;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes seleccionar tipos de cervezas
+        /// </summary>
+        public bool PuedesSeleccionarTipos
+        {
+            get
+            {
+                return PaisSeleccionado != null;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes seleccionar el tipo de fermentado
+        /// </summary>
+        public bool PuedesSeleccionarFermentado
+        {
+            get
+            {
+                return TipoSeleccionado != null;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes seleccionar una clasificacion
+        /// </summary>
+        public bool PuedesSeleccionarClasificacion
+        {
+            get
+            {
+                return TiposFermentacionSeleccionado != null;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes seleccionar medidas 
+        /// </summary>
+        public bool PuedesSeleccionarUnidadesDeMedida
+        {
+            get
+            {
+                return ClasificacionSeleccionada != null;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes escoger un grado de alcohol
+        /// </summary>
+        public bool PuedesSeleccionarGradoAlcohol
+        {
+            get
+            {
+                return UnidadDeMedidaSeleccionada != null;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes escoger un precio
+        /// </summary>
+        public bool PuedesSeleccionarPrecio
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Convert.ToString(GradoAlcohol)) && GradoAlcohol != 0;
+            }
+        }
+
+
+        /// <summary>
+        /// Determina si puedes escoger un contenido
+        /// </summary>
+        public bool PuedesSeleccionarContenido
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Convert.ToString(Precio)) && Precio != 0;
+            }
+        }
+
+        /// <summary>
+        /// Determina si puedes cargar una imagen
+        /// </summary>
+        public bool PuedesCargarImagen
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Convert.ToString(Contenido)) && Contenido != 0 && Precio != 0 && GradoAlcohol != 0;
+            }
+        }
+
+        public bool PuedesCrearCerveza
+        {
+            get
+            {
+                return ImagenCerveza != null && Contenido != 0 && Precio != 0 && GradoAlcohol != 0;
+            }
+        }
+
+
+        // metodos para la clase
+        private string generaNombreImagen()
         {
             List<Beer> cervezas = Beer.GetAll();
             string prefijo = "beer";
@@ -197,6 +429,8 @@ namespace AdministradorCervezas.ViewModels
                 {
                     return nuevoNombre;
                 }
+
+                contader++;
             }
 
             return null;
