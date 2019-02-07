@@ -63,7 +63,7 @@ namespace AdministradorCervezas.ViewModels
 
         public void Guardar()
         {
-            MessageBoxResult resultado = MessageBox.Show("Estas seguro de eliminar el elemento?", "Brewery", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult resultado = MessageBox.Show("Estas seguro de guardar esta clasificacion?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
             {
