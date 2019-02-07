@@ -24,7 +24,7 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Titulo Ajustes y Ayuda-->
 
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
@@ -37,10 +37,12 @@
                 <RowDefinition/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
+            <Button Margin="705,0,10,2.6">Ayuda</Button>
+            <Button Margin="2,0,0,1.6"  Grid.Column="1">Salir</Button>
             <TextBlock Style="{StaticResource Titulo}" 
                        Grid.Column="0" 
                        Grid.ColumnSpan="2">Sistema Administrador Brewery</TextBlock>
-            <Button Grid.Column="1">Ayuda</Button>
+
         </Grid>
 
         <!--Menu Botones-->
@@ -71,7 +73,7 @@
                             Grid.Column="1"
                             x:Name="ActiveItem">
             </ContentControl>
-          
+
         </Grid>
     </Grid>
 </Window>
