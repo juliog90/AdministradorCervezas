@@ -38,9 +38,9 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-            AdministrarModeloViewModel administrarMarcas = new AdministrarModeloViewModel();
+            AdministrarModeloViewModel administrarModelos = new AdministrarModeloViewModel();
             IWindowManager manejador1 = new WindowManager();
-            manejador1.ShowDialog(administrarMarcas, null, null);
+            manejador1.ShowDialog(administrarModelos, null, null);
             Clasificaciones = null;
             Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
         }

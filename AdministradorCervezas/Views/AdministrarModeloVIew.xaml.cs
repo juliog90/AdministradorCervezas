@@ -17,9 +17,9 @@ namespace AdministradorCervezas.Views
     /// <summary>
     /// Interaction logic for AdministrarModeloVIew.xaml
     /// </summary>
-    public partial class AdministrarModeloVIew : Window
+    public partial class AdministrarModeloView : Window
     {
-        public AdministrarModeloVIew()
+        public AdministrarModeloView()
         {
             InitializeComponent();
         }
