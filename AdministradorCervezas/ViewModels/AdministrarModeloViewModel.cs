@@ -28,7 +28,7 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private BindableCollection<BeerType> _tipos;
+        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
 
         public BindableCollection<BeerType> Tipos
         {
@@ -63,6 +63,11 @@ namespace AdministradorCervezas.ViewModels
         public void Guardar()
         {
 
+            Clasification clasificacion = new Clasification();
+            clasificacion.Name = Nombre;
+            clasificacion.Code = Codigo;
+            clasificacion.BeerType = Tipo;
+        
         }
 
     }
