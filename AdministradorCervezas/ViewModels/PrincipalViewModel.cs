@@ -35,6 +35,11 @@ namespace AdministradorCervezas.ViewModels
             ActivateItem(new DatosMarcasViewModel());
         }
 
+        public void CargaModelos()
+        {
+            ActivateItem(new DatosModelosViewModel());
+        }
+
         public void CargaClientes()
         {
             ActivateItem(new DatosClientesViewModel());

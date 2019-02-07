@@ -35,47 +35,40 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private BeerType _tipoCervezaSeleccionado;
-
-        public BeerType TipoCervezaSeleccionado
+        public void Agregar()
         {
-            get { return _tipoCervezaSeleccionado; }
-            set
+            AdministrarModeloViewModel administrarMarcas = new AdministrarModeloViewModel();
+            IWindowManager manejador1 = new WindowManager();
+            manejador1.ShowDialog(administrarMarcas, null, null);
+            Clasificaciones = null;
+            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+        }
+
+        public void Editar()
+        {
+            //EditarMarcasViewModel editarMarcas = new EditarMarcasViewModel(ClasificacionSeleccionada);
+            //IWindowManager manejador2 = new WindowManager();
+            //manejador2.ShowDialog(editarMarcas, null, null);
+            //Clasificaciones = null;
+            //Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+        }
+
+        public bool PuedeEditarBorrar
+        {
+            get
             {
-                _tipoCervezaSeleccionado = value;
-                NotifyOfPropertyChange(() => TipoCervezaSeleccionado);
+                return ClasificacionSeleccionada != null;
             }
         }
 
-
-
-
-
-        private string _nombre;
-
-        public string Nombre
+        public void Borrar()
         {
-            get { return _nombre; }
-            set
-            {
-                _nombre = value;
-                NotifyOfPropertyChange(() => Nombre);
-            }
+            ClasificacionSeleccionada.Delete();
+            Clasificaciones = null;
+            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+            NotifyOfPropertyChange(() => Clasificaciones);
+
         }
-
-        private string _codigo;
-
-        public string Codigo
-        {
-            get { return _codigo; }
-            set
-            {
-                _codigo = value;
-                NotifyOfPropertyChange(() => Codigo);
-            }
-        }
-
-
 
 
 

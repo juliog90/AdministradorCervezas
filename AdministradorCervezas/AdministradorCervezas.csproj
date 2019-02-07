@@ -99,10 +99,14 @@
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
     <Compile Include="ViewModels\AdministrarClienteViewModel.cs" />
+    <Compile Include="ViewModels\AdministrarModeloViewModel.cs" />
     <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
     <Compile Include="ViewModels\AdministrarMarcasViewModel.cs" />
     <Compile Include="Views\AdministrarClienteView.xaml.cs">
       <DependentUpon>AdministrarClienteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministrarModeloVIew.xaml.cs">
+      <DependentUpon>AdministrarModeloVIew.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DatosModelosView.xaml.cs">
       <DependentUpon>DatosModelosView.xaml</DependentUpon>
@@ -185,6 +189,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AdministrarClienteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdministrarModeloVIew.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

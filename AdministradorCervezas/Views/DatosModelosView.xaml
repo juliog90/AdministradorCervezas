@@ -26,7 +26,7 @@
                   Grid.Column="1"
                   SelectedItem="{Binding Path=ClasificacionSeleccionada,Mode=TwoWay}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id}" Header="Codigo" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding Code}" Header="Codigo" Width="auto"/>
                     <DataGridTextColumn Binding="{Binding Name}" Header="Nombre" Width="auto"/>
                     <DataGridTextColumn Binding="{Binding BeerType.Name}" Header="Tipo" Width="*"/>
                 </DataGrid.Columns>

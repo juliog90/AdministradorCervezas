@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarMarcasViewModel : Screen
+    class AdministrarMarcaViewModel : Screen
     {
         private BindableCollection<Country>  _paises = new BindableCollection<Country>(Country.GetAll());
 
