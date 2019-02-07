@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -36,9 +37,9 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-            AdministrarModeloViewModel administrarMarcas = new AdministrarModeloViewModel();           
+            AdministrarModeloViewModel administrarMarcas = new AdministrarModeloViewModel();
             IWindowManager manejador1 = new WindowManager();
-            manejador1.ShowDialog(administrarMarcas , null, null);
+            manejador1.ShowDialog(administrarMarcas, null, null);
             Marcas = null;
             Marcas = new BindableCollection<Brand>(Brand.GetAll());
         }
@@ -62,10 +63,15 @@ namespace AdministradorCervezas.ViewModels
 
         public void Borrar()
         {
-            MarcaSeleccionada.Delete();
-            Marcas = null;
-            Marcas = new BindableCollection<Brand>(Brand.GetAll());
-            NotifyOfPropertyChange(() => Marcas);
+            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar el elemento?", "Eliminando", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                MarcaSeleccionada.Delete();
+                Marcas = null;
+                Marcas = new BindableCollection<Brand>(Brand.GetAll());
+                NotifyOfPropertyChange(() => Marcas);
+            }
 
         }
 

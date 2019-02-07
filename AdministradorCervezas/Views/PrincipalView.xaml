@@ -6,7 +6,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        SessionEnding="App_SessionEnding"
         Title="Administrador Cervezas" Height="700" Width="1024" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -88,9 +89,15 @@ namespace AdministradorCervezas.ViewModels
 
         public void Borrar()
         {
-            CervezaSeleccionada.Delete();
-            Cervezas = null;
-            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
+            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar el elemento?", "Eliminando", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                CervezaSeleccionada.Delete();
+                Cervezas = null;
+                Cervezas = new BindableCollection<Beer>(Beer.GetAll());
+            }
+            
         }
     }
 }
