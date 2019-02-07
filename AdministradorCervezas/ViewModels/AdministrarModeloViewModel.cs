@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using System.Windows;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -28,7 +29,7 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private BindableCollection<BeerType> _tipos;
+        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
 
         public BindableCollection<BeerType> Tipos
         {
@@ -62,7 +63,16 @@ namespace AdministradorCervezas.ViewModels
 
         public void Guardar()
         {
+            MessageBoxResult resultado = MessageBox.Show("Estas seguro de guardar esta clasificacion?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+            if (resultado == MessageBoxResult.Yes)
+            {
+                Clasification clasificacion = new Clasification();
+                clasificacion.Name = Nombre;
+                clasificacion.Code = Codigo;
+                clasificacion.BeerType = Tipo;
+            }
+        
         }
 
     }
