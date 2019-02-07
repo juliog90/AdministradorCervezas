@@ -40,6 +40,7 @@
                  x:Name="Codigo"></TextBox>
         <Button Grid.Column="1"
                 Grid.Row="4"
-                Grid.ColumnSpan="2">Guardar</Button>
+                Grid.ColumnSpan="2"
+                x:Name="Guardar">Guardar</Button>
     </Grid>
 </Window>

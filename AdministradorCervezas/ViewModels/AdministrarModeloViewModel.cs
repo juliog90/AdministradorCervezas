@@ -71,9 +71,15 @@ namespace AdministradorCervezas.ViewModels
                 clasificacion.Name = Nombre;
                 clasificacion.Code = Codigo;
                 clasificacion.BeerType = Tipo;
+                clasificacion.Add();
             }
-        
         }
 
+        public void Reiniciar()
+        {
+            Nombre = "";
+            Codigo = "";
+            Tipo = null;
+        }
     }
 }
