@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarMarcasViewModel : Screen
+    class EditarMarcasViewModel : Screen
     {
         private BindableCollection<Country>  _paises = new BindableCollection<Country>(Country.GetAll());
 
@@ -15,6 +15,13 @@ namespace AdministradorCervezas.ViewModels
         {
             get { return _paises; }
             set { _paises = value; }
+        }
+
+        public EditarMarcasViewModel(Brand editarMarca)
+        {
+            NombreMarca = editarMarca.Name;
+            MarcaCodigo = editarMarca.Id;
+            PaisSeleccionado = editarMarca.Country;
         }
 
         private string _nombreMarca;
@@ -51,7 +58,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _name = value;
                 NotifyOfPropertyChange(() => Name);
-                NotifyOfPropertyChange(() => PuedeGuardar);
+                NotifyOfPropertyChange(() => PuedeEditar);
             }
         }
 
@@ -65,11 +72,11 @@ namespace AdministradorCervezas.ViewModels
             {
                 _paisSeleccionado = value;
                 NotifyOfPropertyChange(() => PaisSeleccionado);
-                NotifyOfPropertyChange(() => PuedeGuardar);
+                NotifyOfPropertyChange(() => PuedeEditar);
             }
         }
 
-        public bool PuedeGuardar
+        public bool PuedeEditar
         {
             get
             {
@@ -85,21 +92,18 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public void Guardar()
+        public void Editar()
         {
             Brand nuevaMarca = new Brand();
             nuevaMarca.Id = _marcaCodigo;
             nuevaMarca.Name = NombreMarca;
             nuevaMarca.Country = PaisSeleccionado;
-            nuevaMarca.Add();
-            Reiniciar();
+            nuevaMarca.Edit();
         }
 
         public void Reiniciar()
         {
-            NombreMarca = "";
-            MarcaCodigo = "";
-            PaisSeleccionado = null;
+            
         }
     }
 }

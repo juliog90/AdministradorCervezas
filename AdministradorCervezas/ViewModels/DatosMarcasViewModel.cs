@@ -16,7 +16,11 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Brand> Marcas
         {
             get { return _marcas; }
-            set { _marcas = value; }
+            set
+            {
+                _marcas = value;
+                NotifyOfPropertyChange(() => Marcas);
+            }
         }
 
         public Brand MarcaSeleccionada
@@ -27,14 +31,20 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-            
+            AdministrarMarcasViewModel administrarMarcas = new AdministrarMarcasViewModel();           
             IWindowManager manejador1 = new WindowManager();
-            manejador1.ShowDialog(administrarCervezas, null, null);
+            manejador1.ShowDialog(administrarMarcas , null, null);
+            Marcas = null;
+            Marcas = new BindableCollection<Brand>(Brand.GetAll());
         }
 
         public void Editar()
         {
-           
+            EditarMarcasViewModel editarMarcas = new EditarMarcasViewModel(MarcaSeleccionada);
+            IWindowManager manejador2 = new WindowManager();
+            manejador2.ShowDialog(editarMarcas, null, null);
+            Marcas = null;
+            Marcas = new BindableCollection<Brand>(Brand.GetAll());
         }
 
         public bool PuedeEditar
@@ -48,7 +58,10 @@ namespace AdministradorCervezas.ViewModels
         public void Borrar()
         {
             MarcaSeleccionada.Delete();
+            Marcas = null;
+            Marcas = new BindableCollection<Brand>(Brand.GetAll());
             NotifyOfPropertyChange(() => Marcas);
+
         }
 
     }

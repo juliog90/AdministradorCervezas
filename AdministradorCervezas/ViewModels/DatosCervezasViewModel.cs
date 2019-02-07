@@ -69,6 +69,8 @@ namespace AdministradorCervezas.ViewModels
             EditarCervezaViewModel editarCervezas = new EditarCervezaViewModel(CervezaSeleccionada);
             IWindowManager manejador2 = new WindowManager();
             manejador2.ShowDialog(editarCervezas, null, null);
+            Cervezas = null;
+            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
         }
 
         public bool PuedeEditarBorrar
