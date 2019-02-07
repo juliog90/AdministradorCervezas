@@ -27,6 +27,7 @@ namespace AdministradorCervezas.ViewModels
         private double _contenido;
         private double _precio;
         private double _gradoAlcohol;
+        private int _id;
         private ImageSource _imagenCerveza;
         private string _imagenNombre;
         private Beer _editarCerveza;
@@ -47,6 +48,15 @@ namespace AdministradorCervezas.ViewModels
         private string _rutaImagen;
         private string _extensionImagen;
 
+
+    
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
         // Propiedades
         public BindableCollection<string> UnidadesDeMedida
         {
@@ -56,6 +66,7 @@ namespace AdministradorCervezas.ViewModels
 
         public EditarCervezaViewModel(Beer editarCerveza)
         {
+
             _editarCerveza = editarCerveza;
             MarcaSeleccionada = editarCerveza.Brand;
             ClasificacionSeleccionada = editarCerveza.Clasification;
@@ -63,6 +74,7 @@ namespace AdministradorCervezas.ViewModels
             Contenido = editarCerveza.Content;
             Precio = editarCerveza.Price;
             GradoAlcohol = editarCerveza.GradoAlcohol;
+            _id = editarCerveza.Id;
             ImagenCerveza = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + editarCerveza.Image, UriKind.Absolute));
             UnidadDeMedidaSeleccionada = nameof(editarCerveza.MeasurementUnit);
             TiposFermentacionSeleccionado = nameof(editarCerveza.Fermlevel);
@@ -301,6 +313,7 @@ namespace AdministradorCervezas.ViewModels
         public void Guardar()
         {
             Beer nueva = new Beer();
+            nueva.Id = _id;
             nueva.Brand = MarcaSeleccionada;
             nueva.Clasification = ClasificacionSeleccionada;
             nueva.Content = Contenido;

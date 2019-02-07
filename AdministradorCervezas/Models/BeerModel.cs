@@ -28,6 +28,7 @@ using MySql.Data.MySqlClient;
     public int Id
     {
         get { return _id; }
+        set{ _id = value; }
     }
     public double GradoAlcohol
     {
