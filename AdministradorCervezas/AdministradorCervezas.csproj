@@ -98,6 +98,10 @@
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
+    <Compile Include="ViewModels\AdministrarMarcasViewModel.cs" />
+    <Compile Include="Views\AdministrarMarcasView.xaml.cs">
+      <DependentUpon>AdministrarMarcasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditarCervezaView.xaml.cs">
       <DependentUpon>EditarCervezaView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +173,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AdministrarMarcasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditarCervezaView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
