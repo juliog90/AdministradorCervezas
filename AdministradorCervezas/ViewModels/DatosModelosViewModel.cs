@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -63,10 +64,15 @@ namespace AdministradorCervezas.ViewModels
 
         public void Borrar()
         {
-            ClasificacionSeleccionada.Delete();
-            Clasificaciones = null;
-            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
-            NotifyOfPropertyChange(() => Clasificaciones);
+            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar el elemento?", "Eliminando", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                ClasificacionSeleccionada.Delete();
+                Clasificaciones = null;
+                Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+                NotifyOfPropertyChange(() => Clasificaciones);
+            }
 
         }
 

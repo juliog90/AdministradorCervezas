@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -337,16 +338,21 @@ namespace AdministradorCervezas.ViewModels
         /// </summary>
         public void Reiniciar()
         {
-            MarcaSeleccionada = null;
-            ClasificacionSeleccionada = null;
-            PaisSeleccionado = null;
-            Contenido = 0;
-            Precio = 0;
-            GradoAlcohol = 0;
-            ImagenCerveza = null;
-            UnidadDeMedidaSeleccionada = null;
-            TiposFermentacionSeleccionado = null;
-            TipoSeleccionado = null;
+            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de reiniciar la forma?", "Eliminando", MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+            if (resultado == MessageBoxResult.Yes)
+            {
+                MarcaSeleccionada = null;
+                ClasificacionSeleccionada = null;
+                PaisSeleccionado = null;
+                Contenido = 0;
+                Precio = 0;
+                GradoAlcohol = 0;
+                ImagenCerveza = null;
+                UnidadDeMedidaSeleccionada = null;
+                TiposFermentacionSeleccionado = null;
+                TipoSeleccionado = null;
+            }
         }
 
         // logica de activacion de controles
