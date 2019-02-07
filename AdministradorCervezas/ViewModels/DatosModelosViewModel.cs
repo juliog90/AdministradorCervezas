@@ -10,8 +10,7 @@ namespace AdministradorCervezas.ViewModels
 {
     public class DatosModelosViewModel : Screen
     {
-        private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
-
+       
         public BindableCollection<Clasification> Clasificaciones
         {
             get
@@ -24,17 +23,20 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private Clasification _clasificacionSeleccionada;
+        // convertimos la lista del modelo a un coleccion mas util para Caliburn
+        private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
 
-        public Clasification ClasificacionSeleccionada
+        public BindableCollection<Clasification> Clasificacion
         {
-            get { return _clasificacionSeleccionada; }
+            get { return _clasificaciones; }
             set
             {
-                _clasificacionSeleccionada = value;
-                NotifyOfPropertyChange(() => ClasificacionSeleccionada);
+                _clasificaciones = value;
+                NotifyOfPropertyChange(() => Clasificacion);
             }
         }
+
+
 
         public void Agregar()
         {
@@ -42,7 +44,7 @@ namespace AdministradorCervezas.ViewModels
             IWindowManager manejador1 = new WindowManager();
             manejador1.ShowDialog(administrarModelos, null, null);
             Clasificaciones = null;
-            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+            
         }
 
         public void Editar()
@@ -54,28 +56,7 @@ namespace AdministradorCervezas.ViewModels
             //Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
         }
 
-        public bool PuedeEditarBorrar
-        {
-            get
-            {
-                return ClasificacionSeleccionada != null;
-            }
-        }
-
-        public void Borrar()
-        {
-            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de eliminar el elemento?", "Eliminando", MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-            if (resultado == MessageBoxResult.Yes)
-            {
-                ClasificacionSeleccionada.Delete();
-                Clasificaciones = null;
-                Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
-                NotifyOfPropertyChange(() => Clasificaciones);
-            }
-
-        }
-
+      
 
 
     }

@@ -54,7 +54,7 @@
             </Grid.RowDefinitions>
             <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" Grid.Row="0" Click="CargaCervezas_Click">Cervezas</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" Grid.Row="1">Marcas</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" Grid.Row="2">Modelos</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" Grid.Row="2">Clasificaciones</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaClientes" Grid.Row="3">Clientes</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaOrdenes" Grid.Row="4">Ordenes</Button>
         </Grid>
