@@ -20,5 +20,8 @@ namespace AdministradorCervezas
         {
             DisplayRootViewFor<PrincipalViewModel>();
         }
+
     }
+
+
 }

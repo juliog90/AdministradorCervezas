@@ -6,7 +6,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        SessionEnding="App_SessionEnding"
         Title="Administrador Cervezas" Height="700" Width="1024" 
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Window.Background>
@@ -38,12 +37,10 @@
                 <RowDefinition/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <Button Margin="705,0,10,2.6">Ayuda</Button>
-            <Button Margin="2,0,0,1.6"  Grid.Column="1">Salir</Button>
+            <Button Grid.Column="1">Salir</Button>
             <TextBlock Style="{StaticResource Titulo}" 
                        Grid.Column="0" 
                        Grid.ColumnSpan="2">Sistema Administrador Brewery</TextBlock>
-
         </Grid>
 
         <!--Menu Botones-->
