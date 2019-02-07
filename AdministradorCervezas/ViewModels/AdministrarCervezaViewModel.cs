@@ -16,6 +16,7 @@ namespace AdministradorCervezas.ViewModels
     {
         // Atributos de clase
         // Colecciones de Datos
+        private BindableCollection<Beer> _cervezas;
         private BindableCollection<Brand> _marcas = new BindableCollection<Brand>(Brand.GetAll());
         private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
         private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
@@ -45,7 +46,27 @@ namespace AdministradorCervezas.ViewModels
         private string _rutaImagen;
         private string _extensionImagen;
 
+        // constructor
+        public AdministrarCervezaViewModel(BindableCollection<Beer> cervezas)
+        {
+            _cervezas = cervezas;
+        }
+
         // Propiedades
+        public BindableCollection<Beer> Cervezas
+        {
+            get
+            {
+                return _cervezas;
+            }
+
+            set
+            {
+                _cervezas = value;
+            }
+        }
+
+
         public BindableCollection<string> UnidadesDeMedida
         {
             get { return _unidadesDeMedida; }
@@ -306,6 +327,7 @@ namespace AdministradorCervezas.ViewModels
             client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
             // Agregamos a base de datos
             nueva.Add();
+            NotifyOfPropertyChange(() => Cervezas);
             // Reiniciamos la forma
             Reiniciar();
         }

@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -14,10 +16,17 @@ namespace AdministradorCervezas.ViewModels
         private BindableCollection<Beer> _cervezas = new BindableCollection<Beer>(Beer.GetAll());
 
         private Beer _cervezaSeleccionada;
+        private ImageSource _cervezaImagen; 
+
 
         public BindableCollection<Beer> Cervezas
         {
             get { return _cervezas; }
+            set
+            {
+                _cervezas = value;
+                NotifyOfPropertyChange(() => Cervezas);
+            }
         }
 
         public Beer CervezaSeleccionada
@@ -27,20 +36,32 @@ namespace AdministradorCervezas.ViewModels
             {
                 _cervezaSeleccionada = value;
                 NotifyOfPropertyChange(() => CervezaSeleccionada);
-                NotifyOfPropertyChange(() => PuedeEditar);
+                NotifyOfPropertyChange(() => PuedeEditarBorrar);
+                
             }
         }
 
-        public void CambioSeleccion()
+        public ImageSource CervezaImagen
         {
-            
+            get
+            {
+                return _cervezaImagen;
+            }
+            set
+            {
+                _cervezaImagen = value;
+                NotifyOfPropertyChange(() => CervezaImagen);
+                CargaImagen();
+            }
         }
 
         public void Agregar()
         {
-            AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel();
+            AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel(Cervezas);
             IWindowManager manejador1 = new WindowManager();
             manejador1.ShowDialog(administrarCervezas, null, null);
+            Cervezas = null;
+            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
         }
 
         public void Editar()
@@ -48,14 +69,28 @@ namespace AdministradorCervezas.ViewModels
             EditarCervezaViewModel editarCervezas = new EditarCervezaViewModel(CervezaSeleccionada);
             IWindowManager manejador2 = new WindowManager();
             manejador2.ShowDialog(editarCervezas, null, null);
+            Cervezas = null;
+            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
         }
 
-        public bool PuedeEditar
+        public bool PuedeEditarBorrar
         {
             get
             {
                 return CervezaSeleccionada != null;
             }
+        }
+
+        public void CargaImagen()
+        {
+            CervezaImagen = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + CervezaSeleccionada.Image, UriKind.Absolute));
+        }
+
+        public void Borrar()
+        {
+            CervezaSeleccionada.Delete();
+            Cervezas = null;
+            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
         }
     }
 }

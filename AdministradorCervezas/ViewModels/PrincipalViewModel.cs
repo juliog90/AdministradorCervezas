@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -31,6 +33,11 @@ namespace AdministradorCervezas.ViewModels
         public void CargaMarcas()
         {
             ActivateItem(new DatosMarcasViewModel());
+        }
+
+        public void CargaModelos()
+        {
+            ActivateItem(new DatosModelosViewModel());
         }
 
         public void CargaClientes()

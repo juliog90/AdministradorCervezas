@@ -14,6 +14,7 @@ public class Order
     private DateTime _requestdate;
     private DateTime _deliverydate;
     private Customer _customer;
+    private double _total;
 
     #endregion
 
@@ -69,6 +70,26 @@ public class Order
             }
 
             return details;
+        }
+    }
+
+    public double Total
+    {
+        get
+        {
+            double total = 0;
+            foreach(OrderDetail detail in AllDetails)
+            {
+                total += detail.Ammount;
+            }
+
+            return total;
+
+        }
+
+        set
+        {
+            _total = value;
         }
     }
 

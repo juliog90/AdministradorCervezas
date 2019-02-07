@@ -5,39 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdministradorCervezas.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="500" d:DesignWidth="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <DataGrid x:Name="Clientes">
+        <DataGrid x:Name="Clientes"
+                  SelectionMode="Single" 
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  Grid.Row="0"
+                  Grid.Column="1"
+                  SelectedItem="{Binding Path=ClienteSeleccionado,Mode=TwoWay}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Firstname}" Header="Nombre" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Lastname}" Header="Apellido" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding email}" Header="Email" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Phone}" Header="Telefono" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Address}" Header="Dirección" Width="auto"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="3"
-              Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-
-            <Button Grid.Column="1"
-                        Grid.Row="1"
-                        x:Name="Agregar">Agregar</Button>
-            <Button Grid.Column="2"
-                        Grid.Row="1">Editar</Button>
-            <Button Grid.Column="3"
-                        Grid.Row="1">Borrar</Button>
-        </Grid>
     </Grid>
 </UserControl>

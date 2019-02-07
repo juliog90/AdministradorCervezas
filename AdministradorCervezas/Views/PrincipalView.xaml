@@ -6,11 +6,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Administrador Cervezas" Height="700" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        SessionEnding="App_SessionEnding"
+        Title="Administrador Cervezas" Height="700" Width="1024" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="/AdministradorCervezas;component/Resources/background.jpg"></ImageBrush>
+    </Window.Background>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
-            <RowDefinition Height="35"/>
+            <RowDefinition Height="55"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
@@ -33,9 +38,12 @@
                 <RowDefinition/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Column="0" Grid.ColumnSpan="2">Melchor x Javier</TextBlock>
             <Button Margin="705,0,10,2.6">Ayuda</Button>
             <Button Margin="2,0,0,1.6"  Grid.Column="1">Salir</Button>
+            <TextBlock Style="{StaticResource Titulo}" 
+                       Grid.Column="0" 
+                       Grid.ColumnSpan="2">Sistema Administrador Brewery</TextBlock>
+
         </Grid>
 
         <!--Menu Botones-->
@@ -48,11 +56,11 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button x:Name="CargaCervezas" Grid.Row="0">Cervezas</Button>
-            <Button x:Name="CargaMarcas" Grid.Row="1">Marcas</Button>
-            <Button Grid.Row="2">Modelos</Button>
-            <Button x:Name="CargaClientes" Grid.Row="3">Clientes</Button>
-            <Button x:Name="CargaOrdenes" Grid.Row="4">Ordenes</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" Grid.Row="0">Cervezas</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" Grid.Row="1">Marcas</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" Grid.Row="2">Modelos</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaClientes" Grid.Row="3">Clientes</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaOrdenes" Grid.Row="4">Ordenes</Button>
         </Grid>
 
         <!--Contenido -->

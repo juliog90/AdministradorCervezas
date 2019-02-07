@@ -30,20 +30,22 @@
                     <Style TargetType="DataGrid">
                         <Setter Property="FontSize" Value="13"/>
                         <Setter Property="Background" Value="#ECEFF1"/>
-
+                        <Setter Property="AlternatingRowBackground" Value="LightGray"/>
                         <Setter Property="FontFamily" Value="Verdana"/>
+                    </Style>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="TextBlock.TextAlignment" Value="Center"/>
                     </Style>
                     <Style TargetType="Button">
                         <!--<Setter Property="Margin" Value="10,10,5,5"/>-->
                         <!--<Setter Property="Background" Value="#FFF7E5A2" />-->
-                        <Setter Property="FontFamily" Value="Bell MT"/>
-                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="FontFamily" Value="Verdana"/>
+                        <Setter Property="FontSize" Value="15"/>
                         <Setter Property="BorderBrush" Value="white"/>
-                        <Setter Property="Margin" Value="1"/>
+                        <Setter Property="Margin" Value="3"/>
                         <Setter Property="Background" Value="#CFD8DC"/>
                         <Setter Property="BorderBrush" Value="#ECEFF1"/>
                     </Style>
-
                     <Style TargetType="ComboBox">
                         <Setter Property="Background" Value="#FFEEE6CB"/>
                         <Setter Property="Margin" Value="5,5,3,3"/>
@@ -55,6 +57,20 @@
                     <Style TargetType="Label">
                         <Setter Property="FontFamily" Value="Arial Black" />
                         <Setter Property="FontSize" Value="13"/>
+                    </Style>
+                    <Style x:Key="Titulo" TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="FontFamily" Value="Verdana"/>
+                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                    <Style x:Key="Secciones" TargetType="Button">
+                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="FontFamily" Value="Verdana"/>
+                        <Setter Property="BorderBrush" Value="white"/>
+                        <Setter Property="Margin" Value="3"/>
+                        <Setter Property="Background" Value="#CFD8DC"/>
+                        <Setter Property="BorderBrush" Value="#ECEFF1"/>
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>

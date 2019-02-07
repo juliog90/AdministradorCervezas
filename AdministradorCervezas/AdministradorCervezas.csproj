@@ -98,6 +98,25 @@
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
+    <Compile Include="ViewModels\AdministrarClienteViewModel.cs" />
+    <Compile Include="ViewModels\AdministrarModeloViewModel.cs" />
+    <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
+    <Compile Include="ViewModels\AdministrarMarcasViewModel.cs" />
+    <Compile Include="Views\AdministrarClienteView.xaml.cs">
+      <DependentUpon>AdministrarClienteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministrarModeloVIew.xaml.cs">
+      <DependentUpon>AdministrarModeloVIew.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DatosModelosView.xaml.cs">
+      <DependentUpon>DatosModelosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditarMarcasView.xaml.cs">
+      <DependentUpon>EditarMarcasView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdministrarMarcasView.xaml.cs">
+      <DependentUpon>AdministrarMarcasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditarCervezaView.xaml.cs">
       <DependentUpon>EditarCervezaView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +188,26 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AdministrarClienteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdministrarModeloVIew.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DatosModelosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditarMarcasView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AdministrarMarcasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EditarCervezaView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -199,6 +238,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\background.jpg" />
     <Content Include="ScriptBaseDatos\brewery.sql" />
   </ItemGroup>
   <ItemGroup />
