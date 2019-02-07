@@ -100,10 +100,5 @@ namespace AdministradorCervezas.ViewModels
             nuevaMarca.Country = PaisSeleccionado;
             nuevaMarca.Edit();
         }
-
-        public void Reiniciar()
-        {
-            
-        }
     }
 }

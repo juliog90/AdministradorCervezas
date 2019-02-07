@@ -108,12 +108,13 @@ public class Brand
     public bool Edit()
     {
         //statement
-        string statement = "update brand set br_name = @NAME where br_code = @ID" ;
+        string statement = "update brand set br_name = @NAME, cn_code = @CN where br_code = @ID" ;
         //command
         MySqlCommand command = new MySqlCommand(statement);
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
         command.Parameters.AddWithValue("@NAME", _name);
+        command.Parameters.AddWithValue("@CN", _country.Id);
         //execute command
         return MySqlConnection.ExecuteNonQuery(command);
     }

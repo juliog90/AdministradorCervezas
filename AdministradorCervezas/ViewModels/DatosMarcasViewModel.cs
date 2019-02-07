@@ -26,7 +26,12 @@ namespace AdministradorCervezas.ViewModels
         public Brand MarcaSeleccionada
         {
             get { return _marcaSeleccionada; }
-            set { _marcaSeleccionada = value; }
+            set
+            {
+                _marcaSeleccionada = value;
+                NotifyOfPropertyChange(() => MarcaSeleccionada);
+                NotifyOfPropertyChange(() => PuedeEditarBorrar);
+            }
         }
 
         public void Agregar()
@@ -47,7 +52,7 @@ namespace AdministradorCervezas.ViewModels
             Marcas = new BindableCollection<Brand>(Brand.GetAll());
         }
 
-        public bool PuedeEditar
+        public bool PuedeEditarBorrar
         {
             get
             {
