@@ -25,6 +25,31 @@ namespace AdministradorCervezas.ViewModels
             set { _marcaSeleccionada = value; }
         }
 
+        public void Agregar()
+        {
+            
+            IWindowManager manejador1 = new WindowManager();
+            manejador1.ShowDialog(administrarCervezas, null, null);
+        }
+
+        public void Editar()
+        {
+           
+        }
+
+        public bool PuedeEditar
+        {
+            get
+            {
+                return MarcaSeleccionada != null;
+            }
+        }
+
+        public void Borrar()
+        {
+            MarcaSeleccionada.Delete();
+            NotifyOfPropertyChange(() => Marcas);
+        }
 
     }
 }

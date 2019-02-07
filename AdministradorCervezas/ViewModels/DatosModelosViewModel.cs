@@ -9,13 +9,19 @@ namespace AdministradorCervezas.ViewModels
 {
     public class DatosModelosViewModel : Screen
     {
-        //private BindableCollection<Model myVar;
+        private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
 
-        //public BindableCollection<Model MyProperty
-        //{
-        //    get { return myVar; }
-        //    set { myVar = value; }
-        //}
+        public BindableCollection<Clasification> Clasificaciones
+        {
+            get
+            {
+                return _clasificaciones;
+            }
+            set
+            {
+                _clasificaciones = value;
+            }
+        }
 
     }
 }

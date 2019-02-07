@@ -22,7 +22,11 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Beer> Cervezas
         {
             get { return _cervezas; }
-            set { _cervezas = value; }
+            set
+            {
+                _cervezas = value;
+                NotifyOfPropertyChange(() => Cervezas);
+            }
         }
 
         public Beer CervezaSeleccionada
@@ -32,7 +36,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _cervezaSeleccionada = value;
                 NotifyOfPropertyChange(() => CervezaSeleccionada);
-                NotifyOfPropertyChange(() => PuedeEditar);
+                NotifyOfPropertyChange(() => PuedeEditarBorrar);
                 
             }
         }
@@ -53,9 +57,11 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-            AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel();
+            AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel(Cervezas);
             IWindowManager manejador1 = new WindowManager();
             manejador1.ShowDialog(administrarCervezas, null, null);
+            Cervezas = null;
+            Cervezas = new BindableCollection<Beer>(Beer.GetAll());
         }
 
         public void Editar()
@@ -65,7 +71,7 @@ namespace AdministradorCervezas.ViewModels
             manejador2.ShowDialog(editarCervezas, null, null);
         }
 
-        public bool PuedeEditar
+        public bool PuedeEditarBorrar
         {
             get
             {
