@@ -105,8 +105,8 @@
     <Compile Include="Views\AdministrarClienteView.xaml.cs">
       <DependentUpon>AdministrarClienteView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdministrarModeloVIew.xaml.cs">
-      <DependentUpon>AdministrarModeloVIew.xaml</DependentUpon>
+    <Compile Include="Views\AdministrarModeloView.xaml.cs">
+      <DependentUpon>AdministrarModeloView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DatosModelosView.xaml.cs">
       <DependentUpon>DatosModelosView.xaml</DependentUpon>
@@ -192,7 +192,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AdministrarModeloVIew.xaml">
+    <Page Include="Views\AdministrarModeloView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
