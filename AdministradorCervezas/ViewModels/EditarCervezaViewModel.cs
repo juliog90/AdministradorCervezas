@@ -310,7 +310,7 @@ namespace AdministradorCervezas.ViewModels
         /// <summary>
         /// Guardamos la cerveza creada en la base de datos
         /// </summary>
-        public void Guardar()
+        public void Actualizar()
         {
             Beer nueva = new Beer();
             nueva.Id = _id;
@@ -335,7 +335,7 @@ namespace AdministradorCervezas.ViewModels
             client.Credentials = new NetworkCredential(ftpuser, pass);
             client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
             // Agregamos a base de datos
-            nueva.Add();
+            nueva.Edit();
             // Reiniciamos la forma
             Reiniciar(_editarCerveza.Id);
         }

@@ -125,10 +125,10 @@
         </Button>
         
         <!--Botones Aceptar y Reiniciar-->
-        <Button x:Name="Guardar"
+        <Button x:Name="Actualizar"
                 Grid.Row="7"
                 Grid.Column="2"
-                IsEnabled="{Binding PuedesCrearCerveza}">Guardar</Button>
+                IsEnabled="{Binding PuedesCrearCerveza}">Actualizar</Button>
         <Button x:Name="Reiniciar"
                 Grid.Row="7"
                 Grid.Column="1"
