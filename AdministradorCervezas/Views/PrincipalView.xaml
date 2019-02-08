@@ -10,7 +10,7 @@
         Padding="0"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
-    
+    <!--Julio es un NEGRO!!!-->
     <Window.Background >
         <ImageBrush ImageSource="/AdministradorCervezas;component/Resources/background.jpg"></ImageBrush>
     </Window.Background>
