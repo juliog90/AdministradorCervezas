@@ -291,6 +291,8 @@ namespace AdministradorCervezas.ViewModels
             // Escogemos la imagen
             OpenFileDialog cargaImg = new OpenFileDialog();
 
+            cargaImg.Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+
             if (cargaImg.ShowDialog() == true)
             {
                 _rutaImagen = cargaImg.FileName;
@@ -305,32 +307,37 @@ namespace AdministradorCervezas.ViewModels
         /// </summary>
         public void Guardar()
         {
-            Beer nueva = new Beer();
-            nueva.Brand = MarcaSeleccionada;
-            nueva.Clasification = ClasificacionSeleccionada;
-            nueva.Content = Contenido;
-            nueva.Price = Precio;
-            nueva.GradoAlcohol = GradoAlcohol;
-            nueva.Image = generaNombreImagen();
-            // Convertimos de String a Enum
-            nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
-            nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
-            nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
-            // Subimos imagen a servidor
-            // datos ftp
-            string ftpuser = "ftpuser";
-            string pass = "";
-            string rutaFTPImagen = _fuenteImagenes + nueva.Image;
+            MessageBoxResult resultado = MessageBox.Show("Estas seguro de guardar esta cerveza?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
-            // cliente ftp
-            WebClient client = new WebClient();
-            client.Credentials = new NetworkCredential(ftpuser, pass);
-            client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
-            // Agregamos a base de datos
-            nueva.Add();
-            NotifyOfPropertyChange(() => Cervezas);
-            // Limpiamos la forma
-            Limpiar();
+            if (resultado == MessageBoxResult.Yes)
+            {
+                Beer nueva = new Beer();
+                nueva.Brand = MarcaSeleccionada;
+                nueva.Clasification = ClasificacionSeleccionada;
+                nueva.Content = Contenido;
+                nueva.Price = Precio;
+                nueva.GradoAlcohol = GradoAlcohol;
+                nueva.Image = generaNombreImagen();
+                // Convertimos de String a Enum
+                nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
+                nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
+                nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
+                // Subimos imagen a servidor
+                // datos ftp
+                string ftpuser = "ftpuser";
+                string pass = "";
+                string rutaFTPImagen = _fuenteImagenes + nueva.Image;
+
+                // cliente ftp
+                WebClient client = new WebClient();
+                client.Credentials = new NetworkCredential(ftpuser, pass);
+                client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
+                // Agregamos a base de datos
+                nueva.Add();
+                NotifyOfPropertyChange(() => Cervezas);
+                // Limpiamos la forma
+                Limpiar();
+            }
         }
 
         /// <summary>
