@@ -11,8 +11,8 @@ public class Customer
 {
     #region Attributes
     private  int _id;
-    private  string _firstname;
-    private  string _lastname;
+    private  string _firstName;
+    private  string _lastName;
     private string _email;
     private  string _phone;
     private Address _address;
@@ -27,17 +27,17 @@ public class Customer
 
     public string Firstname
     {
-        get { return _firstname; }
-        set { _firstname = value; }
+        get { return _firstName; }
+        set { _firstName = value; }
     }
     public string Lastname
     {
-        get { return _lastname; }
-        set { _lastname = value; }
+        get { return _lastName; }
+        set { _lastName = value; }
     }
 
     public string FullName {
-        get { return _firstname + " " + _lastname; }
+        get { return _firstName + " " + _lastName; }
     }
 
     public string email {
@@ -67,8 +67,8 @@ public class Customer
     public Customer()
     {
         _id = 0;
-        _firstname = "";
-        _lastname = "";
+        _firstName = "";
+        _lastName = "";
         _email = "";
         _phone = "";
         _address = new Address();
@@ -91,8 +91,8 @@ public class Customer
             DataRow row = table.Rows[0];
             //read data
             _id = (int)row["cus_id"];
-            _firstname = (string)row["cus_firstName"];
-            _lastname = (string)row["cus_lastName"];
+            _firstName = (string)row["cus_firstName"];
+            _lastName = (string)row["cus_lastName"];
             _email = (string)row["cus_email"];
             _phone = (string)row["cus_phone"];
             _address = new Address((int)row["add_id"]);
@@ -107,8 +107,8 @@ public class Customer
     public Customer(int id, string firstName, string lastName, string email, string phone, Address address,string password)
     {
         _id = id;
-        _firstname = firstName;
-        _lastname = lastName;
+        _firstName = firstName;
+        _lastName = lastName;
         _email = email;
         _phone = phone;
         _address = address;
@@ -131,8 +131,8 @@ public class Customer
         MySqlCommand command = new MySqlCommand(statement);
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
-        command.Parameters.AddWithValue("@FIRSTNAME", _firstname);
-        command.Parameters.AddWithValue("@LASTNAME", _lastname);
+        command.Parameters.AddWithValue("@FIRSTNAME", _firstName);
+        command.Parameters.AddWithValue("@LASTNAME", _lastName);
         command.Parameters.AddWithValue("@EMAIL", _email);
         command.Parameters.AddWithValue("@PHONE", _phone);
         command.Parameters.AddWithValue("@ADD", _address);
@@ -152,8 +152,8 @@ public class Customer
         MySqlCommand command = new MySqlCommand(statement);
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
-        command.Parameters.AddWithValue("@FIRSNAME", _firstname);
-        command.Parameters.AddWithValue("@LASTNAME", _lastname);
+        command.Parameters.AddWithValue("@FIRSNAME", _firstName);
+        command.Parameters.AddWithValue("@LASTNAME", _lastName);
         command.Parameters.AddWithValue("@EMAIL", _email);
         command.Parameters.AddWithValue("@PHONE", _phone);
         command.Parameters.AddWithValue("@ADD", _address);
@@ -184,7 +184,7 @@ public class Customer
     /// <returns></returns>
     public override string ToString()
     {
-        return _firstname + " " + _lastname + "\nEmail: " + _email + "\nPhone: " + _phone+"\nAddress: "+_address;
+        return _firstName + " " + _lastName + "\nEmail: " + _email + "\nPhone: " + _phone+"\nAddress: "+_address;
     }
 
     #endregion

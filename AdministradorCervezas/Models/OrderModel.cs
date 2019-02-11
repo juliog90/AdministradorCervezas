@@ -11,8 +11,8 @@ public class Order
     #region Attributes
 
     private int _id;
-    private DateTime _requestdate;
-    private DateTime _deliverydate;
+    private DateTime _requestDate;
+    private DateTime _deliveryDate;
     private Customer _customer;
     private double _total;
 
@@ -27,13 +27,13 @@ public class Order
 
     public DateTime Requestdate
     {
-        get { return _requestdate; }
-        set { _requestdate = value; }
+        get { return _requestDate; }
+        set { _requestDate = value; }
     }
 
     public DateTime Deliverydate
     {
-        get { return _deliverydate; }
+        get { return _deliveryDate; }
     }
 
     public Customer Customer
@@ -113,8 +113,8 @@ public class Order
             DataRow row = table.Rows[0];
             //read the values of the the field
             _id = id;
-            _requestdate = (DateTime)row["ord_request_date"];
-            _deliverydate = (DateTime)row["ord_delivery_date"];
+            _requestDate = (DateTime)row["ord_request_date"];
+            _deliveryDate = (DateTime)row["ord_delivery_date"];
             _customer = new Customer((int)row["cus_id"]);
         }
 
@@ -135,23 +135,19 @@ public class Order
             Beer beer = new Beer((int)row["be_id"], (double)row["be_grd_alcoh"], (PresentationType)(int)row["be_presentation"], (Fermentation)(int)row["be_level_ferm"], (MeasurementUnit)(int)row["be_unitMeas"], (double)row["be_content"], brand, clasification, (double)row["be_price"], (string)row["be_image"]);
             OrderDetail detail = new OrderDetail(beer, (int)row["ordDet_quantity"], (double)row["ordDet_UnitPrice"]);
         }
-
-
-
     }
 
     public Order(int id, DateTime requestDate, DateTime deliveryDate, Customer customer)
     {
         _id = id;
-        _requestdate = requestDate;
-        _deliverydate = deliveryDate;
+        _requestDate = requestDate;
+        _deliveryDate = deliveryDate;
         _customer = customer;
     }
 
     #region Instance Methods
     public static List<Order> GetAll()
     {
-
         //list
         List<Order> list = new List<Order>();
         //query
@@ -170,7 +166,6 @@ public class Order
             DateTime deliverydate = (DateTime)row["ord_delivery_date"];
             Customer customer = new Customer((int)row["cus_id"]);
             list.Add(new Order(id, requestdate, deliverydate, customer));
-
         }
         //return list
         return list;
@@ -178,7 +173,6 @@ public class Order
 
     public static List<Order> GetOrder(DateTime d)
     {
-
         //list
         List<Order> list = new List<Order>();
         //query
@@ -205,16 +199,13 @@ public class Order
         return list;
     }
 
-
-
-
     /// <summary>
     /// Represents the object as a string
     /// </summary>
     /// <returns></returns>
     public override string ToString()
     {
-        return "Request: " + _requestdate.ToShortDateString() + "\nDelivery: " + _deliverydate.ToShortDateString() + "\nCustomer: " + _customer.FullName + "\nSub Total: ";
+        return "Request: " + _requestDate.ToShortDateString() + "\nDelivery: " + _deliveryDate.ToShortDateString() + "\nCustomer: " + _customer.FullName + "\nSub Total: ";
     }
 
 
