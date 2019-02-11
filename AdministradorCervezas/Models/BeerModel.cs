@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
     public class Beer
     {
-    #region Aattributes
+    #region attributes
     private int _id;
     private double _gradoAlcohol;
     private PresentationType _presentation;
@@ -82,7 +82,7 @@ using MySql.Data.MySqlClient;
     #endregion
 
 
-    #region Constructors
+    #region constructors
 
     public Beer()
     {
@@ -156,7 +156,7 @@ using MySql.Data.MySqlClient;
     #region instance methods
 
     /// <summary>
-    /// Adds the country to the database
+    /// Adds a beer to the database
     /// </summary>
     /// <returns></returns>
     public bool Add()
@@ -171,8 +171,8 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@FER", _fermentation);
         command.Parameters.AddWithValue("@MEA", _measurementUnit);
         command.Parameters.AddWithValue("@CONT", _content);
-        command.Parameters.AddWithValue("@BRA", _brand);
-        command.Parameters.AddWithValue("@CLA", _clasification);
+        command.Parameters.AddWithValue("@BRA", _brand.Id);
+        command.Parameters.AddWithValue("@CLA", _clasification.Code);
         command.Parameters.AddWithValue("@PRI", _price);
         command.Parameters.AddWithValue("@IMG", _image);
 
