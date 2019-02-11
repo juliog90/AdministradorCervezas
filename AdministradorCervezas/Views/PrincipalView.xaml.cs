@@ -31,7 +31,7 @@ namespace AdministradorCervezas.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro salir del sistema?", "Saliendo", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de salir del sistema?", "Saliendo", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
             {
