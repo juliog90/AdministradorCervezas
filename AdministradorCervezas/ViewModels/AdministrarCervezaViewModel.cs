@@ -329,8 +329,8 @@ namespace AdministradorCervezas.ViewModels
             // Agregamos a base de datos
             nueva.Add();
             NotifyOfPropertyChange(() => Cervezas);
-            // Reiniciamos la forma
-            Reiniciar();
+            // Limpiamos la forma
+            Limpiar();
         }
 
         /// <summary>
@@ -342,18 +342,28 @@ namespace AdministradorCervezas.ViewModels
 
             if (resultado == MessageBoxResult.Yes)
             {
-                MarcaSeleccionada = null;
-                ClasificacionSeleccionada = null;
-                PaisSeleccionado = null;
-                Contenido = 0;
-                Precio = 0;
-                GradoAlcohol = 0;
-                ImagenCerveza = null;
-                UnidadDeMedidaSeleccionada = null;
-                TiposFermentacionSeleccionado = null;
-                TipoSeleccionado = null;
+                // llamamos a limpiar
+                Limpiar();   
             }
         }
+
+        /// <summary>
+        /// Este limpia sin preguntar
+        /// </summary>
+        public void Limpiar()
+        {
+            MarcaSeleccionada = null;
+            ClasificacionSeleccionada = null;
+            PaisSeleccionado = null;
+            Contenido = 0;
+            Precio = 0;
+            GradoAlcohol = 0;
+            ImagenCerveza = null;
+            UnidadDeMedidaSeleccionada = null;
+            TiposFermentacionSeleccionado = null;
+            TipoSeleccionado = null;
+        }
+
 
         // logica de activacion de controles
 
@@ -501,7 +511,7 @@ namespace AdministradorCervezas.ViewModels
 
                 foreach (Beer cerveza2 in cervezas)
                 {
-                    if (nuevoNombre == cerveza2.Image)
+                    if (nuevoNombre == cerveza2.Image.Split('.')[0])
                     {
                         existe = true;
                     }
