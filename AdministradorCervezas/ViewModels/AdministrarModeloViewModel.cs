@@ -37,19 +37,23 @@ namespace AdministradorCervezas.ViewModels
             set { _tipos = value; }
         }
 
-        private BeerType _tipo;
+        private BeerType _tipoSeleccionado;
 
-        public BeerType Tipo
+        public BeerType TipoSeleccionado
         {
-            get { return _tipo; }
-            set { _tipo = value; }
+            get { return _tipoSeleccionado; }
+            set
+            {
+                _tipoSeleccionado = value;
+                NotifyOfPropertyChange(() => TipoSeleccionado);
+            }
         }
 
         public bool PuedesEscribirNombre
         {
             get 
             {
-                return Tipo != null;
+                return TipoSeleccionado != null;
             }
         }
 
@@ -70,7 +74,7 @@ namespace AdministradorCervezas.ViewModels
                 Clasification clasificacion = new Clasification();
                 clasificacion.Name = Nombre;
                 clasificacion.Code = Codigo;
-                clasificacion.BeerType = Tipo;
+                clasificacion.BeerType = TipoSeleccionado;
                 clasificacion.Add();
             }
         }
@@ -79,7 +83,7 @@ namespace AdministradorCervezas.ViewModels
         {
             Nombre = "";
             Codigo = "";
-            Tipo = null;
+            TipoSeleccionado = null;
         }
     }
 }

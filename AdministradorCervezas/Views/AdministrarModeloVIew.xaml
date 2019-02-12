@@ -31,6 +31,7 @@
         <ComboBox Grid.Row="1"
                  Grid.Column="2"
                  x:Name="Tipos"
+                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=TwoWay}"
                   DisplayMemberPath="Name"></ComboBox>
         <TextBox Grid.Row="2"
                  Grid.Column="2"
