@@ -26,17 +26,18 @@ namespace AdministradorCervezas.ViewModels
         // convertimos la lista del modelo a un coleccion mas util para Caliburn
         private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
 
-        public BindableCollection<Clasification> Clasificacion
+        private Clasification _clasificacionSeleccionada;
+
+        public Clasification ClasificacionSeleccionada
         {
-            get { return _clasificaciones; }
+            get { return _clasificacionSeleccionada; }
             set
             {
-                _clasificaciones = value;
-                NotifyOfPropertyChange(() => Clasificacion);
+                _clasificacionSeleccionada = value;
+                NotifyOfPropertyChange(() => ClasificacionSeleccionada);
+                NotifyOfPropertyChange(() => PuedeEditarBorrar);
             }
         }
-
-
 
         public void Agregar()
         {
@@ -49,14 +50,19 @@ namespace AdministradorCervezas.ViewModels
 
         public void Editar()
         {
-            //EditarMarcasViewModel editarMarcas = new EditarMarcasViewModel(ClasificacionSeleccionada);
-            //IWindowManager manejador2 = new WindowManager();
-            //manejador2.ShowDialog(editarMarcas, null, null);
-            //Clasificaciones = null;
-            //Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+            EditarModeloViewModel editarModelos = new EditarModeloViewModel(ClasificacionSeleccionada);
+            IWindowManager manejador2 = new WindowManager();
+            manejador2.ShowDialog(editarModelos, null, null);
+            Clasificaciones = null;
         }
 
-      
+        public bool PuedeEditarBorrar
+        {
+            get
+            {
+                return ClasificacionSeleccionada != null;
+            }
+        }
 
 
     }
