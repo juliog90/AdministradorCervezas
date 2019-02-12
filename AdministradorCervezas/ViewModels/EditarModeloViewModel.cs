@@ -79,7 +79,7 @@ namespace AdministradorCervezas.ViewModels
 
         public void Editar()
         {
-            MessageBoxResult resultado = MessageBox.Show("Estas seguro de guardar esta clasificacion?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult resultado = MessageBox.Show("Estas seguro de editar esta clasificacion?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
             {
@@ -89,13 +89,6 @@ namespace AdministradorCervezas.ViewModels
                 clasificacion.BeerType = TipoSeleccionado;
                 clasificacion.Edit();
             }
-        }
-
-        public void Reiniciar()
-        {
-            Nombre = "";
-            Codigo = "";
-            TipoSeleccionado = null;
         }
     }
 }

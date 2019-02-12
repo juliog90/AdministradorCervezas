@@ -76,6 +76,7 @@ namespace AdministradorCervezas.ViewModels
                 clasificacion.Code = Codigo;
                 clasificacion.BeerType = TipoSeleccionado;
                 clasificacion.Add();
+                Reiniciar();
             }
         }
 
