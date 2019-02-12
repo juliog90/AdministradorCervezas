@@ -102,6 +102,7 @@
     <Compile Include="ViewModels\AdministrarModeloViewModel.cs" />
     <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
     <Compile Include="ViewModels\AdministrarMarcasViewModel.cs" />
+    <Compile Include="ViewModels\EditarModeloViewModel.cs" />
     <Compile Include="Views\AdministrarClienteView.xaml.cs">
       <DependentUpon>AdministrarClienteView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +143,9 @@
     </Compile>
     <Compile Include="Views\DatosOrdenesView.xaml.cs">
       <DependentUpon>DatosOrdenesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditarModeloView.xaml.cs">
+      <DependentUpon>EditarModeloView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrincipalView.xaml.cs">
       <DependentUpon>PrincipalView.xaml</DependentUpon>
@@ -229,6 +233,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DatosOrdenesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditarModeloView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

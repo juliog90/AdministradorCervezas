@@ -10,7 +10,6 @@ namespace AdministradorCervezas.ViewModels
 {
     public class DatosModelosViewModel : Screen
     {
-       
         public BindableCollection<Clasification> Clasificaciones
         {
             get
@@ -45,6 +44,7 @@ namespace AdministradorCervezas.ViewModels
             IWindowManager manejador1 = new WindowManager();
             manejador1.ShowDialog(administrarModelos, null, null);
             Clasificaciones = null;
+            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
             
         }
 
@@ -54,6 +54,13 @@ namespace AdministradorCervezas.ViewModels
             IWindowManager manejador2 = new WindowManager();
             manejador2.ShowDialog(editarModelos, null, null);
             Clasificaciones = null;
+            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+        }
+
+        public void Borrar()
+        {
+            ClasificacionSeleccionada.Delete();
+            NotifyOfPropertyChange(() => Clasificaciones);
         }
 
         public bool PuedeEditarBorrar
@@ -63,7 +70,5 @@ namespace AdministradorCervezas.ViewModels
                 return ClasificacionSeleccionada != null;
             }
         }
-
-
     }
 }

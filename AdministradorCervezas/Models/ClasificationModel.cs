@@ -124,7 +124,7 @@ public class Clasification
         //parameters
         command.Parameters.AddWithValue("@ID", _code);
         command.Parameters.AddWithValue("@NAME", _name);
-        command.Parameters.AddWithValue("@BT", _beerType);
+        command.Parameters.AddWithValue("@BT", _beerType.Id);
         //execute command
         return MySqlConnection.ExecuteNonQuery(command);
     }
