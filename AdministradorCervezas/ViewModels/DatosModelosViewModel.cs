@@ -45,6 +45,7 @@ namespace AdministradorCervezas.ViewModels
             manejador1.ShowDialog(administrarModelos, null, null);
             Clasificaciones = null;
             Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+            NotifyOfPropertyChange(() => Clasificaciones);
             
         }
 
@@ -55,11 +56,14 @@ namespace AdministradorCervezas.ViewModels
             manejador2.ShowDialog(editarModelos, null, null);
             Clasificaciones = null;
             Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+            NotifyOfPropertyChange(() => Clasificaciones);
         }
 
         public void Borrar()
         {
             ClasificacionSeleccionada.Delete();
+            Clasificaciones = null;
+            Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
             NotifyOfPropertyChange(() => Clasificaciones);
         }
 
