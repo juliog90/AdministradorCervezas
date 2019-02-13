@@ -178,7 +178,8 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@IMG", _image);
 
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -195,7 +196,8 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@ID", _id);
 
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -211,7 +213,8 @@ using MySql.Data.MySqlClient;
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -270,7 +273,8 @@ using MySql.Data.MySqlClient;
         MySqlCommand command = new MySqlCommand(query);
         command.Parameters.AddWithValue("@BRD", br.Id);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
         {

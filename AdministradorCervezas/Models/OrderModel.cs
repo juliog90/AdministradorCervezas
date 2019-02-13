@@ -105,7 +105,8 @@ public class Order
         //parameter 
         command.Parameters.AddWithValue("@ID", id);
         //execute command
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //check if rows found 
         if (table.Rows.Count > 0)
         {
@@ -124,10 +125,9 @@ public class Order
                     od.be_id = be.be_id join orders ord on ord.ord_id = od.ord_id where od.ord_id=@ID";
         command = new MySqlCommand(query);
         command.Parameters.AddWithValue("@ID", id);
-        //execute again command        
-        table = MySqlConnection.ExecuteQuery(command);
+        //execute again command 
 
-
+        table = connection.ExecuteQuery(command);
 
         foreach (DataRow row in table.Rows)
         {
@@ -156,7 +156,8 @@ public class Order
         //command
         MySqlCommand command = new MySqlCommand(query);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
 
         foreach (DataRow row in table.Rows)
@@ -182,7 +183,8 @@ public class Order
         MySqlCommand command = new MySqlCommand(query);
         command.Parameters.AddWithValue("@DATE", d.Year + "/" + d.Month + "/" + d.Day);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
 
         foreach (DataRow row in table.Rows)

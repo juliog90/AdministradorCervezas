@@ -83,7 +83,8 @@ public class Customer
         //parameters
         command.Parameters.AddWithValue("@ID", id);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
         {
@@ -137,7 +138,8 @@ public class Customer
         command.Parameters.AddWithValue("@PHONE", _phone);
         command.Parameters.AddWithValue("@ADD", _address);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -159,7 +161,8 @@ public class Customer
         command.Parameters.AddWithValue("@ADD", _address);
 
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -175,7 +178,8 @@ public class Customer
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -200,7 +204,8 @@ public class Customer
         //command
         MySqlCommand command = new MySqlCommand(query);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
         {
@@ -230,7 +235,8 @@ public class Customer
         MySqlCommand command = new MySqlCommand(query);
         command.Parameters.AddWithValue("@CIT", ci.Id);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
         {

@@ -32,7 +32,8 @@ public class City : Place
         //parameters
         command.Parameters.AddWithValue("@ID", id);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
         {
@@ -73,7 +74,8 @@ public class City : Place
         command.Parameters.AddWithValue("@ID", _id);
         command.Parameters.AddWithValue("@NAME", _name);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -90,7 +92,8 @@ public class City : Place
         command.Parameters.AddWithValue("@ID", _id);
         command.Parameters.AddWithValue("@NAME", _name);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -106,7 +109,8 @@ public class City : Place
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
@@ -127,7 +131,8 @@ public class City : Place
         //command
         MySqlCommand command = new MySqlCommand(query);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
         {

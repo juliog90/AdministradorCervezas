@@ -62,7 +62,8 @@ public class BeerType
         //parameters
         command.Parameters.AddWithValue("@ID", id);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
         {
@@ -99,7 +100,8 @@ public class BeerType
         //command
         MySqlCommand command = new MySqlCommand(query);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
         {
@@ -129,7 +131,8 @@ public class BeerType
         command.Parameters.AddWithValue("@COLOR", _color);
         command.Parameters.AddWithValue("@CAT", _category);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     public bool Delete()
@@ -141,7 +144,8 @@ public class BeerType
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     public bool Edit()
@@ -156,7 +160,8 @@ public class BeerType
         command.Parameters.AddWithValue("@COLOR", _color);
         command.Parameters.AddWithValue("@CAT", _category);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     public override string ToString()
