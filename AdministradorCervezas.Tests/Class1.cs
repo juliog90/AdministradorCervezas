@@ -14,7 +14,7 @@ namespace AdministradorCervezas.Tests
         public void CervezaIDBaseDatos()
         {
             Beer cervezaPrueba = new Beer(1);
-            Assert.IsNotNull(cervezaPrueba);
+            Assert.IsNull(cervezaPrueba);
         }
     }
 }

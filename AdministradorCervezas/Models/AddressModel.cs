@@ -77,7 +77,8 @@ public class Address
         //parameters
         command.Parameters.AddWithValue("@ID", id);
         //execute query
-        DataTable table = MySqlConnection.ExecuteQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
         {

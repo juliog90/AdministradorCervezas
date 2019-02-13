@@ -54,7 +54,8 @@ public class Order
             //parameter 
             command.Parameters.AddWithValue("@ID", _id);
             //execute command
-            DataTable table = MySqlConnection.ExecuteQuery(command);
+            MySqlConnection connection = new MySqlConnection();
+            DataTable table = connection.ExecuteQuery(command);
             //check if rows found 
             if (table.Rows.Count > 0)
             {

@@ -23,7 +23,7 @@ public class MySqlConnection
     /// Opens a connection to the database
     /// </summary>
     /// <returns></returns>
-    private static bool Open()
+    private bool Open()
     {
         //result
         bool connectionOpen = false;
@@ -52,7 +52,7 @@ public class MySqlConnection
     /// </summary>
     /// <param name="command">SQL Command</param>
     /// <returns></returns>
-    public static DataTable ExecuteQuery(MySqlCommand command)
+    public DataTable ExecuteQuery(MySqlCommand command)
     {
         //result table
         DataTable table = new DataTable();
@@ -81,7 +81,7 @@ public class MySqlConnection
     /// </summary>
     /// <param name="command">SQL Command</param>
     /// <returns></returns>
-    public static bool ExecuteNonQuery(MySqlCommand command)
+    public bool ExecuteNonQuery(MySqlCommand command)
     {
         //result
         bool success = false;

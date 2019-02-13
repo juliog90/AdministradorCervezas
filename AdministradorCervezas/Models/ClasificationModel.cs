@@ -112,7 +112,8 @@ public class Clasification
         //parameters
         command.Parameters.AddWithValue("@ID", _code);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     public bool Edit()
@@ -126,7 +127,8 @@ public class Clasification
         command.Parameters.AddWithValue("@NAME", _name);
         command.Parameters.AddWithValue("@BT", _beerType.Id);
         //execute command
-        return MySqlConnection.ExecuteNonQuery(command);
+        MySqlConnection connection = new MySqlConnection();
+        return connection.ExecuteNonQuery(command);
     }
 
     public static List<Clasification> GetAll()
