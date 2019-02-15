@@ -24,13 +24,13 @@
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
         <Label Grid.Column="1"
-               Grid.Row="1">Nombre: </Label>
+               Grid.Row="1">Nombre:</Label>
         <Label Grid.Column="1"
                Grid.Row="2">Apellido:</Label>
         <Label Grid.Column="1"
                Grid.Row="3">Correo Electronico:</Label>
         <Label Grid.Column="1"
-               Grid.Row="4">Telefono: </Label>
+               Grid.Row="4">Telefono:</Label>
         <Label Grid.Column="1"
                Grid.Row="1">Direccion</Label>
         <Label Grid.Column="1"

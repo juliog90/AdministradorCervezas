@@ -51,7 +51,7 @@ namespace AdministradorCervezas.ViewModels
 
         public bool PuedesEscribirNombre
         {
-            get 
+            get
             {
                 return TipoSeleccionado != null;
             }

@@ -1,15 +1,10 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using MySql.Data.MySqlClient;
 
 public class Country : Place
 {
-
-
     #region constructors
 
     /// <summary>

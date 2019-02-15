@@ -1,17 +1,12 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdministradorCervezas.ViewModels
 {
     class AdministrarMarcaViewModel : Screen
     {
-        private BindableCollection<Country>  _paises = new BindableCollection<Country>(Country.GetAll());
+        private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
 
-        public BindableCollection<Country>  Paises
+        public BindableCollection<Country> Paises
         {
             get { return _paises; }
             set { _paises = value; }

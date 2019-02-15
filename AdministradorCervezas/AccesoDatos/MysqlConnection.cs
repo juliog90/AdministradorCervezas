@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
-using MySql.Data.MySqlClient;
 
-public class MySqlConnection 
+public class MySqlConnection
 {
 
     #region attributes
 
     private ISettings _connectionSource;
-    private MySql.Data.MySqlClient.MySqlConnection _connection; 
+    private MySql.Data.MySqlClient.MySqlConnection _connection;
 
     public ISettings ConnectionSource
     {

@@ -1,13 +1,4 @@
-﻿using AdministradorCervezas.ViewModels;
-using AdministradorCervezas.Views;
-using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+﻿using Caliburn.Micro;
 
 namespace AdministradorCervezas.ViewModels
 {

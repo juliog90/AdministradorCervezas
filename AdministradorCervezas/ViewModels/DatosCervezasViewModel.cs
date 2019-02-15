@@ -1,10 +1,5 @@
-﻿using AdministradorCervezas.ViewModels;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -17,7 +12,7 @@ namespace AdministradorCervezas.ViewModels
         private BindableCollection<Beer> _cervezas = new BindableCollection<Beer>(Beer.GetAll());
 
         private Beer _cervezaSeleccionada;
-        private ImageSource _cervezaImagen; 
+        private ImageSource _cervezaImagen;
 
 
         public BindableCollection<Beer> Cervezas
@@ -38,7 +33,7 @@ namespace AdministradorCervezas.ViewModels
                 _cervezaSeleccionada = value;
                 NotifyOfPropertyChange(() => CervezaSeleccionada);
                 NotifyOfPropertyChange(() => PuedeEditarBorrar);
-                
+
             }
         }
 
@@ -97,7 +92,7 @@ namespace AdministradorCervezas.ViewModels
                 Cervezas = null;
                 Cervezas = new BindableCollection<Beer>(Beer.GetAll());
             }
-            
+
         }
     }
 }

@@ -3,10 +3,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -49,7 +46,7 @@ namespace AdministradorCervezas.ViewModels
         private string _extensionImagen;
 
 
-    
+
 
         public int Id
         {
@@ -126,7 +123,7 @@ namespace AdministradorCervezas.ViewModels
             set
             {
                 _paises = value;
-           }
+            }
         }
 
         /// <summary>

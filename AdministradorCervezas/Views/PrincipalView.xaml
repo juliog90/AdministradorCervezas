@@ -16,7 +16,7 @@
     </Window.Background>
 
     <Grid>
-      
+
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="55"/>
@@ -47,7 +47,7 @@
             <Button Grid.Column="1" HorizontalAlignment="Left" Margin="3,3,0,3" Width="121" Click="Button_Click" >Salir</Button>
             <TextBlock Style="{StaticResource Titulo}" 
                        Grid.Column="0" Margin="10,3,429,7" Grid.RowSpan="2">Sistema Administrador Brewery</TextBlock>
-      
+
         </Grid>
 
         <!--Menu Botones-->

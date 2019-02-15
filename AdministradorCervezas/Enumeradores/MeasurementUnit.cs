@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-    public enum MeasurementUnit
-    {
-        ML,
-        L
-    }
+﻿public enum MeasurementUnit
+{
+    ML,
+    L
+}

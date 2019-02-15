@@ -62,7 +62,7 @@
                    Source="{Binding CervezaImagen}"/>
             <TextBlock Text="{Binding CervezaSeleccionada.Brand.Name}"/>
         </Grid>
-        
+
         <Grid Grid.Row="3"
               Grid.Column="1"
               Grid.ColumnSpan="2">
@@ -79,8 +79,8 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
 
-         
-            
+
+
             <Button Grid.Column="1"
                         Grid.Row="1"
                         x:Name="Agregar">Agregar</Button>
