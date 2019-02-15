@@ -25,6 +25,8 @@ public class MySqlConnection
         set
         {
             _connectionSource = value;
+            string connectionCadena = _connectionSource.getSettings();
+            _connection = new MySql.Data.MySqlClient.MySqlConnection(connectionCadena);
         }
     }
 
