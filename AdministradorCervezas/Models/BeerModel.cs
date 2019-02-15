@@ -112,6 +112,7 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -197,6 +198,7 @@ using MySql.Data.MySqlClient;
 
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -214,6 +216,7 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -274,6 +277,7 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@BRD", br.Id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -307,6 +311,7 @@ using MySql.Data.MySqlClient;
         command.Parameters.AddWithValue("@CON", co.Id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)

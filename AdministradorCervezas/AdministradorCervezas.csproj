@@ -89,6 +89,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Settings\AppSettings.cs" />
+    <Compile Include="Settings\ISettings.cs" />
     <Compile Include="AccesoDatos\MysqlConnection.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

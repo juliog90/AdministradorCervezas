@@ -7,16 +7,33 @@ using System.Configuration;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-public class MySqlConnection
+public class MySqlConnection 
 {
 
     #region attributes
 
-    private static string _connectionString = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
-    private static MySql.Data.MySqlClient.MySqlConnection _connection = new MySql.Data.MySqlClient.MySqlConnection(_connectionString);
+    private ISettings _connectionSource;
+    private MySql.Data.MySqlClient.MySqlConnection _connection; 
 
+    public ISettings ConnectionSource
+    {
+        get
+        {
+            return _connectionSource;
+        }
+
+        set
+        {
+            _connectionSource = value;
+        }
+    }
+
+    public void Connect()
+    {
+        string connectionCadena = _connectionSource.getSettings();
+        _connection = new MySql.Data.MySqlClient.MySqlConnection(connectionCadena);
+    }
     #endregion
-
     #region methods
 
     /// <summary>
@@ -43,7 +60,7 @@ public class MySqlConnection
         }
         else
             connectionOpen = true; //connection was already open
-        //return result5
+        //return result
         return connectionOpen;
     }
 
