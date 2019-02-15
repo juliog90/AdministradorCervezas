@@ -78,6 +78,7 @@ public class Address
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -122,6 +123,7 @@ public class Address
         command.Parameters.AddWithValue("@CODE", _city);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -135,6 +137,7 @@ public class Address
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -152,6 +155,7 @@ public class Address
         command.Parameters.AddWithValue("@ZIPCODE", _zipCode);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -169,6 +173,7 @@ public class Address
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -189,7 +194,7 @@ public class Address
 
     public override string ToString()
     {
-        return "street "+_street + "  " + _suburb + " No." + _number + " " + _zipCode + " " + _city;
+        return "street " + _street + "  " + _suburb + " No." + _number + " " + _zipCode + " " + _city;
     }
     #endregion
 }

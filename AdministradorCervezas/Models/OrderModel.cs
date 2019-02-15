@@ -55,6 +55,7 @@ public class Order
             command.Parameters.AddWithValue("@ID", _id);
             //execute command
             MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionSource = new AppSettings();
             DataTable table = connection.ExecuteQuery(command);
             //check if rows found 
             if (table.Rows.Count > 0)
@@ -66,7 +67,7 @@ public class Order
                     currentDetail.Beer = (new Beer((int)row["be_id"]));
                     currentDetail.Quantity = (int)row["ordDet_quantity"];
                     currentDetail.UnitPrice = (double)row["ordDet_UnitPrice"];
-                    details.Add(currentDetail); 
+                    details.Add(currentDetail);
                 }
             }
 
@@ -79,7 +80,7 @@ public class Order
         get
         {
             double total = 0;
-            foreach(OrderDetail detail in AllDetails)
+            foreach (OrderDetail detail in AllDetails)
             {
                 total += detail.Ammount;
             }
@@ -106,6 +107,7 @@ public class Order
         command.Parameters.AddWithValue("@ID", id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows found 
         if (table.Rows.Count > 0)
@@ -157,6 +159,7 @@ public class Order
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
 
@@ -184,6 +187,7 @@ public class Order
         command.Parameters.AddWithValue("@DATE", d.Year + "/" + d.Month + "/" + d.Day);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
 

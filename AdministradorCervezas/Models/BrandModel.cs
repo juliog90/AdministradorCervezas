@@ -6,33 +6,36 @@ using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 public class Brand
-    {
+{
     #region attributes
-    private  string _id;
-    private  string _name;
+    private string _id;
+    private string _name;
     Country _country;
     #endregion
 
     #region properties
-    public string Id {
-        get { return _id;}
-        set { _id = value;}
+    public string Id
+    {
+        get { return _id; }
+        set { _id = value; }
     }
 
-    public string Name {
+    public string Name
+    {
         get { return _name; }
         set { _name = value; }
     }
 
     public Country Country
     {
-        get { return _country;}
+        get { return _country; }
         set { _country = value; }
     }
     #endregion
 
     #region constructors
-    public Brand() {
+    public Brand()
+    {
         _id = "";
         _name = "";
         _country = new Country();
@@ -48,6 +51,7 @@ public class Brand
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -67,7 +71,8 @@ public class Brand
         _name = name;
     }
 
-    public Brand(string id, string name, Country country){
+    public Brand(string id, string name, Country country)
+    {
         _id = id;
         _name = name;
         _country = country;
@@ -91,6 +96,7 @@ public class Brand
         command.Parameters.AddWithValue("@CN", _country);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -106,12 +112,13 @@ public class Brand
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
     public bool Edit()
     {
         //statement
-        string statement = "update brand set br_name = @NAME, cn_code = @CN where br_code = @ID" ;
+        string statement = "update brand set br_name = @NAME, cn_code = @CN where br_code = @ID";
         //command
         MySqlCommand command = new MySqlCommand(statement);
         //parameters
@@ -120,6 +127,7 @@ public class Brand
         command.Parameters.AddWithValue("@CN", _country.Id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
     public override string ToString()
@@ -132,7 +140,8 @@ public class Brand
 
 
     #region methods
-    public static List<Brand> GetAll() {
+    public static List<Brand> GetAll()
+    {
         //list
         List<Brand> list = new List<Brand>();
         //query
@@ -141,6 +150,7 @@ public class Brand
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -150,7 +160,7 @@ public class Brand
             string name = (string)row["br_name"];
             Country country = new Country((string)row["cn_code"]);
             //add country to list
-            list.Add(new Brand(id, name,country));
+            list.Add(new Brand(id, name, country));
         }
 
 
@@ -170,6 +180,7 @@ public class Brand
         command.Parameters.AddWithValue("@CON", co.Id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -188,7 +199,7 @@ public class Brand
     }
 
     //creates a instance method for get the clasification of the a brand
-    public  List<Clasification> GetClasifications()
+    public List<Clasification> GetClasifications()
     {
         //list
         List<Clasification> list = new List<Clasification>();
@@ -200,6 +211,7 @@ public class Brand
         command.Parameters.AddWithValue("@ID", _id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)

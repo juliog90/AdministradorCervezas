@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 
-public class Country:Place
+public class Country : Place
 {
 
 
@@ -15,7 +15,7 @@ public class Country:Place
     /// <summary>
     /// Creates an empty object
     /// </summary>
-    public Country():base()
+    public Country() : base()
     {
     }
 
@@ -33,6 +33,7 @@ public class Country:Place
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -75,6 +76,7 @@ public class Country:Place
         command.Parameters.AddWithValue("@NAME", _name);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -93,6 +95,7 @@ public class Country:Place
         command.Parameters.AddWithValue("@NAME", _name);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -110,6 +113,7 @@ public class Country:Place
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -132,6 +136,7 @@ public class Country:Place
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -147,7 +152,7 @@ public class Country:Place
     }
     public override string ToString()
     {
-            return _name;
+        return _name;
     }
 
     public static implicit operator Country(string v)

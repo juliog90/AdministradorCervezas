@@ -10,11 +10,11 @@ using MySql.Data.MySqlClient;
 public class Customer
 {
     #region Attributes
-    private  int _id;
-    private  string _firstName;
-    private  string _lastName;
+    private int _id;
+    private string _firstName;
+    private string _lastName;
     private string _email;
-    private  string _phone;
+    private string _phone;
     private Address _address;
     private string _password;
     #endregion
@@ -36,11 +36,13 @@ public class Customer
         set { _lastName = value; }
     }
 
-    public string FullName {
+    public string FullName
+    {
         get { return _firstName + " " + _lastName; }
     }
 
-    public string email {
+    public string email
+    {
         get { return _email; }
         set { _email = value; }
     }
@@ -51,7 +53,8 @@ public class Customer
         set { _phone = value; }
     }
 
-    public Address Address { 
+    public Address Address
+    {
         get { return _address; }
         set { _address = value; }
     }
@@ -84,6 +87,7 @@ public class Customer
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -105,7 +109,7 @@ public class Customer
     /// Creates an object with data from the arguments
     /// </summary>
 
-    public Customer(int id, string firstName, string lastName, string email, string phone, Address address,string password)
+    public Customer(int id, string firstName, string lastName, string email, string phone, Address address, string password)
     {
         _id = id;
         _firstName = firstName;
@@ -139,6 +143,7 @@ public class Customer
         command.Parameters.AddWithValue("@ADD", _address);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -162,6 +167,7 @@ public class Customer
 
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -179,6 +185,7 @@ public class Customer
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -188,7 +195,7 @@ public class Customer
     /// <returns></returns>
     public override string ToString()
     {
-        return _firstName + " " + _lastName + "\nEmail: " + _email + "\nPhone: " + _phone+"\nAddress: "+_address;
+        return _firstName + " " + _lastName + "\nEmail: " + _email + "\nPhone: " + _phone + "\nAddress: " + _address;
     }
 
     #endregion
@@ -205,6 +212,7 @@ public class Customer
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -218,7 +226,7 @@ public class Customer
             Address address = new Address((int)row["add_id"]);
             string password = (string)row["cus_pass"];
             //add country to list
-            list.Add(new Customer(id, firstName, lastName,email,phone, address,password));
+            list.Add(new Customer(id, firstName, lastName, email, phone, address, password));
         }
         //return list
         return list;
@@ -236,6 +244,7 @@ public class Customer
         command.Parameters.AddWithValue("@CIT", ci.Id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -250,7 +259,7 @@ public class Customer
             string password = (string)row["cus_pass"];
 
             //add country to list
-            list.Add(new Customer(id, firstName, lastName, email, phone, address,password));
+            list.Add(new Customer(id, firstName, lastName, email, phone, address, password));
         }
         //return list
         return list;

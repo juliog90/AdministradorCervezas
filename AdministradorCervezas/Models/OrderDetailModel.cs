@@ -71,6 +71,7 @@ public class OrderDetail
         command.Parameters.AddWithValue("@ID", id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows found 
         if (table.Rows.Count > 0)

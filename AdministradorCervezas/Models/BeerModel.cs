@@ -7,8 +7,8 @@ using System.Data;
 using MySql.Data.MySqlClient;
 
 
-    public class Beer
-    {
+public class Beer
+{
     #region attributes
     private int _id;
     private double _gradoAlcohol;
@@ -28,7 +28,7 @@ using MySql.Data.MySqlClient;
     public int Id
     {
         get { return _id; }
-        set{ _id = value; }
+        set { _id = value; }
     }
     public double GradoAlcohol
     {
@@ -36,7 +36,8 @@ using MySql.Data.MySqlClient;
         set { _gradoAlcohol = value; }
     }
 
-    public PresentationType Presentation{
+    public PresentationType Presentation
+    {
         get { return _presentation; }
         set { _presentation = value; }
     }
@@ -47,12 +48,14 @@ using MySql.Data.MySqlClient;
         set { _fermentation = value; }
     }
 
-    public MeasurementUnit MeasurementUnit {
+    public MeasurementUnit MeasurementUnit
+    {
         get { return _measurementUnit; }
         set { _measurementUnit = value; }
     }
 
-    public double Content {
+    public double Content
+    {
         get { return _content; }
         set { _content = value; }
     }
@@ -69,7 +72,8 @@ using MySql.Data.MySqlClient;
         set { _clasification = value; }
     }
 
-    public double Price {
+    public double Price
+    {
         get { return _price; }
         set { _price = value; }
     }
@@ -113,6 +117,7 @@ using MySql.Data.MySqlClient;
         //execute query
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -126,7 +131,7 @@ using MySql.Data.MySqlClient;
             _fermentation = (Fermentation)row["be_level_ferm"];
             _measurementUnit = (MeasurementUnit)row["be_unitMeas"];
             _content = (double)row["be_content"];
-                
+
             _brand = (new Brand((string)row["br_code"]));
             _clasification = (new Clasification((string)row["cla_code"]));
             _price = (double)row["be_price"];
@@ -140,7 +145,7 @@ using MySql.Data.MySqlClient;
     /// </summary>
     /// <param name="id"></param>
     /// <param name="name"></param>
-    public Beer(int id, double gradoalcohol,PresentationType presentation, Fermentation fermentation,MeasurementUnit measurementUnit,double content, Brand brand, Clasification clasification,double price, string image)
+    public Beer(int id, double gradoalcohol, PresentationType presentation, Fermentation fermentation, MeasurementUnit measurementUnit, double content, Brand brand, Clasification clasification, double price, string image)
     {
         _id = id;
         _gradoAlcohol = gradoalcohol;
@@ -180,6 +185,8 @@ using MySql.Data.MySqlClient;
 
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -199,6 +206,7 @@ using MySql.Data.MySqlClient;
         //execute command
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -217,6 +225,7 @@ using MySql.Data.MySqlClient;
         //execute command
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -226,7 +235,7 @@ using MySql.Data.MySqlClient;
     /// <returns></returns>
     public override string ToString()
     {
-        return _brand + " " + _gradoAlcohol.ToString() + "° " + _fermentation+" "+_presentation+" "+_content+_measurementUnit;
+        return _brand + " " + _gradoAlcohol.ToString() + "° " + _fermentation + " " + _presentation + " " + _content + _measurementUnit;
     }
 
     #endregion
@@ -242,6 +251,7 @@ using MySql.Data.MySqlClient;
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -258,7 +268,7 @@ using MySql.Data.MySqlClient;
             double price = (double)row["be_price"];
             string image = (string)row["be_image"];
             //add country to list
-            list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price,image));
+            list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
         //return list
         return list;
@@ -278,39 +288,6 @@ using MySql.Data.MySqlClient;
         //execute query
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
-        DataTable table = connection.ExecuteQuery(command);
-        //iterate rows
-        foreach (DataRow row in table.Rows)
-        {
-            //read fields
-            int id = (int)row["be_id"];
-            double gradoalcohol = (double)row["be_grd_alcoh"];
-            PresentationType presentation = (PresentationType)(int)row["be_presentation"];
-            Fermentation fermentation = (Fermentation)(int)row["be_level_ferm"];
-            MeasurementUnit measurementUnit = (MeasurementUnit)row["be_unitMeas"];
-            double content = (double)row["be_content"];
-            Brand brand = new Brand((string)row["br_code"]);
-            Clasification clasification = new Clasification((string)row["cla_code"]);
-            double price = (double)row["be_price"];
-            string image = (string)row["be_image"];
-            //add country to list
-            list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price,image));
-        }
-        //return list
-        return list;
-    }
-
-    public static List<Beer> GetBeers(Country co)
-    {
-        //list
-        List<Beer> list = new List<Beer>();
-        //query
-        string query = "select be_id, be_grd_alcoh,be_presentation,be_level_ferm,be_unitMeas,be_content,beer.br_code,cla_code,be_price,be_image from beer join brand on beer.br_code= brand.br_code join country on country.cn_code = brand.cn_code where country.cn_code=@CON";
-        //command
-        MySqlCommand command = new MySqlCommand(query);
-        command.Parameters.AddWithValue("@CON", co.Id);
-        //execute query
-        MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
@@ -328,14 +305,49 @@ using MySql.Data.MySqlClient;
             double price = (double)row["be_price"];
             string image = (string)row["be_image"];
             //add country to list
-            list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price,image));
+            list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
+        }
+        //return list
+        return list;
+    }
+
+    public static List<Beer> GetBeers(Country co)
+    {
+        //list
+        List<Beer> list = new List<Beer>();
+        //query
+        string query = "select be_id, be_grd_alcoh,be_presentation,be_level_ferm,be_unitMeas,be_content,beer.br_code,cla_code,be_price,be_image from beer join brand on beer.br_code= brand.br_code join country on country.cn_code = brand.cn_code where country.cn_code=@CON";
+        //command
+        MySqlCommand command = new MySqlCommand(query);
+        command.Parameters.AddWithValue("@CON", co.Id);
+        //execute query
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
+        connection.ConnectionSource = new AppSettings();
+        DataTable table = connection.ExecuteQuery(command);
+        //iterate rows
+        foreach (DataRow row in table.Rows)
+        {
+            //read fields
+            int id = (int)row["be_id"];
+            double gradoalcohol = (double)row["be_grd_alcoh"];
+            PresentationType presentation = (PresentationType)(int)row["be_presentation"];
+            Fermentation fermentation = (Fermentation)(int)row["be_level_ferm"];
+            MeasurementUnit measurementUnit = (MeasurementUnit)row["be_unitMeas"];
+            double content = (double)row["be_content"];
+            Brand brand = new Brand((string)row["br_code"]);
+            Clasification clasification = new Clasification((string)row["cla_code"]);
+            double price = (double)row["be_price"];
+            string image = (string)row["be_image"];
+            //add country to list
+            list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
         //return list
         return list;
     }
 
 
-   
+
     #endregion
 }
 

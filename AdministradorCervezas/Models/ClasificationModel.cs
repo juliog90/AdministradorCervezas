@@ -58,6 +58,7 @@ public class Clasification
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
         if (table.Rows.Count > 0)
@@ -67,7 +68,7 @@ public class Clasification
             //read data
             _code = (string)row["cla_code"];
             _name = (string)row["cla_name"];
-            _beerType = new BeerType ((string)row["type_code"]);
+            _beerType = new BeerType((string)row["type_code"]);
         }
     }
 
@@ -102,6 +103,7 @@ public class Clasification
         command.Parameters.AddWithValue("@BT", _beerType.Id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -115,6 +117,7 @@ public class Clasification
         command.Parameters.AddWithValue("@ID", _code);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -130,6 +133,7 @@ public class Clasification
         command.Parameters.AddWithValue("@BT", _beerType.Id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -143,6 +147,7 @@ public class Clasification
         MySqlCommand command = new MySqlCommand(query);
         //execute query
         MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
