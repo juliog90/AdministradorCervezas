@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="EditarModeloView" Height="230" Width="300">
+        Title="EditarModeloView" Height="180" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -18,7 +18,6 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Label 
@@ -26,8 +25,6 @@
                Grid.Column="1">Tipo:</Label>
         <Label Grid.Row="2"
                Grid.Column="1">Nombre:</Label>
-        <Label Grid.Row="3"
-               Grid.Column="1">Codigo</Label>
         <ComboBox Grid.Row="1"
                  Grid.Column="2"
                  x:Name="Tipos"
@@ -36,11 +33,8 @@
         <TextBox Grid.Row="2"
                  Grid.Column="2"
                  x:Name="Nombre"></TextBox>
-        <TextBox Grid.Row="3"
-                 Grid.Column="2"
-                 x:Name="Codigo"></TextBox>
         <Button Grid.Column="1"
-                Grid.Row="4"
+                Grid.Row="3"
                 Grid.ColumnSpan="2"
                 x:Name="Editar">Guardar</Button>
     </Grid>
