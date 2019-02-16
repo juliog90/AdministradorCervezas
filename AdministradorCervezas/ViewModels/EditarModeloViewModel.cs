@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
+using System.Linq;
 using System.Windows;
+using System.Collections.Generic;
 
 namespace AdministradorCervezas.ViewModels
 {
@@ -52,7 +54,18 @@ namespace AdministradorCervezas.ViewModels
         public EditarModeloViewModel(Clasification seleccion)
         {
             Nombre = seleccion.Name;
-            TipoSeleccionado = seleccion.BeerType;
+            int indice = Tipos.IndexOf(seleccion.BeerType);
+
+            // no me gusta mucho, pero funciona
+            // busca el elemento de la lista que sea igual al que escogiste
+            // anteriormente y lo pone como seleccionado
+            for (int i = 0; i < Tipos.Count; i++)
+            {
+                if (seleccion.BeerType.Id == Tipos[i].Id) 
+                {
+                    TipoSeleccionado = Tipos[i];
+                }
+            }
             Codigo = seleccion.Code;
         }
 
