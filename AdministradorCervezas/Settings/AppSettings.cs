@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 
 
-class AppSettings : ISettings
+public class AppSettings : ISettings
 {
     public string getSettings()
     {

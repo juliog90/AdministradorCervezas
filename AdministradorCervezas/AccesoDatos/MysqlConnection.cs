@@ -37,7 +37,7 @@ public class MySqlConnection
     /// Opens a connection to the database
     /// </summary>
     /// <returns></returns>
-    private bool Open()
+    public bool Open()
     {
         //result
         bool connectionOpen = false;
