@@ -97,11 +97,10 @@ public class Beer
         _price = 0;
     }
 
-
     /// <summary>
-    /// Creates an object with data from the databas
+    /// Creates an object with data from the database
     /// </summary>
-    /// <param name="id">Country Id</param>
+    /// <param name="id">Beer Id</param>
     public Beer(int id)
     {
         //query
@@ -112,7 +111,6 @@ public class Beer
         command.Parameters.AddWithValue("@ID", id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionSource = new AppSettings();
         connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //check if rows were found
@@ -134,7 +132,6 @@ public class Beer
 
         }
     }
-
 
     /// <summary>
     /// Creates an object with data from the arguments
@@ -182,7 +179,6 @@ public class Beer
         //execute command
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
-        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -202,7 +198,6 @@ public class Beer
         //execute command
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
-        connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
 
@@ -220,7 +215,6 @@ public class Beer
         command.Parameters.AddWithValue("@ID", _id);
         //execute command
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionSource = new AppSettings();
         connection.ConnectionSource = new AppSettings();
         return connection.ExecuteNonQuery(command);
     }
@@ -284,7 +278,6 @@ public class Beer
         //execute query
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
-        connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
         foreach (DataRow row in table.Rows)
@@ -318,7 +311,6 @@ public class Beer
         command.Parameters.AddWithValue("@CON", co.Id);
         //execute query
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionSource = new AppSettings();
         connection.ConnectionSource = new AppSettings();
         DataTable table = connection.ExecuteQuery(command);
         //iterate rows
