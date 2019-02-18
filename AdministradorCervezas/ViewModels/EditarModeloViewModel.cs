@@ -64,6 +64,7 @@ namespace AdministradorCervezas.ViewModels
                 if (seleccion.BeerType.Id == Tipos[i].Id) 
                 {
                     TipoSeleccionado = Tipos[i];
+                    break;
                 }
             }
             Codigo = seleccion.Code;
