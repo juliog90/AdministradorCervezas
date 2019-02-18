@@ -60,7 +60,6 @@ namespace AdministradorCervezas.ViewModels
 
         public EditarCervezaViewModel(Beer editarCerveza)
         {
-            // TODO: Arreglar la precarga de combobox
             _editarCerveza = editarCerveza;
 
             for (int i = 0; i < Marcas.Count; i++)

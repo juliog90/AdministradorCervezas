@@ -15,7 +15,7 @@ namespace AdministradorCervezas.ViewModels
         public EditarMarcasViewModel(Brand editarMarca)
         {
             NombreMarca = editarMarca.Name;
-            MarcaCodigo = editarMarca.Id;
+            _marcaCodigo = editarMarca.Id;
 
             for (int i = 0; i < Paises.Count; i++)
             {
@@ -41,16 +41,6 @@ namespace AdministradorCervezas.ViewModels
         }
 
         private string _marcaCodigo;
-
-        public string MarcaCodigo
-        {
-            get { return _marcaCodigo; }
-            set
-            {
-                _marcaCodigo = value;
-                NotifyOfPropertyChange(() => MarcaCodigo);
-            }
-        }
 
         private string _name;
 
@@ -83,7 +73,7 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return PaisSeleccionado != null && !string.IsNullOrWhiteSpace(NombreMarca) && !string.IsNullOrWhiteSpace(MarcaCodigo);
+                return PaisSeleccionado != null && !string.IsNullOrWhiteSpace(NombreMarca) && !string.IsNullOrWhiteSpace(_marcaCodigo);
             }
         }
 

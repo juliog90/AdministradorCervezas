@@ -21,8 +21,6 @@
             <RowDefinition/>
             <RowDefinition Height="5"/>
             <RowDefinition/>
-            <RowDefinition Height="5"/>
-            <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
 
@@ -32,30 +30,24 @@
             Cambia los valores da la marca.
         </TextBlock>
         <Label Grid.Row="2"
-               Grid.Column="1">Codigo</Label>
-        <Label Grid.Row="4"
                Grid.Column="1">Nueva Marca:</Label>
-        <Label Grid.Row="6"
+        <Label Grid.Row="4"
                Grid.Column="1">Pais</Label>
-        <TextBox x:Name="MarcaCodigo"
-                 MaxLength="3"
+        <TextBox x:Name="NombreMarca"
                  Grid.Row="2"
                  Grid.Column="2"></TextBox>
-        <TextBox x:Name="NombreMarca"
-                 Grid.Row="4"
-                 Grid.Column="2"></TextBox>
         <ComboBox x:Name="Paises"
-                 Grid.Row="6"
+                 Grid.Row="4"
                  Grid.Column="2"
                   SelectedItem="{Binding PaisSeleccionado, Mode=TwoWay}"
                   IsEnabled="{Binding PuedesEscogerPais}"
                   DisplayMemberPath="Name"></ComboBox>
         <Button x:Name="Editar"
                 Grid.Column="1"
-                Grid.Row="8"
+                Grid.Row="6"
                 Grid.ColumnSpan="2"
                 IsEnabled="{Binding PuedeEditar}"
-            >Editar</Button>
+            >Guardar</Button>
         <Button></Button>
     </Grid>
 </Window>
