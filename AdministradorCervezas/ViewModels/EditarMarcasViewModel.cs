@@ -16,7 +16,15 @@ namespace AdministradorCervezas.ViewModels
         {
             NombreMarca = editarMarca.Name;
             MarcaCodigo = editarMarca.Id;
-            PaisSeleccionado = editarMarca.Country;
+
+            for (int i = 0; i < Paises.Count; i++)
+            {
+                if (editarMarca.Country.Id == Paises[i].Id)
+                {
+                    PaisSeleccionado = Paises[i];
+                    break;
+                }
+            }
         }
 
         private string _nombreMarca;
