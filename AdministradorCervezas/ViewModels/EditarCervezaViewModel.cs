@@ -45,9 +45,6 @@ namespace AdministradorCervezas.ViewModels
         private string _rutaImagen;
         private string _extensionImagen;
 
-
-
-
         public int Id
         {
             get { return _id; }
@@ -63,7 +60,7 @@ namespace AdministradorCervezas.ViewModels
 
         public EditarCervezaViewModel(Beer editarCerveza)
         {
-
+            // TODO: Arreglar la precarga de combobox
             _editarCerveza = editarCerveza;
             MarcaSeleccionada = editarCerveza.Brand;
             ClasificacionSeleccionada = editarCerveza.Clasification;
