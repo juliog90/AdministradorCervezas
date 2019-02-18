@@ -104,7 +104,9 @@ public class Beer
     public Beer(int id)
     {
         //query
-        string query = "select be_id, be_grd_alcoh,be_presentation, be_level_ferm,be_unitMeas,be_content,br_code,cla_code,be_price from beer where be_id = @ID";
+        string query = "select be_id, be_grd_alcoh,be_presentation, be_level_ferm,"
+            + "be_unitMeas,be_content,br_code,cla_code,be_price, be_image, be_level_ferm"
+            + " from beer where be_id = @ID";
         //command
         MySqlCommand command = new MySqlCommand(query);
         //parameters
@@ -122,14 +124,13 @@ public class Beer
             _id = (int)row["be_id"];
             _gradoAlcohol = (double)row["be_grd_alcoh"];
             _presentation = (PresentationType)(int)row["be_presentation"];
-            _fermentation = (Fermentation)row["be_level_ferm"];
+            _fermentation = (Fermentation)(int)row["be_level_ferm"];
             _measurementUnit = (MeasurementUnit)row["be_unitMeas"];
             _content = (double)row["be_content"];
-
+            _image = (string)row["be_image"];
             _brand = (new Brand((string)row["br_code"]));
             _clasification = (new Clasification((string)row["cla_code"]));
             _price = (double)row["be_price"];
-
         }
     }
 
@@ -162,7 +163,9 @@ public class Beer
     public bool Add()
     {
         //statement
-        string statement = "Insert into Beer (be_grd_alcoh,be_presentation,be_level_ferm,be_unitMeas,be_content,br_code,cla_code,be_price,be_image) values (@GRD,@PRE,@FER,@MEA,@CONT,@BRA,@CLA,@PRI,@IMG)";
+        string statement = "Insert into Beer (be_grd_alcoh,be_presentation,"
+            + "be_level_ferm,be_unitMeas,be_content, br_code,cla_code,be_price,"
+            + "be_image) values (@GRD,@PRE,@FER,@MEA,@CONT,@BRA,@CLA,@PRI,@IMG)";
         //command
         MySqlCommand command = new MySqlCommand(statement);
         //parameters
@@ -183,17 +186,29 @@ public class Beer
     }
 
     /// <summary>
-    /// Edit the country
+    /// Edit Beer
     /// </summary>
     /// <returns></returns>
     public bool Edit()
     {
         //statement
-        string statement = "update beer set be_grd_alcoh = @GRAD where be_id = @ID";
+        // TODO: Reparar y Revisar Comandos Consultas y Comandos pueden estar mal
+        string statement = "update beer set be_grd_alcoh = @GRAD, be_presentation = @PRE, be_level_ferm = @FERM,"
+            + "be_unitMeas = @UNIT, be_content = @CON, br_code = @BRA, cla_code = @CLA, be_price = @PRI," 
+            + "be_image = @IMG where be_id = @ID";
         //command
         MySqlCommand command = new MySqlCommand(statement);
         //parameters
         command.Parameters.AddWithValue("@ID", _id);
+        command.Parameters.AddWithValue("@GRAD", _gradoAlcohol);
+        command.Parameters.AddWithValue("@PRE", _presentation);
+        command.Parameters.AddWithValue("@FERM", _fermentation);
+        command.Parameters.AddWithValue("@UNIT", _measurementUnit);
+        command.Parameters.AddWithValue("@CON", _content);
+        command.Parameters.AddWithValue("@BRA", _brand.Id);
+        command.Parameters.AddWithValue("@CLA", _clasification.Code);
+        command.Parameters.AddWithValue("@PRI", _price);
+        command.Parameters.AddWithValue("@IMG", _image);
 
         //execute command
         MySqlConnection connection = new MySqlConnection();
