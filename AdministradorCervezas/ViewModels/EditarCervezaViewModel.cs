@@ -62,17 +62,66 @@ namespace AdministradorCervezas.ViewModels
         {
             // TODO: Arreglar la precarga de combobox
             _editarCerveza = editarCerveza;
-            MarcaSeleccionada = editarCerveza.Brand;
-            ClasificacionSeleccionada = editarCerveza.Clasification;
-            PaisSeleccionado = editarCerveza.Brand.Country;
+
+            for (int i = 0; i < Marcas.Count; i++)
+            {
+                if (editarCerveza.Brand.Id == Marcas[i].Id)
+                {
+                    MarcaSeleccionada = Marcas[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < Clasificaciones.Count; i++)
+            {
+                if (editarCerveza.Clasification.Code == Clasificaciones[i].Code)
+                {
+                    ClasificacionSeleccionada = Clasificaciones[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < Paises.Count; i++)
+            {
+                if (editarCerveza.Brand.Country.Id == Paises[i].Id)
+                {
+                    PaisSeleccionado = Paises[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < Tipos.Count; i++)
+            {
+                if (Enum.GetName(typeof(PresentationType), editarCerveza.Presentation) == Tipos[i])
+                {
+                    TipoSeleccionado = Tipos[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < UnidadesDeMedida.Count ; i++)
+            {
+                if(Enum.GetName(typeof(MeasurementUnit), editarCerveza.MeasurementUnit) == UnidadesDeMedida[i])
+                {
+                    UnidadDeMedidaSeleccionada = UnidadesDeMedida[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < TiposFermentacion.Count; i++)
+            {
+                if(Enum.GetName(typeof(Fermentation), editarCerveza.Fermlevel) == TiposFermentacion[i])
+                {
+                    TiposFermentacionSeleccionado = TiposFermentacion[i];
+                    break;
+                }
+            }
+
             Contenido = editarCerveza.Content;
             Precio = editarCerveza.Price;
             GradoAlcohol = editarCerveza.GradoAlcohol;
             _id = editarCerveza.Id;
             ImagenCerveza = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + editarCerveza.Image, UriKind.Absolute));
-            UnidadDeMedidaSeleccionada = nameof(editarCerveza.MeasurementUnit);
-            TiposFermentacionSeleccionado = nameof(editarCerveza.Fermlevel);
-            TipoSeleccionado = nameof(editarCerveza.Presentation);
         }
 
         /// <summary>
