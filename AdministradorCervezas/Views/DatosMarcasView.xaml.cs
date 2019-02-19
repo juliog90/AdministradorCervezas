@@ -11,5 +11,10 @@ namespace AdministradorCervezas.Views
         {
             InitializeComponent();
         }
+
+        private void Marcas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

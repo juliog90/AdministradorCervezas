@@ -14,21 +14,23 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="2*"/>
+
             </Grid.ColumnDefinitions>
             <DataGrid x:Name="Marcas"
                   SelectionMode="Single" 
                   AutoGenerateColumns="False"
                   IsReadOnly="True"
                   CanUserAddRows="False"
-                  Grid.Row="0"
-                  Grid.Column="1"
-                  SelectedItem="{Binding Path=MarcaSeleccionada,Mode=TwoWay}">
+                  Grid.Row="3"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  SelectedItem="{Binding Path=MarcaSeleccionada,Mode=TwoWay}" HorizontalAlignment="Center" Margin="23,0,23,0" SelectionChanged="Marcas_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id}" Header="Codigo" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Nombre" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding Country.Name}" Header="Pais" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="                Codigo" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="               Nombre" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Country.Name}" Header="                         Pais" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
