@@ -44,27 +44,27 @@ namespace Administradormarcas.Tests.Integracion
             Assert.IsTrue(siExiste, $"No existen marcas en la base de datos");
         }
 
-        /// <summary>
-        /// Verifica que se inserte una nueva marca en la base de datos
-        /// </summary>
-        [Test]
-        public void CrearMarcaNueva()
-        {
-            Brand marca = new Brand();
-            marca.Country = new Country("MEX");
-            marca.Name = "LevantaMuertos";
-            marca.Id = "LMS";
+        ///// <summary>
+        ///// Verifica que se inserte una nueva marca en la base de datos
+        ///// </summary>
+        //[Test]
+        //public void CrearMarcaNueva()
+        //{
+        //    Brand marca = new Brand();
+        //    marca.Country = new Country("MEX");
+        //    marca.Name = "LevantaMuertos";
+        //    marca.Id = "LMS";
 
-            bool marcaAgregada = marca.Add();
-            string ultimoId = ObtenerUltimaID();
+        //    bool marcaAgregada = marca.Add();
+        //    string ultimoId = ObtenerUltimaID();
 
-            Brand ultima = new Brand(ultimoId);
-            marca.Id = ultima.Id;
+        //    Brand ultima = new Brand(ultimoId);
+        //    marca.Id = ultima.Id;
 
-            bool sonIguales = ComparaMarcas(marca, ultima);
+        //    bool sonIguales = ComparaMarcas(marca, ultima);
 
-            Assert.IsTrue(marcaAgregada && sonIguales, $"No se pueden crear marcas");
-        }
+        //    Assert.IsTrue(marcaAgregada && sonIguales, $"No se pueden crear marcas");
+        //}
 
         /// <summary>
         /// Verifica que se puedan actualizar marcas
@@ -116,31 +116,31 @@ namespace Administradormarcas.Tests.Integracion
 
         #region MetodosPrivados
 
-        /// <summary>
-        /// Compara una marca con otra
-        /// </summary>
-        /// <param name="marca">marca a comparar</param>
-        /// <param name="otraMarca">marca con que se compara</param>
-        /// <returns>Si es la misma marca</returns>
-        private bool ComparaMarcas(Brand marca, Brand otraMarca)
-        {
-            bool mismaMarca = marca.Brand.Id == otraMarca.Brand.Id;
-            bool mismoPais = marca.Brand.Country.Id == otraMarca.Brand.Country.Id;
-            bool mismoTipo = marca.Clasification.BrandType.Id == otraMarca.Clasification.BrandType.Id;
-            bool mismaClasificacion = marca.Clasification.Code == otraMarca.Clasification.Code;
-            bool mismoContenido = marca.Content == otraMarca.Content;
-            bool mismaFermentacion = marca.Fermlevel == otraMarca.Fermlevel;
-            bool mismoGrado = marca.GradoAlcohol == otraMarca.GradoAlcohol;
-            bool mismoPrecio = marca.Price == otraMarca.Price;
-            bool mismaImagen = marca.Image == otraMarca.Image;
-            bool mismaPresentacion = marca.Presentation == otraMarca.Presentation;
+        ///// <summary>
+        ///// Compara una marca con otra
+        ///// </summary>
+        ///// <param name="marca">marca a comparar</param>
+        ///// <param name="otraMarca">marca con que se compara</param>
+        ///// <returns>Si es la misma marca</returns>
+        //private bool ComparaMarcas(Brand marca, Brand otraMarca)
+        //{
+        //    bool mismaMarca = marca.Brand.Id == otraMarca.Brand.Id;
+        //    bool mismoPais = marca.Brand.Country.Id == otraMarca.Brand.Country.Id;
+        //    bool mismoTipo = marca.Clasification.BrandType.Id == otraMarca.Clasification.BrandType.Id;
+        //    bool mismaClasificacion = marca.Clasification.Code == otraMarca.Clasification.Code;
+        //    bool mismoContenido = marca.Content == otraMarca.Content;
+        //    bool mismaFermentacion = marca.Fermlevel == otraMarca.Fermlevel;
+        //    bool mismoGrado = marca.GradoAlcohol == otraMarca.GradoAlcohol;
+        //    bool mismoPrecio = marca.Price == otraMarca.Price;
+        //    bool mismaImagen = marca.Image == otraMarca.Image;
+        //    bool mismaPresentacion = marca.Presentation == otraMarca.Presentation;
 
-            bool sonIguales = mismaMarca && mismoPais && mismoTipo && mismaClasificacion &&
-                              mismoContenido && mismaFermentacion && mismoGrado && mismoPrecio &&
-                              mismaImagen && mismaPresentacion;
+        //    bool sonIguales = mismaMarca && mismoPais && mismoTipo && mismaClasificacion &&
+        //                      mismoContenido && mismaFermentacion && mismoGrado && mismoPrecio &&
+        //                      mismaImagen && mismaPresentacion;
 
-            return sonIguales;
-        }
+        //    return sonIguales;
+        //}
 
         /// <summary>
         /// Obtiene la ultima id insertada en la base de datos
