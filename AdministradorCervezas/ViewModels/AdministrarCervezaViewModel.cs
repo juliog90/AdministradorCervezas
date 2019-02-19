@@ -39,18 +39,18 @@ namespace AdministradorCervezas.ViewModels
         //Nombre Marca, Pais, Tipo y Clasificacion
         private string _name;
 
-        //imagenes servidor
+        // Ruta del servidor donde se guardan las imagenes
         private string _fuenteImagenes = @"ftp://localhost/images/";
+        // Guarda la ruta del explorador de archivos de la imagen
         private string _rutaImagen;
+        // Guarda la extension de la imagen subida por el usuario
         private string _extensionImagen;
 
-        // constructor
-        public AdministrarCervezaViewModel(BindableCollection<Beer> cervezas)
-        {
-            _cervezas = cervezas;
-        }
-
         // Propiedades
+
+        /// <summary>
+        /// Lista de Cervezas
+        /// </summary>
         public BindableCollection<Beer> Cervezas
         {
             get
@@ -64,7 +64,9 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Unidades de Medida
+        /// </summary>
         public BindableCollection<string> UnidadesDeMedida
         {
             get { return _unidadesDeMedida; }
@@ -128,7 +130,10 @@ namespace AdministradorCervezas.ViewModels
             set
             {
                 _contenido = value;
+                // Avisamos que cambio el contenido seleccionado
                 NotifyOfPropertyChange(() => Contenido);
+
+                // Avisamos al metodo que activa el boton de carga de imagen
                 NotifyOfPropertyChange(() => PuedesCargarImagen);
             }
         }
@@ -282,19 +287,26 @@ namespace AdministradorCervezas.ViewModels
 
         // Botones
 
-        // Cargamos imagen local
+        /// <summary>
+        /// Permite cargar una imagen en la ventana
+        /// </summary>
         public void CargarImagen()
         {
             // Escogemos la imagen
             OpenFileDialog cargaImg = new OpenFileDialog();
 
+            // Filtramos los tipos de archivo
             cargaImg.Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
 
+            // Asignamos valores de imagen cargada
             if (cargaImg.ShowDialog() == true)
             {
                 _rutaImagen = cargaImg.FileName;
+
+                // Obtenemos extension
                 _extensionImagen = _rutaImagen.Split('.')[1];
-                // la pasamos a la interfaz
+
+                // Cargamos en interfaz
                 ImagenCerveza = new BitmapImage(new Uri(cargaImg.FileName, UriKind.Absolute));
             }
         }
@@ -304,6 +316,7 @@ namespace AdministradorCervezas.ViewModels
         /// </summary>
         public void Guardar()
         {
+            // Preguntamos
             MessageBoxResult resultado = MessageBox.Show("Estas seguro de guardar esta cerveza?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
@@ -320,18 +333,21 @@ namespace AdministradorCervezas.ViewModels
                 nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
                 nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
                 // Subimos imagen a servidor
-                // datos ftp
+
+                // Datos ftp
                 string ftpuser = "ftpuser";
                 string pass = "";
                 string rutaFTPImagen = _fuenteImagenes + nueva.Image;
 
-                // cliente ftp
+                // Cliente ftp
                 WebClient client = new WebClient();
                 client.Credentials = new NetworkCredential(ftpuser, pass);
                 client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
+
                 // Agregamos a base de datos
                 nueva.Add();
                 NotifyOfPropertyChange(() => Cervezas);
+
                 // Limpiamos la forma
                 Limpiar();
             }
@@ -369,7 +385,7 @@ namespace AdministradorCervezas.ViewModels
         }
 
 
-        // logica de activacion de controles
+        // Lógica de activacion de controles
 
         /// <summary>
         /// Determina si puedes seleccionar paises
@@ -494,17 +510,26 @@ namespace AdministradorCervezas.ViewModels
         }
 
 
-        // metodos para la clase
+        #region MetodosClase
+
+        /// <summary>
+        /// Generar Nombre Imagen
+        /// </summary>
+        /// <returns></returns>
         private string generaNombreImagen()
         {
             // Obtenemos lista de cervezaas
             List<Beer> cervezas = Beer.GetAll();
+
             // Prefijo de Nombre de Imagen
             string prefijo = "beer";
+
             // Contador que cambia nombre de imagen prefijo+contador = nombre
             int contador = 0;
+
             // Guarda el nuevo nombre
             string nuevoNombre;
+
             // Guarda si existe una imagen de igual nombre
             bool existe = false;
 
@@ -530,5 +555,7 @@ namespace AdministradorCervezas.ViewModels
             }
             return null;
         }
+
+        #endregion
     }
 }
