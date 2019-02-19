@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Integracion\BeerTest.cs" />
+    <Compile Include="Integracion\BrandTest.cs" />
     <Compile Include="Integracion\DatabaseTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
