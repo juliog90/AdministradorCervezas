@@ -19,7 +19,6 @@ public class Beer
 
     #endregion
 
-
     #region properties
     public int Id
     {
@@ -81,7 +80,6 @@ public class Beer
     }
     #endregion
 
-
     #region constructors
 
     public Beer()
@@ -98,29 +96,39 @@ public class Beer
     }
 
     /// <summary>
-    /// Creates an object with data from the database
+    /// Crea un objeto cerveza a partir de sus registro de la base datos, filtrado
+    /// por su ID.
     /// </summary>
     /// <param name="id">Beer Id</param>
     public Beer(int id)
     {
-        //query
+        // Cadena de Consulta
         string query = "select be_id, be_grd_alcoh,be_presentation, be_level_ferm,"
             + "be_unitMeas,be_content,br_code,cla_code,be_price, be_image, be_level_ferm"
             + " from beer where be_id = @ID";
-        //command
+
+        // Comando MySQL
         MySqlCommand command = new MySqlCommand(query);
-        //parameters
+
+        // Parametros Preparados
         command.Parameters.AddWithValue("@ID", id);
-        //execute query
+
+        // Ejecutamos Consulta
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+
+        // Guardamos la consulta en una tabla
         DataTable table = connection.ExecuteQuery(command);
-        //check if rows were found
+
+        // Mostramos si la tabla tiene filas (no esta vacia)
         if (table.Rows.Count > 0)
         {
-            //read first and only row
+            // Guardamos la primera fila que guarda la informacion
+            // del objeto a crear
             DataRow row = table.Rows[0];
-            //read data
+
+            // Asignamos los datos de la fila a propiedades del objeto
+            // a crear
             _id = (int)row["be_id"];
             _gradoAlcohol = (double)row["be_grd_alcoh"];
             _presentation = (PresentationType)(int)row["be_presentation"];
@@ -135,10 +143,18 @@ public class Beer
     }
 
     /// <summary>
-    /// Creates an object with data from the arguments
+    /// Creamos una cerveza con parametros
     /// </summary>
-    /// <param name="id"></param>
-    /// <param name="name"></param>
+    /// <param name="id">ID</param>
+    /// <param name="gradoalcohol">GradoAlcohol</param>
+    /// <param name="presentation">Presentación</param>
+    /// <param name="fermentation">Fermentación</param>
+    /// <param name="measurementUnit">UnidadMedida</param>
+    /// <param name="content">Contenido</param>
+    /// <param name="brand">Marca</param>
+    /// <param name="clasification">Clasificación</param>
+    /// <param name="price">Precio</param>
+    /// <param name="image">Imagen</param>
     public Beer(int id, double gradoalcohol, PresentationType presentation, Fermentation fermentation, MeasurementUnit measurementUnit, double content, Brand brand, Clasification clasification, double price, string image)
     {
         _id = id;
@@ -157,18 +173,20 @@ public class Beer
     #region instance methods
 
     /// <summary>
-    /// Adds a beer to the database
+    /// Agregar un registro de cerveza a la base de datos
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Booleano que define si se agrego o no el registro</returns>
     public bool Add()
     {
-        //statement
+        // string de comando SQL para insertar un registro de cerveza
         string statement = "Insert into Beer (be_grd_alcoh,be_presentation,"
             + "be_level_ferm,be_unitMeas,be_content, br_code,cla_code,be_price,"
             + "be_image) values (@GRD,@PRE,@FER,@MEA,@CONT,@BRA,@CLA,@PRI,@IMG)";
-        //command
+
+        // comando de envio
         MySqlCommand command = new MySqlCommand(statement);
-        //parameters
+
+        // parametros preparados con la informacion de cada campo
         command.Parameters.AddWithValue("@GRD", _gradoAlcohol);
         command.Parameters.AddWithValue("@PRE", _presentation);
         command.Parameters.AddWithValue("@FER", _fermentation);
@@ -179,26 +197,29 @@ public class Beer
         command.Parameters.AddWithValue("@PRI", _price);
         command.Parameters.AddWithValue("@IMG", _image);
 
-        //execute command
+        // ejecutar comando
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+
+        // regresa si se logro agregar el registro o no
         return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
-    /// Edit Beer
+    /// Editar Cerveza
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Booleano: Si se logro editar la cerveza o no</returns>
     public bool Edit()
     {
-        //statement
-        // TODO: Reparar y Revisar Comandos Consultas y Comandos pueden estar mal
+        // Declaración
         string statement = "update beer set be_grd_alcoh = @GRAD, be_presentation = @PRE, be_level_ferm = @FERM,"
             + "be_unitMeas = @UNIT, be_content = @CON, br_code = @BRA, cla_code = @CLA, be_price = @PRI," 
             + "be_image = @IMG where be_id = @ID";
-        //command
+
+        // Comando 
         MySqlCommand command = new MySqlCommand(statement);
-        //parameters
+
+        // Parametrizado de Variables
         command.Parameters.AddWithValue("@ID", _id);
         command.Parameters.AddWithValue("@GRAD", _gradoAlcohol);
         command.Parameters.AddWithValue("@PRE", _presentation);
@@ -210,34 +231,41 @@ public class Beer
         command.Parameters.AddWithValue("@PRI", _price);
         command.Parameters.AddWithValue("@IMG", _image);
 
-        //execute command
+        // Ejecutamos Comando
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+
+        // Regresa resultado de la operación
         return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
-    /// Delete country
+    /// Borrar País
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Boleano: Que nos dice si se borro o no el registro</returns>
     public bool Delete()
     {
-        //statement
+        // Comando
         string statement = "delete from beer where be_id = @ID";
-        //command
+
+        // Comando Prepardo
         MySqlCommand command = new MySqlCommand(statement);
-        //parameters
+
+        // Preparamos parametros
         command.Parameters.AddWithValue("@ID", _id);
-        //execute command
+
+        // Ejecutamos comando
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+
+        // Regresamos si logro la operacion anterior
         return connection.ExecuteNonQuery(command);
     }
 
     /// <summary>
-    /// Represents the object as a string
+    /// Representacion en forma de cadena
     /// </summary>
-    /// <returns></returns>
+    /// <returns>Marca con Grado, Fermentación, Presentación, Contenido y Unidad Medida</returns>
     public override string ToString()
     {
         return _brand + " " + _gradoAlcohol.ToString() + "° " + _fermentation + " " + _presentation + " " + _content + _measurementUnit;
@@ -246,22 +274,33 @@ public class Beer
     #endregion
 
     #region class methods
+
+    /// <summary>
+    /// Obtener Cervezas
+    /// </summary>
+    /// <returns>Lista de todos los objetos cervezas que hay en la base de datos</returns>
     public static List<Beer> GetAll()
     {
-        //list
+        // Lista para guardar las cervezas de la base de datos
         List<Beer> list = new List<Beer>();
-        //query
+
+        // Consulta
         string query = "select be_id, be_grd_alcoh,be_presentation,be_level_ferm,be_unitMeas,be_content,br_code,cla_code,be_price,be_image from beer";
-        //command
+
+        // Comando
         MySqlCommand command = new MySqlCommand(query);
-        //execute query
+
+        // Ejecutar Consulta
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionSource = new AppSettings();
+
+        // Tabla 
         DataTable table = connection.ExecuteQuery(command);
-        //iterate rows
+
+        // Iteramos filas de la consulta para asignar valores
         foreach (DataRow row in table.Rows)
         {
-            //read fields
+            // Asignamos valores 
             int id = (int)row["be_id"];
             double gradoalcohol = (double)row["be_grd_alcoh"];
             PresentationType presentation = (PresentationType)(int)row["be_presentation"];
@@ -272,10 +311,11 @@ public class Beer
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
             string image = (string)row["be_image"];
-            //add beer to list
+            // Agregar Cerveza a la lista
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
-        //return list
+
+        // Regresamos lista de cerveza
         return list;
     }
 
