@@ -53,7 +53,7 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-            AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel(Cervezas);
+            AdministrarCervezaViewModel administrarCervezas = new AdministrarCervezaViewModel();
             IWindowManager manejador1 = new WindowManager();
             manejador1.ShowDialog(administrarCervezas, null, null);
             Cervezas = null;
