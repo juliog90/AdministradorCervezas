@@ -272,7 +272,7 @@ public class Beer
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
             string image = (string)row["be_image"];
-            //add country to list
+            //add beer to list
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
         //return list
