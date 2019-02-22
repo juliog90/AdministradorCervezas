@@ -240,7 +240,7 @@ public class Beer
     }
 
     /// <summary>
-    /// Borrar País
+    /// Borrar Cerveza
     /// </summary>
     /// <returns>Boleano: Que nos dice si se borro o no el registro</returns>
     public bool Delete()
