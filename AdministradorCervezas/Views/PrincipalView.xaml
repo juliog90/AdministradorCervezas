@@ -10,20 +10,23 @@
         Padding="0"
         ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
-    <!--Julio es un NEGRO!!!-->
+    <!--Fondo de la aplicación-->
     <Window.Background >
-        <ImageBrush ImageSource="/AdministradorCervezas;component/Resources/background.jpg"></ImageBrush>
+        <ImageBrush ImageSource="/AdministradorCervezas;component/Resources/background.jpg"/>
     </Window.Background>
-
+    
+    <!--Contenedor-->
     <Grid>
-
+        <!--Filas-->
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="55"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
+        <!--Columnas-->
         <Grid.ColumnDefinitions>
+            <!-- Se usa un espacio como borde -->
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="224*"/>
             <ColumnDefinition Width="439*"/>
@@ -44,10 +47,12 @@
                 <RowDefinition/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <Button Grid.Column="1" HorizontalAlignment="Left" Margin="3,3,0,3" Width="121" Click="Button_Click" >Salir</Button>
+            <Button Grid.Column="1" HorizontalAlignment="Left" 
+                    Margin="3,3,0,3" Width="121" 
+                    Click="Button_Click" >Salir</Button>
             <TextBlock Style="{StaticResource Titulo}" 
-                       Grid.Column="0" Margin="10,3,429,7" Grid.RowSpan="2">Sistema Administrador Brewery</TextBlock>
-
+                       Grid.Column="0" Margin="10,3,429,7" 
+                       Grid.RowSpan="2">Sistema Administrador Brewery</TextBlock>
         </Grid>
 
         <!--Menu Botones-->
@@ -60,11 +65,16 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" Grid.Row="0" Click="CargaCervezas_Click">Cervezas</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" Grid.Row="1">Marcas</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" Grid.Row="2">Clasificaciones</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaClientes" Grid.Row="3">Clientes</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaOrdenes" Grid.Row="4">Ordenes</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" 
+                    Grid.Row="0" Click="CargaCervezas_Click">Cervezas</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" 
+                    Grid.Row="1">Marcas</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" 
+                    Grid.Row="2">Clasificaciones</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaClientes" 
+                    Grid.Row="3">Clientes</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaOrdenes" 
+                    Grid.Row="4">Ordenes</Button>
         </Grid>
 
         <!--Contenido -->
@@ -80,7 +90,6 @@
             </Grid.RowDefinitions>
             <ContentControl Grid.Row="0"
                             x:Name="ActiveItem" Grid.ColumnSpan="2"/>
-
         </Grid>
     </Grid>
 </Window>
