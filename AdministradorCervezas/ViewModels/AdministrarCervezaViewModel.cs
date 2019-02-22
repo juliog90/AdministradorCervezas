@@ -12,7 +12,8 @@ namespace AdministradorCervezas.ViewModels
 {
     class AdministrarCervezaViewModel : Screen, INotifyPropertyChanged
     {
-        // Atributos de clase
+        #region Atributos
+
         // Colecciones de Datos
         private BindableCollection<Beer> _cervezas;
         private BindableCollection<Brand> _marcas = new BindableCollection<Brand>(Brand.GetAll());
@@ -46,7 +47,9 @@ namespace AdministradorCervezas.ViewModels
         // Guarda la extension de la imagen subida por el usuario
         private string _extensionImagen;
 
-        // Propiedades
+        #endregion
+
+        #region Propiedades
 
         /// <summary>
         /// Lista de Cervezas
@@ -285,7 +288,9 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        // Botones
+        #endregion
+
+        #region Botones
 
         /// <summary>
         /// Permite cargar una imagen en la ventana
@@ -367,24 +372,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        /// <summary>
-        /// Este limpia sin preguntar
-        /// </summary>
-        public void Limpiar()
-        {
-            MarcaSeleccionada = null;
-            ClasificacionSeleccionada = null;
-            PaisSeleccionado = null;
-            Contenido = 0;
-            Precio = 0;
-            GradoAlcohol = 0;
-            ImagenCerveza = null;
-            UnidadDeMedidaSeleccionada = null;
-            TiposFermentacionSeleccionado = null;
-            TipoSeleccionado = null;
-        }
-
-
         // Lógica de activacion de controles
 
         /// <summary>
@@ -464,7 +451,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-
         /// <summary>
         /// Determina si puedes escoger un contenido
         /// </summary>
@@ -509,8 +495,26 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        #endregion
 
         #region MetodosClase
+
+        /// <summary>
+        /// Este limpia sin preguntar
+        /// </summary>
+        public void Limpiar()
+        {
+            MarcaSeleccionada = null;
+            ClasificacionSeleccionada = null;
+            PaisSeleccionado = null;
+            Contenido = 0;
+            Precio = 0;
+            GradoAlcohol = 0;
+            ImagenCerveza = null;
+            UnidadDeMedidaSeleccionada = null;
+            TiposFermentacionSeleccionado = null;
+            TipoSeleccionado = null;
+        }
 
         /// <summary>
         /// Generar Nombre Imagen
@@ -518,13 +522,13 @@ namespace AdministradorCervezas.ViewModels
         /// <returns></returns>
         private string generaNombreImagen()
         {
-            // Obtenemos lista de cervezaas
+            // Obtenemos lista de cervezas para comparar nombres
             List<Beer> cervezas = Beer.GetAll();
 
             // Prefijo de Nombre de Imagen
             string prefijo = "beer";
 
-            // Contador que cambia nombre de imagen prefijo+contador = nombre
+            // Contador que cambia nombre de imagen prefijo + contador = nombre
             int contador = 0;
 
             // Guarda el nuevo nombre
@@ -533,18 +537,23 @@ namespace AdministradorCervezas.ViewModels
             // Guarda si existe una imagen de igual nombre
             bool existe = false;
 
+            // Iteramos cervezas para obtener nombres
             foreach (Beer cerveza in cervezas)
             {
                 nuevoNombre = prefijo + contador;
                 existe = false;
 
+                // Comparamos un nombre con todas las cervezas
                 foreach (Beer cerveza2 in cervezas)
                 {
+                    // si existe seguimos iterando 
                     if (nuevoNombre == cerveza2.Image.Split('.')[0])
                     {
                         existe = true;
                     }
                 }
+
+                // si no lo usamos
                 if (!existe)
                 {
                     // si no existe devolvemos el nombre de la imagen
@@ -553,6 +562,8 @@ namespace AdministradorCervezas.ViewModels
                 // le sumamos uno al nombre de la imagen
                 contador++;
             }
+
+            // si no llegara a poder crearse un nombre regresamos un nulo
             return null;
         }
 
