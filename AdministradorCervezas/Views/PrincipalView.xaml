@@ -64,17 +64,20 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" 
                     Grid.Row="0" Click="CargaCervezas_Click">Cervezas</Button>
+            <Button Style="{StaticResource Secciones}" x:Name="CargaTipos" 
+                    Grid.Row="1">Tipos</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" 
-                    Grid.Row="1">Marcas</Button>
+                    Grid.Row="2">Marcas</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" 
-                    Grid.Row="2">Clasificaciones</Button>
+                    Grid.Row="3">Clasificaciones</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaClientes" 
-                    Grid.Row="3">Clientes</Button>
+                    Grid.Row="4">Clientes</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaOrdenes" 
-                    Grid.Row="4">Ordenes</Button>
+                    Grid.Row="5">Ordenes</Button>
         </Grid>
 
         <!--Contenido -->

@@ -104,9 +104,12 @@
     <Compile Include="Enumeradores\PresentationType.cs" />
     <Compile Include="ViewModels\AdministrarClienteViewModel.cs" />
     <Compile Include="ViewModels\AdministrarModeloViewModel.cs" />
+    <Compile Include="ViewModels\AdministrarTipoViewModel.cs" />
+    <Compile Include="ViewModels\DatosTiposViewModel.cs" />
     <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
     <Compile Include="ViewModels\AdministrarMarcasViewModel.cs" />
     <Compile Include="ViewModels\EditarModeloViewModel.cs" />
+    <Compile Include="ViewModels\EditarTipoViewModel.cs" />
     <Compile Include="Views\AdministrarClienteView.xaml.cs">
       <DependentUpon>AdministrarClienteView.xaml</DependentUpon>
     </Compile>
@@ -115,6 +118,9 @@
     </Compile>
     <Compile Include="Views\DatosModelosView.xaml.cs">
       <DependentUpon>DatosModelosView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DatosTiposView.xaml.cs">
+      <DependentUpon>DatosTiposView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditarMarcasView.xaml.cs">
       <DependentUpon>EditarMarcasView.xaml</DependentUpon>
@@ -205,6 +211,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DatosModelosView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DatosTiposView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

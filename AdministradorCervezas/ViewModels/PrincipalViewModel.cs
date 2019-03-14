@@ -40,5 +40,9 @@ namespace AdministradorCervezas.ViewModels
         {
             ActivateItem(new DatosOrdenesViewModel());
         }
+        public void CargaTipos()
+        {
+            ActivateItem(new DatosTiposViewModel());
+        }
     }
 }
