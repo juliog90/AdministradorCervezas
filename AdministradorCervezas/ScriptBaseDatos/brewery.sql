@@ -181,7 +181,7 @@ CREATE TABLE `clasification` (
 
 INSERT INTO `clasification` (`cla_code`, `cla_name`, `type_code`) VALUES
 ('AMB', 'Ambar', 'DRF'),
-('LGH', 'Ligth', 'ICB'),
+('LGH', 'Light', 'ICB'),
 ('RED', 'Red', 'DRF'),
 ('TIT', 'Titanium', 'DRF');
 
