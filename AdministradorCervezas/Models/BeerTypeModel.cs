@@ -25,7 +25,7 @@ public class BeerType
         set { _name = value; }
     }
 
-    public Color color
+    public Color Color
     {
         get { return _color; }
         set { _color = value; }
@@ -44,7 +44,7 @@ public class BeerType
     {
         _id = "";
         _name = "";
-        _color = new Color();
+        _color = Color.Brown;
         _category = CategoryType.Ale;
     }
 

@@ -28,9 +28,11 @@
                   Grid.ColumnSpan="3"
                   SelectedItem="{Binding Path=TipoSeleccionado,Mode=TwoWay}" HorizontalAlignment="Center" Margin="23,0,23,0" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id}" Header="                Codigo" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="               Nombre" Width="200"/>
-                    <DataGridTextColumn Binding="{Binding Country.Name}" Header="                         Pais" Width="*"/>
+                    <!-- Estilos no poner el width en la interfaz...-->
+                    <DataGridTextColumn Binding="{Binding Id}" Header="Codigo" Width="*"/> 
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Nombre" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Color}" Header="Color" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Category}" Header="Categoria" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

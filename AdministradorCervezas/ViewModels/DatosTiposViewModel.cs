@@ -10,7 +10,7 @@ namespace AdministradorCervezas.ViewModels
 {
     class DatosTiposViewModel: Screen
     {
-        private BindableCollection<BeerType> _tipos;    
+        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());    
 
         public BindableCollection<BeerType> Tipos
         {
@@ -18,7 +18,6 @@ namespace AdministradorCervezas.ViewModels
             set { _tipos = value;
                 NotifyOfPropertyChange(() => Tipos);
             }
-
         }
 
         private BeerType _tipoSeleccionado;
