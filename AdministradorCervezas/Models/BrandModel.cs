@@ -96,8 +96,6 @@ public class Brand
         return connection.ExecuteNonQuery(command);
     }
 
-
-
     public bool Delete()
     {
         //statement
@@ -131,9 +129,7 @@ public class Brand
         return _name;
     }
 
-
     #endregion
-
 
     #region methods
     public static List<Brand> GetAll()
@@ -155,15 +151,13 @@ public class Brand
             string id = (string)row["br_code"];
             string name = (string)row["br_name"];
             Country country = new Country((string)row["cn_code"]);
-            //add country to list
+            //add brand to the list
             list.Add(new Brand(id, name, country));
         }
-
 
         //return list
         return list;
     }
-
 
     public static List<Brand> GetBrands(Country co)
     {
@@ -185,10 +179,9 @@ public class Brand
             string id = (string)row["br_code"];
             string name = (string)row["br_name"];
             Country country = new Country((string)row["cn_code"]);
-            //add country to list
+            //add brand to the list
             list.Add(new Brand(id, name, country));
         }
-
 
         //return list
         return list;
@@ -214,21 +207,12 @@ public class Brand
         {
             //read fields
             Clasification id = new Clasification((string)row["cla_code"]);
-            //add country to list
+            //add brand to list
             list.Add(id);
         }
-
 
         //return list
         return list;
     }
     #endregion
-
-    /// <summary>
-    /// Generic method for querying Beers
-    /// </summary>
-    /// <param name="command">SQL Command with parameters</param>
-    /// <returns></returns>
-
-
 }

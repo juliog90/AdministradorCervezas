@@ -19,7 +19,7 @@ public class City : Place
     /// <summary>
     /// Creates an object with data from the databas
     /// </summary>
-    /// <param name="id">Country Id</param>
+    /// <param name="id">City Id</param>
     public City(String id)
     {
         //query
@@ -59,7 +59,7 @@ public class City : Place
     #region instance methods
 
     /// <summary>
-    /// Adds the country to the database
+    /// Adds the city to the database
     /// </summary>
     /// <returns></returns>
     public bool Add()
@@ -78,7 +78,7 @@ public class City : Place
     }
 
     /// <summary>
-    /// Edit the country
+    /// Edit the city
     /// </summary>
     /// <returns></returns>
     public bool Edit()
@@ -97,7 +97,7 @@ public class City : Place
     }
 
     /// <summary>
-    /// Delete country
+    /// Delete city
     /// </summary>
     /// <returns></returns>
     public bool Delete()
@@ -141,7 +141,7 @@ public class City : Place
             //read fields
             string id = (string)row["cit_code"];
             string name = (string)row["cit_name"];
-            //add country to list
+            //add city to list
             list.Add(new City(id, name));
         }
         //return list

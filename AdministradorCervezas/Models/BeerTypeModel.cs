@@ -110,7 +110,7 @@ public class BeerType
             CategoryType category = (CategoryType)row["type_category"];
 
 
-            //add country to list
+            //add beertype to list
             list.Add(new BeerType(id, name, color, category));
         }
         //return list
