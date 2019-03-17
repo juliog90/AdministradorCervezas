@@ -12,7 +12,10 @@
     <Window.Background >
         <ImageBrush ImageSource="/AdministradorCervezas;component/Resources/background.jpg"/>
     </Window.Background>
-    
+    <Window.Resources>
+        <ResourceDictionary Source="Style/style.xaml"/>
+    </Window.Resources>
+
     <!--Contenedor-->
     <Grid>
         <!--Filas-->
@@ -28,8 +31,8 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="224*"/>
             <ColumnDefinition Width="439*"/>
-            <ColumnDefinition Width="56*"/>
-            <ColumnDefinition Width="295*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="90*"/>
             <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
 
@@ -45,12 +48,8 @@
                 <RowDefinition/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
-            <Button Grid.Column="1" HorizontalAlignment="Left" 
-                    Margin="3,3,0,3" Width="121" 
-                    Click="Button_Click" >Salir</Button>
-            <TextBlock Style="{StaticResource Titulo}" 
-                       Grid.Column="0" Margin="10,3,429,7" 
-                       Grid.RowSpan="2">Sistema Administrador Brewery</TextBlock>
+
+
         </Grid>
 
         <!--Menu Botones-->
@@ -64,17 +63,17 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" 
+            <Button Style="{StaticResource Menu}" x:Name="CargaCervezas" 
                     Grid.Row="0" Click="CargaCervezas_Click">Cervezas</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaTipos" 
+            <Button Style="{StaticResource Menu}" x:Name="CargaTipos" 
                     Grid.Row="1">Tipos</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" 
+            <Button Style="{StaticResource Menu}" x:Name="CargaMarcas" 
                     Grid.Row="2">Marcas</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaModelos" 
+            <Button Style="{StaticResource Menu}" x:Name="CargaModelos" 
                     Grid.Row="3">Clasificaciones</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaClientes" 
+            <Button Style="{StaticResource Menu}" x:Name="CargaClientes" 
                     Grid.Row="4">Clientes</Button>
-            <Button Style="{StaticResource Secciones}" x:Name="CargaOrdenes" 
+            <Button Style="{StaticResource Menu}" x:Name="CargaOrdenes" 
                     Grid.Row="5">Ordenes</Button>
         </Grid>
 
@@ -92,5 +91,16 @@
             <ContentControl Grid.Row="0"
                             x:Name="ActiveItem" Grid.ColumnSpan="2"/>
         </Grid>
+        <StackPanel Background="#020202" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="5"
+           Grid.RowSpan="2" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown" />
+        <TextBlock Style="{StaticResource Titulo}" 
+                       Grid.Column="0"  Grid.ColumnSpan="5"
+                   Margin="5,15"
+                       Grid.RowSpan="2">Sistema Administrador Brewery</TextBlock>
+        <Button Grid.Column="4"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                    Width="auto" 
+                    Click="Button_Click"  Grid.Row="0" >Salir</Button>
     </Grid>
 </Window>

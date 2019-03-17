@@ -28,5 +28,11 @@ namespace AdministradorCervezas.Views
 
 
         }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
+
+        }
     }
 }
