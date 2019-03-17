@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarCervezaViewModel : Screen, INotifyPropertyChanged
+    class AgregarCervezaViewModel : Screen, INotifyPropertyChanged
     {
         #region Atributos
 

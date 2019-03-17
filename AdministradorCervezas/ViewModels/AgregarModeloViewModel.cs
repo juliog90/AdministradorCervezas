@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace AdministradorCervezas.ViewModels
 {
-    public class AdministrarModeloViewModel : Screen
+    public class AgregarModeloViewModel : Screen
     {
         private string _nombre;
 

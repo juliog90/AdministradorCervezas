@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarTipoViewModel
+    class AgregarTipoViewModel
     {
     }
 }
