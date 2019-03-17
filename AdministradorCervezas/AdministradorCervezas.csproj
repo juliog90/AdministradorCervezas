@@ -101,18 +101,18 @@
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
-    <Compile Include="ViewModels\AgregarModeloViewModel.cs" />
+    <Compile Include="ViewModels\AgregarClasificacionViewModel.cs" />
     <Compile Include="ViewModels\AgregarTipoViewModel.cs" />
     <Compile Include="ViewModels\DatosTiposViewModel.cs" />
     <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
     <Compile Include="ViewModels\AgregarMarcasViewModel.cs" />
     <Compile Include="ViewModels\EditarModeloViewModel.cs" />
     <Compile Include="ViewModels\EditarTipoViewModel.cs" />
-    <Compile Include="Views\AgregarModeloView.xaml.cs">
-      <DependentUpon>AgregarModeloView.xaml</DependentUpon>
+    <Compile Include="Views\AgregarClasificacionView.xaml.cs">
+      <DependentUpon>AgregarClasificacionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DatosModelosView.xaml.cs">
-      <DependentUpon>DatosModelosView.xaml</DependentUpon>
+    <Compile Include="Views\DatosClasificacionesView.xaml.cs">
+      <DependentUpon>DatosClasificacionesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DatosTiposView.xaml.cs">
       <DependentUpon>DatosTiposView.xaml</DependentUpon>
@@ -131,7 +131,7 @@
     <Compile Include="ViewModels\DatosCervezasViewModel.cs" />
     <Compile Include="ViewModels\DatosClientesViewModel.cs" />
     <Compile Include="ViewModels\DatosMarcasViewModel.cs" />
-    <Compile Include="ViewModels\DatosModelosViewModel.cs" />
+    <Compile Include="ViewModels\DatosClasificacionesViewModel.cs" />
     <Compile Include="ViewModels\DatosOrdenesViewModel.cs" />
     <Compile Include="ViewModels\PrincipalViewModel.cs" />
     <Compile Include="Views\AgregarCervezaView.xaml.cs">
@@ -197,11 +197,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\AgregarModeloView.xaml">
+    <Page Include="Views\AgregarClasificacionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DatosModelosView.xaml">
+    <Page Include="Views\DatosClasificacionesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

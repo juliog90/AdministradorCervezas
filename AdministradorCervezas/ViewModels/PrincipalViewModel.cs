@@ -16,7 +16,7 @@ namespace AdministradorCervezas.ViewModels
 
         public void CargaModelos()
         {
-            ActivateItem(new DatosModelosViewModel());
+            ActivateItem(new DatosClasificacionesViewModel());
         }
 
         public void CargaClientes()

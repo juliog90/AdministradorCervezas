@@ -3,8 +3,12 @@ using System.Windows;
 
 namespace AdministradorCervezas.ViewModels
 {
-    public class DatosModelosViewModel : Screen
+    public class DatosClasificacionesViewModel : Screen
     {
+        // convertimos la lista del modelo a un coleccion mas util para Caliburn
+        private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
+        private Clasification _clasificacionSeleccionada;
+
         public BindableCollection<Clasification> Clasificaciones
         {
             get
@@ -16,11 +20,6 @@ namespace AdministradorCervezas.ViewModels
                 _clasificaciones = value;
             }
         }
-
-        // convertimos la lista del modelo a un coleccion mas util para Caliburn
-        private BindableCollection<Clasification> _clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
-
-        private Clasification _clasificacionSeleccionada;
 
         public Clasification ClasificacionSeleccionada
         {
@@ -35,9 +34,9 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-            AgregarModeloViewModel administrarModelos = new AgregarModeloViewModel();
+            AgregarClasificacionViewModel agregarClasificacion = new AgregarClasificacionViewModel();
             IWindowManager manejador1 = new WindowManager();
-            manejador1.ShowDialog(administrarModelos, null, null);
+            manejador1.ShowDialog(agregarClasificacion, null, null);
             Clasificaciones = null;
             Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
             NotifyOfPropertyChange(() => Clasificaciones);
@@ -46,9 +45,9 @@ namespace AdministradorCervezas.ViewModels
 
         public void Editar()
         {
-            EditarModeloViewModel editarModelos = new EditarModeloViewModel(ClasificacionSeleccionada);
+            EditarModeloViewModel editarClasicacion = new EditarModeloViewModel(ClasificacionSeleccionada);
             IWindowManager manejador2 = new WindowManager();
-            manejador2.ShowDialog(editarModelos, null, null);
+            manejador2.ShowDialog(editarClasicacion, null, null);
             Clasificaciones = null;
             Clasificaciones = new BindableCollection<Clasification>(Clasification.GetAll());
             NotifyOfPropertyChange(() => Clasificaciones);
