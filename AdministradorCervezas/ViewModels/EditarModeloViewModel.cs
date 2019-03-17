@@ -1,13 +1,14 @@
 ﻿using Caliburn.Micro;
-using System.Linq;
 using System.Windows;
-using System.Collections.Generic;
 
 namespace AdministradorCervezas.ViewModels
 {
     class EditarModeloViewModel : Screen
     {
         private string _nombre;
+        private string _codigo;
+        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
+        private BeerType _tipoSeleccionado;
 
         public string Nombre
         {
@@ -19,8 +20,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _codigo;
-
         public string Codigo
         {
             get { return _codigo; }
@@ -31,15 +30,11 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
-
         public BindableCollection<BeerType> Tipos
         {
             get { return _tipos; }
             set { _tipos = value; }
         }
-
-        private BeerType _tipoSeleccionado;
 
         public BeerType TipoSeleccionado
         {
@@ -61,7 +56,7 @@ namespace AdministradorCervezas.ViewModels
             // anteriormente y lo pone como seleccionado
             for (int i = 0; i < Tipos.Count; i++)
             {
-                if (seleccion.BeerType.Id == Tipos[i].Id) 
+                if (seleccion.BeerType.Id == Tipos[i].Id)
                 {
                     TipoSeleccionado = Tipos[i];
                     break;
