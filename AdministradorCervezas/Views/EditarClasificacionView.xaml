@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="EditarModeloView" Height="180" Width="300">
+        Title="Editar Clasificacion Existente" Height="180" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
