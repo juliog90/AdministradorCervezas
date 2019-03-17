@@ -14,10 +14,7 @@
         </Grid.RowDefinitions>
         <DataGrid x:Name="Ordenes"
                     Grid.Row="0"
-                    SelectionMode="Single" 
-                    AutoGenerateColumns="False"
-                    IsReadOnly="True"
-                    CanUserAddRows="False"
+                    Style="{StaticResource Info}"
                     Grid.Column="1"
                     SelectedItem="{Binding Path=OrdenSeleccionada, Mode=OneWayToSource}">
             <DataGrid.Columns>
@@ -26,6 +23,19 @@
                 <DataGridTextColumn Binding="{Binding Deliverydate, StringFormat=\{0:dd/MM/yy\}}" Header="Fecha de Entrega" Width="auto" />
                 <DataGridTextColumn Binding="{Binding Total}" Header="Venta Total" Width="*" />
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#fff" />
+                    <Setter Property="Foreground" Value="#111"/>
+                    <Setter Property="Height" Value="35"/>
+                    <Setter Property="FontSize" Value="10.5"/>
+                    <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                    <Setter Property="BorderThickness" Value="0.6"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
         <DataGrid x:Name="OrdenSeleccionada_AllDetails"
                     SelectionMode="Single" 
@@ -40,6 +50,19 @@
                 <DataGridTextColumn Binding="{Binding Quantity}" Header="Cantidad" Width="auto" />
                 <DataGridTextColumn Binding="{Binding Ammount}" Header="SubTotal" Width="*" />
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#fff" />
+                    <Setter Property="Foreground" Value="#111"/>
+                    <Setter Property="Height" Value="35"/>
+                    <Setter Property="FontSize" Value="10.5"/>
+                    <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                    <Setter Property="BorderThickness" Value="0.6"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
     </Grid>
 </UserControl>

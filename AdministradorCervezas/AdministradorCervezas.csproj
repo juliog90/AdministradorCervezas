@@ -265,6 +265,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.jpg" />
+    <Resource Include="Resources\icons\close.png" />
+    <Resource Include="Resources\icons\min.png" />
+    <Resource Include="Resources\icons\icon.png" />
     <Content Include="ScriptBaseDatos\brewery.sql" />
   </ItemGroup>
   <ItemGroup />

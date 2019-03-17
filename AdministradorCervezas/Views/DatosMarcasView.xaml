@@ -19,20 +19,33 @@
 
             </Grid.ColumnDefinitions>
             <DataGrid x:Name="Marcas"
-                  SelectionMode="Single" 
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
+                  Style="{StaticResource Info}"
                   Grid.Row="3"
                   Grid.Column="0"
+                      
                   Grid.ColumnSpan="3"
                   SelectedItem="{Binding Path=MarcaSeleccionada,Mode=TwoWay}" HorizontalAlignment="Center" Margin="23,0,23,0" SelectionChanged="Marcas_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="                Codigo" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="               Nombre" Width="200"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="               Nombre" Width="*"  />
                     <DataGridTextColumn Binding="{Binding Country.Name}" Header="                         Pais" Width="*"/>
                 </DataGrid.Columns>
+
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#fff" />
+                        <Setter Property="Foreground" Value="#111"/>
+                        <Setter Property="Height" Value="35"/>
+                        <Setter Property="FontSize" Value="10.5"/>
+                        <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                        <Setter Property="BorderThickness" Value="0.6"/>
+                      
+
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
+            
+
         </Grid>
         <Grid Grid.Row="4"
               Grid.Column="1">
@@ -51,13 +64,16 @@
 
             <Button Grid.Column="1"
                         Grid.Row="1"
+                     Style="{StaticResource selectButtons}"
                         x:Name="Agregar">Agregar</Button>
             <Button x:Name="Editar" 
                 Grid.Column="2"
                         Grid.Row="1"
+                     Style="{StaticResource selectButtons}"
                     IsEnabled="{Binding PuedeEditarBorrar}">Editar</Button>
             <Button x:Name="Borrar" 
                 Grid.Column="3"
+                     Style="{StaticResource selectButtons}"
                         Grid.Row="1"
                     IsEnabled="{Binding PuedeEditarBorrar}">Borrar</Button>
         </Grid>

@@ -59,9 +59,10 @@
                         <Setter Property="FontSize" Value="13"/>
                     </Style>
                     <Style x:Key="Titulo" TargetType="TextBlock">
-                        <Setter Property="FontSize" Value="25"/>
+                        <Setter Property="FontSize" Value="30"/>
                         <Setter Property="FontFamily" Value="Verdana"/>
-                        <Setter Property="Padding" Value="5"/>
+                        <Setter Property="Padding" Value="20,15,0,0"/>
+                        <Setter Property="Opacity" Value="1"/>
                         <Setter Property="Foreground" Value="White"/>
                     </Style>
                     <Style x:Key="Secciones" TargetType="Button">
@@ -72,6 +73,70 @@
                         <Setter Property="Background" Value="#CFD8DC"/>
                         <Setter Property="BorderBrush" Value="#ECEFF1"/>
                     </Style>
+
+                    <Style x:Key="styleRow" TargetType="DataGridRowHeader">
+                        <Setter Property="Background" Value="#000"/>
+                        <Setter Property="Foreground" Value="#000"/>
+                        <Setter Property="BorderBrush" Value="#000"/>
+                
+
+                    </Style>
+
+
+
+
+
+
+                    <Style x:Key="Info" TargetType="DataGrid" >
+                        <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                        <Setter Property="RowBackground" Value="#333"/>
+                        <Setter Property="AlternatingRowBackground" Value="#111"/>
+                        <Setter Property="CanUserAddRows" Value="False"/>
+                        <Setter Property="RowHeaderStyle" Value="{StaticResource  styleRow}"/>
+                        <Setter Property="Background" Value="#fff"/>
+                        <Setter Property="IsReadOnly" Value="True"/>
+                        <Setter Property="AutoGenerateColumns" Value="False"/>
+                        <Setter Property="SelectionMode" Value="Single"/>
+                        <Setter Property="Foreground" Value="#fff"/>
+                    </Style>
+
+                    <Style x:Key="selectButtons" TargetType="Button">
+                        <Setter Property="BorderBrush" Value="Transparent"/>
+                        <Setter Property="FontSize" Value="30"/>
+                        <Setter Property="Foreground" Value="#111"/>
+
+
+
+                   
+                        
+                        <Setter Property="Template">
+
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{ TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                                    </Border>
+
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="FontSize" Value="40"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#FFADADAD"/>
+                                <Setter Property="Opacity" Value="0.74"/>
+                            </Trigger>
+                        </Style.Triggers>
+
+
+
+                    </Style>
+
+                    
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AdministradorCervezas.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
@@ -14,31 +14,44 @@
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="2*"/>
+
             </Grid.ColumnDefinitions>
             <DataGrid x:Name="Clasificaciones"
-                  SelectionMode="Single" 
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
+                 Style="{StaticResource Info}"
                   Grid.Row="0"
-                  Grid.Column="1"
-                  SelectedItem="{Binding Path=ClasificacionSeleccionada,Mode=TwoWay}">
+                      Width="auto"
+                  Grid.Column="0"
+                      Grid.ColumnSpan="3"
+                  SelectedItem="{Binding Path=ClasificacionSeleccionada,Mode=TwoWay}" Margin="23,0,23,0" >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Code}" Header="Codigo" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Nombre" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding Code}" Header="Codigo" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Name}" Header="Nombre" Width="*"/>
                     <DataGridTextColumn Binding="{Binding BeerType.Name}" Header="Tipo" Width="*"/>
                 </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#fff" />
+                        <Setter Property="Foreground" Value="#111"/>
+                        <Setter Property="Height" Value="35"/>
+                        <Setter Property="FontSize" Value="10.5"/>
+                        <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                        <Setter Property="BorderThickness" Value="0.6"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+
+                    </Style>
+                </DataGrid.Resources>
             </DataGrid>
         </Grid>
         <Grid Grid.Row="4"
               Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
+                <ColumnDefinition Width="187*"/>
+                <ColumnDefinition Width="186*"/>
+                <ColumnDefinition Width="187"/>
                 <ColumnDefinition Width="20"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -49,14 +62,17 @@
 
             <Button Grid.Column="1"
                         Grid.Row="1"
+                     Style="{StaticResource selectButtons}"
                         x:Name="Agregar">Agregar</Button>
             <Button x:Name="Editar" 
                 Grid.Column="2"
                         Grid.Row="1"
+                     Style="{StaticResource selectButtons}"
                     IsEnabled="{Binding PuedeEditarBorrar}">Editar</Button>
             <Button x:Name="Borrar" 
                 Grid.Column="3"
                         Grid.Row="1"
+                     Style="{StaticResource selectButtons}"
                     IsEnabled="{Binding PuedeEditarBorrar}">Borrar</Button>
         </Grid>
     </Grid>

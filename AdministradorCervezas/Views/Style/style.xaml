@@ -3,18 +3,21 @@
                     xmlns:local="clr-namespace:AdministradorCervezas.Views.Style">
 
     <Style TargetType="Button" x:Key="Menu" >
-        <Setter Property="Background" Value="#000"/>
         <Setter Property="FontSize" Value="22"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Foreground" Value="#fff"/>
         <Setter Property="Opacity" Value="0.8"/>
+        <Setter Property="Background" Value="#000"/>
+        <Setter Property="BorderBrush" Value="#FFF"/>
+       
 
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}" BorderBrush="#fff" BorderThickness="7,1">
+                    <Border Background="{ TemplateBinding Background}" BorderThickness="5,0.5" BorderBrush="#2f1207">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
                     </Border>
+                    
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -22,15 +25,125 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="#222"/>
-                <Setter Property="Opacity" Value="0.75"/>
+                <Setter Property="Foreground" Value="#eee"/>
+                <Setter Property="Background" Value="#111"/>
                 <Setter Property="FontSize" Value="30"/>
-                <Setter Property="BorderBrush" Value="#000"/>
-                <Setter Property="BorderThickness" Value="2,1"/>
+                <Setter Property="Opacity" Value="0.73"/>
+                <Setter Property="Template">
+                    
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border Background="{ TemplateBinding Background}" BorderThickness="2,0" BorderBrush="#eee">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                            </Border>
+
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                
             </Trigger>
+
         </Style.Triggers>
     </Style>
-    
+
+    <Style TargetType="Button" x:Key="MenuNav" >
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Background" Value="#AA0000"/>
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="auto"/>
+
+        <Setter Property="Template">
+          
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{ TemplateBinding Background}" BorderThickness="0" BorderBrush="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground" Value="#eee"/>
+                <Setter Property="Background" Value="#222"/>
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="Opacity" Value="0.73"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+
+    <Style TargetType="StackPanel" x:Key="NavMenu">
+        <Setter Property="Background" Value="#000"></Setter>
+        <Setter Property="Width" Value="auto"/>
+        <Setter Property="Height" Value="auto"/>
+    </Style>
+    <Style TargetType="StackPanel" x:Key="design">
+        <Setter Property="Background" Value="#2f1207"></Setter>
+        <Setter Property="Opacity" Value="0.8"/>
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="iconButton">
+        <Setter Property="Background" Value="#111"/>
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="BorderBrush" Value="#000"/>
+        <Setter Property="BorderThickness" Value="1,0"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="Auto"/>
+
+        <Setter Property="Template">
+
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{ TemplateBinding Background}" BorderThickness="1" BorderBrush="Transparent">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" ></ContentPresenter>
+                    </Border>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Foreground" Value="#111"/>
+                <Setter Property="Background" Value="#333"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="Image" x:Key="icon">
+        <Setter Property="Margin" Value="1,10"></Setter>
+
+    </Style>
+    <Style TargetType="Image" x:Key="logo">
+        <Setter Property="Margin" Value="10,0"/>
+        <Setter Property="Height" Value="20"></Setter>
+        <Setter Property="Width" Value="20"></Setter>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="txtLogo">
+        <Setter Property="Padding" Value="1,6.09"/>
+        <Setter Property="Foreground" Value="#fff"/>
+        <Setter Property="FontSize" Value="20"></Setter>
+
+    </Style>
+
+
+    <Style TargetType="DataGrid" x:Key="information">
+        <Setter Property="AlternatingRowBackground" Value="Black"/>
+    </Style>
+    <!-- idea colors
+    584400
+
+    -->
+
 </ResourceDictionary>
     
     

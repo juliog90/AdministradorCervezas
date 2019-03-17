@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AdministradorCervezas.Views"
              xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="600">
+             d:DesignHeight="400" d:DesignWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -15,32 +15,43 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*" />
-            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
         <!--SelectionMode: Solo permite seleccionar un elemento-->
         <!--AutoGenerateColumns: No genera columnas automaticamente-->
         <!--CanUserAddRows: No permite que el usuario agregue Filas-->
         <DataGrid
                   x:Name="Cervezas"
-                  SelectionMode="Single" 
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
+                  Style="{StaticResource Info}"
                   Grid.Row="0"
-                  Grid.Column="1"
-                  Grid.ColumnSpan="2"
-                  SelectedItem="{Binding Path=CervezaSeleccionada,Mode=TwoWay}">
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  SelectedItem="{Binding Path=CervezaSeleccionada,Mode=TwoWay}" Margin="23,0,23,0">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Brand.Country}" Header="Pais" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Clasification.BeerType}" Header="Tipo" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat=C}" Header="Precio" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Clasification}" Header="Clasificación" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding Fermlevel}" Header="Fermentado" Width="auto"/>
-                <DataGridTextColumn Binding="{Binding GradoAlcohol }" Header="Grado" Width="auto"/>
+                <DataGridTextColumn Binding="{Binding Brand}" Header="Marca" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Brand.Country}" Header="Pais" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Clasification.BeerType}" Header="Tipo" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat=C}" Header="Precio" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Clasification}" Header="Clasificación" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Fermlevel}" Header="Fermentado" Width="*"/>
+                <DataGridTextColumn Binding="{Binding GradoAlcohol }" Header="Grado" Width="*"/>
                 <DataGridTextColumn Binding="{Binding MeasurementUnit}" Header="Medida" Width="*"/>
             </DataGrid.Columns>
+
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#fff" />
+                    <Setter Property="Foreground" Value="#111"/>
+                    <Setter Property="Height" Value="35"/>
+                    <Setter Property="FontSize" Value="10.5"/>
+                    <Setter Property="BorderBrush" Value="#e2e2e2"/>
+                    <Setter Property="BorderThickness" Value="0.6"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+  
+                </Style>
+            </DataGrid.Resources>
         </DataGrid>
 
         <Grid x:Name="MostrarCerveza"
@@ -64,8 +75,8 @@
         </Grid>
 
         <Grid Grid.Row="3"
-              Grid.Column="1"
-              Grid.ColumnSpan="2">
+              Grid.Column="0"
+              Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition/>
@@ -83,15 +94,23 @@
 
             <Button Grid.Column="1"
                         Grid.Row="1"
+                    Style="{StaticResource selectButtons}"
                         x:Name="Agregar">Agregar</Button>
             <Button Grid.Column="2"
                         IsEnabled="{Binding PuedeEditarBorrar}"
                         Grid.Row="1"
-                    x:Name="Editar">Editar</Button>
+                    Style="{StaticResource selectButtons}"
+                    x:Name="Editar">
+                
+                
+                Editar</Button>
             <Button Grid.Column="3"
                     x:Name="Borrar"
+                    Style="{StaticResource selectButtons}"
                         Grid.Row="1"
-                    IsEnabled="{Binding PuedeEditarBorrar}">Borrar</Button>
+                    IsEnabled="{Binding PuedeEditarBorrar}"
+                    
+                    >Borrar</Button>
         </Grid>
     </Grid>
 </UserControl>
