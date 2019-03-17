@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class EditarModeloViewModel : Screen
+    class EditarClasificacionViewModel : Screen
     {
         private string _nombre;
         private string _codigo;
@@ -45,7 +45,7 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public EditarModeloViewModel(Clasification seleccion)
+        public EditarClasificacionViewModel(Clasification seleccion)
         {
             Nombre = seleccion.Name;
             int indice = Tipos.IndexOf(seleccion.BeerType);

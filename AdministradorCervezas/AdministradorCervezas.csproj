@@ -106,7 +106,7 @@
     <Compile Include="ViewModels\DatosTiposViewModel.cs" />
     <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
     <Compile Include="ViewModels\AgregarMarcasViewModel.cs" />
-    <Compile Include="ViewModels\EditarModeloViewModel.cs" />
+    <Compile Include="ViewModels\EditarClasificacionViewModel.cs" />
     <Compile Include="ViewModels\EditarTipoViewModel.cs" />
     <Compile Include="Views\AgregarClasificacionView.xaml.cs">
       <DependentUpon>AgregarClasificacionView.xaml</DependentUpon>
@@ -149,8 +149,8 @@
     <Compile Include="Views\DatosOrdenesView.xaml.cs">
       <DependentUpon>DatosOrdenesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditarModeloView.xaml.cs">
-      <DependentUpon>EditarModeloView.xaml</DependentUpon>
+    <Compile Include="Views\EditarClasificacionView.xaml.cs">
+      <DependentUpon>EditarClasificacionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrincipalView.xaml.cs">
       <DependentUpon>PrincipalView.xaml</DependentUpon>
@@ -241,7 +241,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditarModeloView.xaml">
+    <Page Include="Views\EditarClasificacionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

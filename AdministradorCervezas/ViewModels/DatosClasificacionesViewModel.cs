@@ -45,7 +45,7 @@ namespace AdministradorCervezas.ViewModels
 
         public void Editar()
         {
-            EditarModeloViewModel editarClasicacion = new EditarModeloViewModel(ClasificacionSeleccionada);
+            EditarClasificacionViewModel editarClasicacion = new EditarClasificacionViewModel(ClasificacionSeleccionada);
             IWindowManager manejador2 = new WindowManager();
             manejador2.ShowDialog(editarClasicacion, null, null);
             Clasificaciones = null;
