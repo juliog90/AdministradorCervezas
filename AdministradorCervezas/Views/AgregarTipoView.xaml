@@ -5,8 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="AgregarTipoView" Height="450" Width="800">
+        Title="AgregarTipoView" Height="450" Width="400">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--Fila 1 -->
+        <Label Grid.Column="0">
+            Código:
+        </Label>
+        <TextBox Grid.Column="1"/>
+
+        <!--Fila 2-->
+        <Label Grid.Column="0"
+               Grid.Row="1">
+            Nombre:
+        </Label>
+        <TextBox x:Name="Nombre"
+                 Grid.Column="1"
+                 Grid.Row="1"/>
+
+        <!--Fila 3-->
+        <Label Grid.Column="0"
+               Grid.Row="2">
+            Color:
+        </Label>
+        <ComboBox x:Name="Colores"
+                  Grid.Column="1"
+                  Grid.Row="2"/>
+
+        <!--Fila 4-->
+        <Label x:Name="Categorias"
+               Grid.Column="0"
+               Grid.Row="3">
+            Categoria:
+        </Label>
+        <ComboBox Grid.Column="1"
+                  Grid.Row="3"/>
+
+        <!--Fila 5-->
+        <Button Grid.Column="0"
+                Grid.Row="4">
+            Guardar
+        </Button>
+        <Button Grid.Column="1"
+                Grid.Row="4">
+            Cancelar
+        </Button>
     </Grid>
 </Window>
