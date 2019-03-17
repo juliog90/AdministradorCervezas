@@ -13,7 +13,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Country> Paises
         {
             get { return _paises; }
-            set { _paises = value; }
         }
 
         public EditarMarcasViewModel(Brand editarMarca)

@@ -11,6 +11,7 @@ namespace AdministradorCervezas.ViewModels
     class DatosTiposViewModel: Screen
     {
         private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());    
+        private BeerType _tipoSeleccionado;
 
         public BindableCollection<BeerType> Tipos
         {
@@ -20,7 +21,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private BeerType _tipoSeleccionado;
 
         public BeerType TipoSeleccionado
         {
@@ -46,7 +46,5 @@ namespace AdministradorCervezas.ViewModels
                 return TipoSeleccionado != null;
             }
         }
-
-
     }
 }

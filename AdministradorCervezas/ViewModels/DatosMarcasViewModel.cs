@@ -6,7 +6,6 @@ namespace AdministradorCervezas.ViewModels
     class DatosMarcasViewModel : Screen
     {
         private BindableCollection<Brand> _marcas = new BindableCollection<Brand>(Brand.GetAll());
-
         private Brand _marcaSeleccionada;
 
         public BindableCollection<Brand> Marcas
@@ -67,8 +66,6 @@ namespace AdministradorCervezas.ViewModels
                 Marcas = new BindableCollection<Brand>(Brand.GetAll());
                 NotifyOfPropertyChange(() => Marcas);
             }
-
         }
-
     }
 }

@@ -33,7 +33,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<BeerType> Tipos
         {
             get { return _tipos; }
-            set { _tipos = value; }
         }
 
         public BeerType TipoSeleccionado

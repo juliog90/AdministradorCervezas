@@ -55,7 +55,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> UnidadesDeMedida
         {
             get { return _unidadesDeMedida; }
-            set { _unidadesDeMedida = value; }
         }
 
         public EditarCervezaViewModel(Beer editarCerveza)
@@ -129,7 +128,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> Tipos
         {
             get { return _tipos; }
-            set { _tipos = value; }
         }
 
         /// <summary>
@@ -138,7 +136,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> TiposFermentacion
         {
             get { return _tiposFermentacion; }
-            set { _tiposFermentacion = value; }
         }
 
         /// <summary>
@@ -147,7 +144,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Brand> Marcas
         {
             get { return _marcas; }
-            set { _marcas = value; }
         }
 
         /// <summary>
@@ -156,7 +152,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Clasification> Clasificaciones
         {
             get { return _clasificaciones; }
-            set { _clasificaciones = value; }
         }
 
         /// <summary>
