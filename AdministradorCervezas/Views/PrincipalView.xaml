@@ -65,7 +65,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Button Style="{StaticResource Secciones}" x:Name="CargaCervezas" 
-                    Grid.Row="0" Click="CargaCervezas_Click">Cervezas</Button>
+                    Grid.Row="0">Cervezas</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaTipos" 
                     Grid.Row="1">Tipos</Button>
             <Button Style="{StaticResource Secciones}" x:Name="CargaMarcas" 

@@ -12,11 +12,6 @@ namespace AdministradorCervezas.Views
             InitializeComponent();
         }
 
-        private void CargaCervezas_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult resultado = MessageBox.Show("¿Estas seguro de salir del sistema?", "Saliendo", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -25,8 +20,6 @@ namespace AdministradorCervezas.Views
             {
                 this.Close();
             }
-
-
         }
     }
 }
