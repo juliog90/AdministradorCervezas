@@ -111,6 +111,9 @@
     <Compile Include="Views\AgregarClasificacionView.xaml.cs">
       <DependentUpon>AgregarClasificacionView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AgregarTipoView.xaml.cs">
+      <DependentUpon>AgregarTipoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DatosClasificacionesView.xaml.cs">
       <DependentUpon>DatosClasificacionesView.xaml</DependentUpon>
     </Compile>
@@ -198,6 +201,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\AgregarClasificacionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AgregarTipoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
