@@ -2,7 +2,7 @@
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarMarcaViewModel : Screen
+    class AgregarMarcaViewModel : Screen
     {
         private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
 

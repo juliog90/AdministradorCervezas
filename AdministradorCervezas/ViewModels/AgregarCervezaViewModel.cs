@@ -73,7 +73,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> UnidadesDeMedida
         {
             get { return _unidadesDeMedida; }
-            set { _unidadesDeMedida = value; }
         }
 
         /// <summary>
@@ -82,7 +81,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> Tipos
         {
             get { return _tipos; }
-            set { _tipos = value; }
         }
 
         /// <summary>
@@ -99,7 +97,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Brand> Marcas
         {
             get { return _marcas; }
-            set { _marcas = value; }
         }
 
         /// <summary>
@@ -108,7 +105,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Clasification> Clasificaciones
         {
             get { return _clasificaciones; }
-            set { _clasificaciones = value; }
         }
 
         /// <summary>
@@ -117,10 +113,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Country> Paises
         {
             get { return _paises; }
-            set
-            {
-                _paises = value;
-            }
         }
 
         /// <summary>
@@ -545,7 +537,6 @@ namespace AdministradorCervezas.ViewModels
                     // si no existe en la base de datos regresamos el nombre generado actual
                     if (nuevoNombre != cerveza2.Image.Split('.')[0])
                     {
-                        // si no existe devolvemos el nombre de la imagen generado hasta ahora
                         return nuevoNombre + "." + _extensionImagen;
                     }
                 }

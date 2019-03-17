@@ -137,8 +137,8 @@
     <Compile Include="Views\AgregarCervezaView.xaml.cs">
       <DependentUpon>AgregarCervezaView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AgregarCervezasView.xaml.cs">
-      <DependentUpon>AgregarCervezasView.xaml</DependentUpon>
+    <Compile Include="Views\DatosCervezasView.xaml.cs">
+      <DependentUpon>DatosCervezasView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DatosClientesView.xaml.cs">
       <DependentUpon>DatosClientesView.xaml</DependentUpon>
@@ -225,7 +225,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AgregarCervezasView.xaml">
+    <Page Include="Views\DatosCervezasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
