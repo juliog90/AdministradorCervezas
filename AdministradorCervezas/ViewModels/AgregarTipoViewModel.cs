@@ -3,10 +3,15 @@ using System;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AgregarTipoViewModel : Screen
+    public class AgregarTipoViewModel : Screen
     {
         private BindableCollection<string> _colores = new BindableCollection<string>(Enum.GetNames(typeof(Color)));
         private BindableCollection<string> _categorias = new BindableCollection<string>(Enum.GetNames(typeof(CategoryType)));
+        private string _nombreTipo;
+        private string _tipoCodigo;
+        private string _name;
+        private string _colorSeleccionado;
+        private string _categoriaSeleccionada;
 
         public BindableCollection<string> Colores
         {
@@ -28,8 +33,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _nombreTipo;
-
         public string NombreTipo
         {
             get { return _nombreTipo; }
@@ -41,19 +44,16 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _tipoCodigo;
-
-        public string TipoCodigo
+        public string CodigoTipo
         {
             get { return _tipoCodigo; }
             set
             {
                 _tipoCodigo = value;
-                NotifyOfPropertyChange(() => TipoCodigo);
+                NotifyOfPropertyChange(() => CodigoTipo);
+                NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
-
-        private string _name;
 
         public string Name
         {
@@ -66,21 +66,16 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-
-        private string _colorSeleccionado;
-
         public string ColorSeleccionado
         {
             get { return _colorSeleccionado; }
             set
             {
                 _colorSeleccionado = value;
-                NotifyOfPropertyChange(() => _colorSeleccionado);
+                NotifyOfPropertyChange(() => ColorSeleccionado);
                 NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
-
-        private string _categoriaSeleccionada;
 
         public string CategoriaSeleccionada
         {
@@ -88,7 +83,7 @@ namespace AdministradorCervezas.ViewModels
             set
             {
                 _categoriaSeleccionada = value;
-                NotifyOfPropertyChange(() => _categoriaSeleccionada);
+                NotifyOfPropertyChange(() => CategoriaSeleccionada);
                 NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
@@ -97,7 +92,7 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return ColorSeleccionado != null && CategoriaSeleccionada != null && !string.IsNullOrWhiteSpace(NombreTipo) && !string.IsNullOrWhiteSpace(TipoCodigo);
+                return ColorSeleccionado != null && CategoriaSeleccionada != null && !string.IsNullOrWhiteSpace(NombreTipo) && !string.IsNullOrWhiteSpace(CodigoTipo);
             }
         }
 
@@ -112,19 +107,20 @@ namespace AdministradorCervezas.ViewModels
         public void Guardar()
         {
             BeerType nuevoTipo = new BeerType();
-            nuevoTipo.Id = TipoCodigo;
+            nuevoTipo.Id = CodigoTipo;
             nuevoTipo.Name = NombreTipo;
-            nuevoTipo.Color = (Color) Enum.Parse(typeof(Color) , ColorSeleccionado);
+            nuevoTipo.Color = (Color)Enum.Parse(typeof(Color) , ColorSeleccionado);
             nuevoTipo.Category = (CategoryType)Enum.Parse(typeof(CategoryType), CategoriaSeleccionada);
+            //nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
             nuevoTipo.Add();
             Reiniciar();
         }
 
         public void Reiniciar()
         {
-            NombreTipo = "";
-            TipoCodigo = "";
-            ColorSeleccionado= null;
+            NombreTipo = null;
+            CodigoTipo = null;
+            ColorSeleccionado = null;
             CategoriaSeleccionada = null;
         }
     }

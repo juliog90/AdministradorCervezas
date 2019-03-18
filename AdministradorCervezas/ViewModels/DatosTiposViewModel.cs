@@ -21,7 +21,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-
         public BeerType TipoSeleccionado
         {
             get { return _tipoSeleccionado; }
@@ -32,7 +31,11 @@ namespace AdministradorCervezas.ViewModels
 
         public void Agregar()
         {
-
+            AgregarTipoViewModel agregarTipo = new AgregarTipoViewModel();
+            IWindowManager manejador = new WindowManager();
+            manejador.ShowWindow(agregarTipo, null, null);
+            Tipos = null;
+            Tipos = new BindableCollection<BeerType>(BeerType.GetAll());
         }
         public void Editar()
         {
