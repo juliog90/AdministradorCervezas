@@ -101,6 +101,8 @@
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
+    <Compile Include="Validations\ReglaValidacionCodigo.cs" />
+    <Compile Include="Validations\ReglaValidacionRango.cs" />
     <Compile Include="ViewModels\AgregarClasificacionViewModel.cs" />
     <Compile Include="ViewModels\AgregarTipoViewModel.cs" />
     <Compile Include="ViewModels\DatosTiposViewModel.cs" />
@@ -123,8 +125,8 @@
     <Compile Include="Views\EditarMarcasView.xaml.cs">
       <DependentUpon>EditarMarcasView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AgregarMarcasView.xaml.cs">
-      <DependentUpon>AgregarMarcasView.xaml</DependentUpon>
+    <Compile Include="Views\AgregarMarcaView.xaml.cs">
+      <DependentUpon>AgregarMarcaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditarCervezaView.xaml.cs">
       <DependentUpon>EditarCervezaView.xaml</DependentUpon>
@@ -223,7 +225,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AgregarMarcasView.xaml">
+    <Page Include="Views\AgregarMarcaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
