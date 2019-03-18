@@ -102,6 +102,7 @@
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
     <Compile Include="Validations\ReglaValidacionCodigo.cs" />
+    <Compile Include="Validations\ReglaValidacionNombre.cs" />
     <Compile Include="Validations\ReglaValidacionRango.cs" />
     <Compile Include="ViewModels\AgregarClasificacionViewModel.cs" />
     <Compile Include="ViewModels\AgregarTipoViewModel.cs" />

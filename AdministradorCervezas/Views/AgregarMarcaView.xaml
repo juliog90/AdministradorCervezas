@@ -30,7 +30,6 @@
             <RowDefinition/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-
         <Label Grid.Row="2"
                Grid.Column="1">Codigo</Label>
         <Label Grid.Row="4"

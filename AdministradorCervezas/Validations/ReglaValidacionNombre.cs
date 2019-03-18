@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace AdministradorCervezas.Validations
 {
-    public class ReglaValidacionCodigo : ValidationRule
+    public class ReglaValidacionNombre : ValidationRule
     {
         public int Min { get; set; }
         public int Max { get; set; }
@@ -32,20 +32,16 @@ namespace AdministradorCervezas.Validations
             if ((texto.Length < Min) || (texto.Length > Max))
             {
                 return new ValidationResult(false,
-                    "Introduce tres caracteres..." + Min + " - " + Max + ".");
+                    "Introduce menos de 20 caracteres..." + Min + " - " + Max + ".");
             }
-            if (texto.Any(char.IsLower))
-            {
-                return new ValidationResult(false,
-                    "Introduce solo mayusculas..." + Min + " - " + Max + ".");
-            }
-            if (texto.Any(char.IsWhiteSpace))
+
+            if (texto[0] == ' ')
             {
                 return new ValidationResult(false,
                     "No introduzcas espacios");
             }
 
-            if (!letrasNumeros.IsMatch(texto))
+            if(!letrasNumeros.IsMatch(texto))
             {
                 return new ValidationResult(false, "No introduzcas simbolos");
             }

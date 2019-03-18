@@ -72,11 +72,11 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public bool PuedesEscibirCodigo
+        public bool PuedesEditar
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(Nombre);
+                return !string.IsNullOrEmpty(Nombre);
             }
         }
 
