@@ -1,22 +1,20 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace AdministradorCervezas.ViewModels
 {
-    class DatosTiposViewModel: Screen
+    class DatosTiposViewModel : Screen
     {
-        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());    
+        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
         private BeerType _tipoSeleccionado;
+        private IWindowManager manejador = new WindowManager();
 
         public BindableCollection<BeerType> Tipos
         {
             get { return _tipos; }
-            set { _tipos = value;
+            set
+            {
+                _tipos = value;
                 NotifyOfPropertyChange(() => Tipos);
             }
         }
@@ -24,25 +22,29 @@ namespace AdministradorCervezas.ViewModels
         public BeerType TipoSeleccionado
         {
             get { return _tipoSeleccionado; }
-            set { _tipoSeleccionado = value;
+            set
+            {
+                _tipoSeleccionado = value;
                 NotifyOfPropertyChange(() => TipoSeleccionado);
+                NotifyOfPropertyChange(() => PuedeEditarBorrar);
             }
         }
 
         public void Agregar()
         {
             AgregarTipoViewModel agregarTipo = new AgregarTipoViewModel();
-            IWindowManager manejador = new WindowManager();
             manejador.ShowWindow(agregarTipo, null, null);
-            Tipos = null;
-            Tipos = new BindableCollection<BeerType>(BeerType.GetAll());
+            NotifyOfPropertyChange(() => Tipos);
         }
+
         public void Editar()
         {
-
+            EditarTipoViewModel editarTipo = new EditarTipoViewModel(TipoSeleccionado);
+            manejador.ShowWindow(editarTipo, null, null);
+            NotifyOfPropertyChange(() => Tipos);
         }
 
-        public bool PuedeEditar
+        public bool PuedeEditarBorrar
         {
             get
             {

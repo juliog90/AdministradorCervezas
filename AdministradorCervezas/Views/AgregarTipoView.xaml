@@ -56,13 +56,9 @@
                   SelectedItem="{Binding Path=CategoriaSeleccionada, Mode=TwoWay}"/>
 
         <!--Fila 5-->
-        <Button x:Name="Cancelar" 
-                Grid.Column="0"
-                Grid.Row="4">
-            Cancelar
-        </Button>
         <Button x:Name="Guardar"
-                Grid.Column="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Grid.Row="4"
                 IsEnabled="{Binding PuedeGuardar}">
             Guardar

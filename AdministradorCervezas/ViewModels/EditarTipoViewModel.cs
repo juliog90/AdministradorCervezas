@@ -1,15 +1,11 @@
 ﻿using Caliburn.Micro;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdministradorCervezas.ViewModels
 {
     class EditarTipoViewModel : Screen
     {
-         private BindableCollection<string> _colores = new BindableCollection<string>(Enum.GetNames(typeof(Color)));
+        private BindableCollection<string> _colores = new BindableCollection<string>(Enum.GetNames(typeof(Color)));
         private BindableCollection<string> _categorias = new BindableCollection<string>(Enum.GetNames(typeof(CategoryType)));
         private string _nombreTipo;
         private string _tipoCodigo;
@@ -27,7 +23,7 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public BindableCollection <string> Categorias
+        public BindableCollection<string> Categorias
         {
             get { return _categorias; }
             set
@@ -45,17 +41,6 @@ namespace AdministradorCervezas.ViewModels
                 _nombreTipo = value;
                 NotifyOfPropertyChange(() => NombreTipo);
                 NotifyOfPropertyChange(() => PuedesEscogerTipo);
-            }
-        }
-
-        public string CodigoTipo
-        {
-            get { return _tipoCodigo; }
-            set
-            {
-                _tipoCodigo = value;
-                NotifyOfPropertyChange(() => CodigoTipo);
-                NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
 
@@ -92,11 +77,35 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        public EditarTipoViewModel(BeerType editarTipo)
+        {
+            _nombreTipo = editarTipo.Name;
+            _tipoCodigo = editarTipo.Id;
+
+            for (int i = 0; i < Colores.Count; i++)
+            {
+                if (Enum.GetName(typeof(Color), editarTipo.Color) == Colores[i])
+                {
+                    ColorSeleccionado = Colores[i];
+                    break;
+                }
+            }
+
+            for (int i = 0; i < Categorias.Count; i++)
+            {
+                if (Enum.GetName(typeof(CategoryType), editarTipo.Category) == Categorias[i])
+                {
+                    CategoriaSeleccionada = Categorias[i];
+                    break;
+                }
+            }
+        }
+
         public bool PuedeGuardar
         {
             get
             {
-                return ColorSeleccionado != null && CategoriaSeleccionada != null && !string.IsNullOrWhiteSpace(NombreTipo) && !string.IsNullOrWhiteSpace(CodigoTipo);
+                return ColorSeleccionado != null && CategoriaSeleccionada != null && !string.IsNullOrWhiteSpace(NombreTipo);
             }
         }
 
@@ -111,19 +120,16 @@ namespace AdministradorCervezas.ViewModels
         public void Guardar()
         {
             BeerType nuevoTipo = new BeerType();
-            nuevoTipo.Id = CodigoTipo;
+            nuevoTipo.Id = _tipoCodigo;
             nuevoTipo.Name = NombreTipo;
-            nuevoTipo.Color = (Color)Enum.Parse(typeof(Color) , ColorSeleccionado);
+            nuevoTipo.Color = (Color)Enum.Parse(typeof(Color), ColorSeleccionado);
             nuevoTipo.Category = (CategoryType)Enum.Parse(typeof(CategoryType), CategoriaSeleccionada);
-            //nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
-            nuevoTipo.Add();
-            Reiniciar();
+            nuevoTipo.Edit();
         }
 
         public void Reiniciar()
         {
             NombreTipo = null;
-            CodigoTipo = null;
             ColorSeleccionado = null;
             CategoriaSeleccionada = null;
         }

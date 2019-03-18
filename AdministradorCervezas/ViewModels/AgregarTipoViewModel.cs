@@ -111,7 +111,6 @@ namespace AdministradorCervezas.ViewModels
             nuevoTipo.Name = NombreTipo;
             nuevoTipo.Color = (Color)Enum.Parse(typeof(Color) , ColorSeleccionado);
             nuevoTipo.Category = (CategoryType)Enum.Parse(typeof(CategoryType), CategoriaSeleccionada);
-            //nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
             nuevoTipo.Add();
             Reiniciar();
         }
