@@ -110,7 +110,7 @@ public class BeerType
             CategoryType category = (CategoryType)row["type_category"];
 
 
-            //add country to list
+            //add beertype to list
             list.Add(new BeerType(id, name, color, category));
         }
         //return list
@@ -151,7 +151,7 @@ public class BeerType
     public bool Edit()
     {
         //statement
-        string statement = "update beer_type set type_name = @NAME,type_color=@COLOR,type_category=@CAT where type)code = @ID";
+        string statement = "update beer_type set type_name = @NAME,type_color=@COLOR,type_category=@CAT where type_code = @ID";
         //command
         MySqlCommand command = new MySqlCommand(statement);
         //parameters

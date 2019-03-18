@@ -152,7 +152,7 @@ public class Clasification
             string code = (string)row["cla_code"];
             string name = (string)row["cla_name"];
             BeerType beertype = new BeerType((string)row["type_code"]);
-            //add country to list
+            //add clasification to list
             list.Add(new Clasification(code, name, beertype));
         }
         //return list

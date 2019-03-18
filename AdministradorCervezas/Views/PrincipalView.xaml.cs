@@ -10,9 +10,6 @@ namespace AdministradorCervezas.Views
         public PrincipalView()
         {
             InitializeComponent();
-
-           
-
         }
 
 

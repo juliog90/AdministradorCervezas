@@ -1,11 +1,11 @@
-﻿<Window x:Class="AdministradorCervezas.Views.AdministrarMarcasView"
+﻿<Window x:Class="AdministradorCervezas.Views.AgregarMarcasView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="AdministrarMarcasView" Height="300" Width="450">
+        Title="Agregar Marca" Height="300" Width="450">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -34,7 +34,7 @@
         <Label Grid.Row="2"
                Grid.Column="1">Codigo</Label>
         <Label Grid.Row="4"
-               Grid.Column="1">Nueva Marca:</Label>
+               Grid.Column="1">Marca:</Label>
         <Label Grid.Row="6"
                Grid.Column="1">Pais</Label>
         <TextBox x:Name="MarcaCodigo"

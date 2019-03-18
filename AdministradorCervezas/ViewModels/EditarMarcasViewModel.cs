@@ -5,11 +5,14 @@ namespace AdministradorCervezas.ViewModels
     class EditarMarcasViewModel : Screen
     {
         private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
+        private string _nombreMarca;
+        private string _marcaCodigo;
+        private string _name;
+        private Country _paisSeleccionado;
 
         public BindableCollection<Country> Paises
         {
             get { return _paises; }
-            set { _paises = value; }
         }
 
         public EditarMarcasViewModel(Brand editarMarca)
@@ -27,8 +30,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _nombreMarca;
-
         public string NombreMarca
         {
             get { return _nombreMarca; }
@@ -40,10 +41,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _marcaCodigo;
-
-        private string _name;
-
         public string Name
         {
             get { return _name; }
@@ -54,9 +51,6 @@ namespace AdministradorCervezas.ViewModels
                 NotifyOfPropertyChange(() => PuedeEditar);
             }
         }
-
-
-        private Country _paisSeleccionado;
 
         public Country PaisSeleccionado
         {

@@ -5,6 +5,7 @@ namespace AdministradorCervezas.ViewModels
     class DatosClientesViewModel : Screen
     {
         private BindableCollection<Customer> _clientes = new BindableCollection<Customer>(Customer.GetAll());
+        private Customer _clienteSeleccionado;
 
         public BindableCollection<Customer> Clientes
         {
@@ -12,14 +13,10 @@ namespace AdministradorCervezas.ViewModels
             set { _clientes = value; }
         }
 
-        private Customer _clienteSeleccionado;
-
         public Customer ClienteSeleccionado
         {
             get { return _clienteSeleccionado; }
             set { _clienteSeleccionado = value; }
         }
-
-
     }
 }

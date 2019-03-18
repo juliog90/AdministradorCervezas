@@ -3,11 +3,11 @@
 namespace AdministradorCervezas.Views
 {
     /// <summary>
-    /// Interaction logic for AdministrarCervezaView.xaml
+    /// Interaction logic for EditarClasificacionView.xaml
     /// </summary>
-    public partial class AdministrarCervezaView : Window
+    public partial class EditarClasificacionView : Window
     {
-        public AdministrarCervezaView()
+        public EditarClasificacionView()
         {
             InitializeComponent();
         }

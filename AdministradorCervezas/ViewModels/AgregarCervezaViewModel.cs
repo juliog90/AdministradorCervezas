@@ -10,7 +10,7 @@ using System.Windows.Media.Imaging;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarCervezaViewModel : Screen, INotifyPropertyChanged
+    class AgregarCervezaViewModel : Screen, INotifyPropertyChanged
     {
         #region Atributos
 
@@ -73,7 +73,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> UnidadesDeMedida
         {
             get { return _unidadesDeMedida; }
-            set { _unidadesDeMedida = value; }
         }
 
         /// <summary>
@@ -82,7 +81,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> Tipos
         {
             get { return _tipos; }
-            set { _tipos = value; }
         }
 
         /// <summary>
@@ -91,7 +89,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<string> TiposFermentacion
         {
             get { return _tiposFermentacion; }
-            set { _tiposFermentacion = value; }
         }
 
         /// <summary>
@@ -100,7 +97,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Brand> Marcas
         {
             get { return _marcas; }
-            set { _marcas = value; }
         }
 
         /// <summary>
@@ -109,7 +105,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Clasification> Clasificaciones
         {
             get { return _clasificaciones; }
-            set { _clasificaciones = value; }
         }
 
         /// <summary>
@@ -118,10 +113,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Country> Paises
         {
             get { return _paises; }
-            set
-            {
-                _paises = value;
-            }
         }
 
         /// <summary>
@@ -500,7 +491,7 @@ namespace AdministradorCervezas.ViewModels
         #region MetodosClase
 
         /// <summary>
-        /// Este limpia sin preguntar
+        /// Limpia los campos de la forma 
         /// </summary>
         public void Limpiar()
         {
@@ -534,31 +525,22 @@ namespace AdministradorCervezas.ViewModels
             // Guarda el nuevo nombre
             string nuevoNombre;
 
-            // Guarda si existe una imagen de igual nombre
-            bool existe = false;
-
             // Iteramos cervezas para obtener nombres
             foreach (Beer cerveza in cervezas)
             {
+                // Generamos el nombre
                 nuevoNombre = prefijo + contador;
-                existe = false;
 
                 // Comparamos un nombre con todas las cervezas
                 foreach (Beer cerveza2 in cervezas)
                 {
-                    // si existe seguimos iterando 
-                    if (nuevoNombre == cerveza2.Image.Split('.')[0])
+                    // si no existe en la base de datos regresamos el nombre generado actual
+                    if (nuevoNombre != cerveza2.Image.Split('.')[0])
                     {
-                        existe = true;
+                        return nuevoNombre + "." + _extensionImagen;
                     }
                 }
 
-                // si no lo usamos
-                if (!existe)
-                {
-                    // si no existe devolvemos el nombre de la imagen
-                    return nuevoNombre + "." + _extensionImagen;
-                }
                 // le sumamos uno al nombre de la imagen
                 contador++;
             }

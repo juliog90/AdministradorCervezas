@@ -2,17 +2,18 @@
 
 namespace AdministradorCervezas.ViewModels
 {
-    class AdministrarMarcaViewModel : Screen
+    class AgregarMarcaViewModel : Screen
     {
         private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
+        private string _nombreMarca;
+        private string _marcaCodigo;
+        private string _name;
+        private Country _paisSeleccionado;
 
         public BindableCollection<Country> Paises
         {
             get { return _paises; }
-            set { _paises = value; }
         }
-
-        private string _nombreMarca;
 
         public string NombreMarca
         {
@@ -25,8 +26,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _marcaCodigo;
-
         public string MarcaCodigo
         {
             get { return _marcaCodigo; }
@@ -36,8 +35,6 @@ namespace AdministradorCervezas.ViewModels
                 NotifyOfPropertyChange(() => MarcaCodigo);
             }
         }
-
-        private string _name;
 
         public string Name
         {
@@ -49,9 +46,6 @@ namespace AdministradorCervezas.ViewModels
                 NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
-
-
-        private Country _paisSeleccionado;
 
         public Country PaisSeleccionado
         {

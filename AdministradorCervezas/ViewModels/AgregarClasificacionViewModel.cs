@@ -1,13 +1,14 @@
 ﻿using Caliburn.Micro;
-using System.Linq;
 using System.Windows;
-using System.Collections.Generic;
 
 namespace AdministradorCervezas.ViewModels
 {
-    class EditarModeloViewModel : Screen
+    public class AgregarClasificacionViewModel : Screen
     {
         private string _nombre;
+        private string _codigo;
+        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
+        private BeerType _tipoSeleccionado;
 
         public string Nombre
         {
@@ -19,8 +20,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private string _codigo;
-
         public string Codigo
         {
             get { return _codigo; }
@@ -31,15 +30,10 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
-
         public BindableCollection<BeerType> Tipos
         {
             get { return _tipos; }
-            set { _tipos = value; }
         }
-
-        private BeerType _tipoSeleccionado;
 
         public BeerType TipoSeleccionado
         {
@@ -49,25 +43,6 @@ namespace AdministradorCervezas.ViewModels
                 _tipoSeleccionado = value;
                 NotifyOfPropertyChange(() => TipoSeleccionado);
             }
-        }
-
-        public EditarModeloViewModel(Clasification seleccion)
-        {
-            Nombre = seleccion.Name;
-            int indice = Tipos.IndexOf(seleccion.BeerType);
-
-            // no me gusta mucho, pero funciona
-            // busca el elemento de la lista que sea igual al que escogiste
-            // anteriormente y lo pone como seleccionado
-            for (int i = 0; i < Tipos.Count; i++)
-            {
-                if (seleccion.BeerType.Id == Tipos[i].Id) 
-                {
-                    TipoSeleccionado = Tipos[i];
-                    break;
-                }
-            }
-            Codigo = seleccion.Code;
         }
 
         public bool PuedesEscribirNombre
@@ -86,9 +61,9 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public void Editar()
+        public void Guardar()
         {
-            MessageBoxResult resultado = MessageBox.Show("Estas seguro de editar esta clasificacion?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult resultado = MessageBox.Show("Estas seguro de guardar esta clasificacion?", "Guardando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
             {
@@ -96,8 +71,16 @@ namespace AdministradorCervezas.ViewModels
                 clasificacion.Name = Nombre;
                 clasificacion.Code = Codigo;
                 clasificacion.BeerType = TipoSeleccionado;
-                clasificacion.Edit();
+                clasificacion.Add();
+                Reiniciar();
             }
+        }
+
+        public void Reiniciar()
+        {
+            Nombre = "";
+            Codigo = "";
+            TipoSeleccionado = null;
         }
     }
 }

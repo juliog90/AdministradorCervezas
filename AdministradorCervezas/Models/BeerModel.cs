@@ -124,7 +124,7 @@ public class Beer
         if (table.Rows.Count > 0)
         {
             // Guardamos la primera fila que guarda la informacion
-            // del objeto a crear
+            // de este objeto
             DataRow row = table.Rows[0];
 
             // Asignamos los datos de la fila a propiedades del objeto
@@ -155,7 +155,9 @@ public class Beer
     /// <param name="clasification">Clasificación</param>
     /// <param name="price">Precio</param>
     /// <param name="image">Imagen</param>
-    public Beer(int id, double gradoalcohol, PresentationType presentation, Fermentation fermentation, MeasurementUnit measurementUnit, double content, Brand brand, Clasification clasification, double price, string image)
+    public Beer(int id, double gradoalcohol, PresentationType presentation, Fermentation fermentation,
+        MeasurementUnit measurementUnit, double content, Brand brand, Clasification clasification, 
+        double price, string image)
     {
         _id = id;
         _gradoAlcohol = gradoalcohol;
@@ -348,7 +350,7 @@ public class Beer
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
             string image = (string)row["be_image"];
-            //add country to list
+            //add beer to list
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
         //return list
@@ -360,7 +362,9 @@ public class Beer
         //list
         List<Beer> list = new List<Beer>();
         //query
-        string query = "select be_id, be_grd_alcoh,be_presentation,be_level_ferm,be_unitMeas,be_content,beer.br_code,cla_code,be_price,be_image from beer join brand on beer.br_code= brand.br_code join country on country.cn_code = brand.cn_code where country.cn_code=@CON";
+        string query = "select be_id, be_grd_alcoh,be_presentation,be_level_ferm,be_unitMeas,be_content,beer.br_code,cla_code," +
+            "be_price,be_image from beer join brand on beer.br_code= brand.br_code join country on country.cn_code = brand.cn_code" +
+            " where country.cn_code=@CON";
         //command
         MySqlCommand command = new MySqlCommand(query);
         command.Parameters.AddWithValue("@CON", co.Id);
@@ -382,7 +386,7 @@ public class Beer
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
             string image = (string)row["be_image"];
-            //add country to list
+            //add beer to list
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
         //return list

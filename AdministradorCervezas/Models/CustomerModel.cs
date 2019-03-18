@@ -122,7 +122,7 @@ public class Customer
     #region instance methods
 
     /// <summary>
-    /// Adds the country to the database
+    /// Adds customer to the database
     /// </summary>
     /// <returns></returns>
     public bool Add()
@@ -145,7 +145,7 @@ public class Customer
     }
 
     /// <summary>
-    /// Edit the country
+    /// Edit the customer
     /// </summary>
     /// <returns></returns>
     public bool Edit()
@@ -169,7 +169,7 @@ public class Customer
     }
 
     /// <summary>
-    /// Delete country
+    /// Delete customer
     /// </summary>
     /// <returns></returns>
     public bool Delete()
@@ -222,7 +222,7 @@ public class Customer
             string phone = (string)row["cus_phone"];
             Address address = new Address((int)row["add_id"]);
             string password = (string)row["cus_pass"];
-            //add country to list
+            //add customer to list
             list.Add(new Customer(id, firstName, lastName, email, phone, address, password));
         }
         //return list
@@ -255,7 +255,7 @@ public class Customer
             Address address = new Address((int)row["add_id"]);
             string password = (string)row["cus_pass"];
 
-            //add country to list
+            //add customer to list
             list.Add(new Customer(id, firstName, lastName, email, phone, address, password));
         }
         //return list

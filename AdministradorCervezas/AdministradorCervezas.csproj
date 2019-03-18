@@ -96,28 +96,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CustomControls\TextBoxNumeros.cs" />
     <Compile Include="Enumeradores\CategoryType.cs" />
     <Compile Include="Enumeradores\Color.cs" />
     <Compile Include="Enumeradores\Fermentation.cs" />
     <Compile Include="Enumeradores\MeasurementUnit.cs" />
     <Compile Include="Enumeradores\PresentationType.cs" />
-    <Compile Include="ViewModels\AdministrarClienteViewModel.cs" />
-    <Compile Include="ViewModels\AdministrarModeloViewModel.cs" />
-    <Compile Include="ViewModels\AdministrarTipoViewModel.cs" />
+    <Compile Include="ViewModels\AgregarClasificacionViewModel.cs" />
+    <Compile Include="ViewModels\AgregarTipoViewModel.cs" />
     <Compile Include="ViewModels\DatosTiposViewModel.cs" />
     <Compile Include="ViewModels\EditarMarcasViewModel.cs" />
-    <Compile Include="ViewModels\AdministrarMarcasViewModel.cs" />
-    <Compile Include="ViewModels\EditarModeloViewModel.cs" />
+    <Compile Include="ViewModels\AgregarMarcasViewModel.cs" />
+    <Compile Include="ViewModels\EditarClasificacionViewModel.cs" />
     <Compile Include="ViewModels\EditarTipoViewModel.cs" />
-    <Compile Include="Views\AdministrarClienteView.xaml.cs">
-      <DependentUpon>AdministrarClienteView.xaml</DependentUpon>
+    <Compile Include="Views\AgregarClasificacionView.xaml.cs">
+      <DependentUpon>AgregarClasificacionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdministrarModeloView.xaml.cs">
-      <DependentUpon>AdministrarModeloView.xaml</DependentUpon>
+    <Compile Include="Views\AgregarTipoView.xaml.cs">
+      <DependentUpon>AgregarTipoView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DatosModelosView.xaml.cs">
-      <DependentUpon>DatosModelosView.xaml</DependentUpon>
+    <Compile Include="Views\DatosClasificacionesView.xaml.cs">
+      <DependentUpon>DatosClasificacionesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DatosTiposView.xaml.cs">
       <DependentUpon>DatosTiposView.xaml</DependentUpon>
@@ -125,22 +123,22 @@
     <Compile Include="Views\EditarMarcasView.xaml.cs">
       <DependentUpon>EditarMarcasView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdministrarMarcasView.xaml.cs">
-      <DependentUpon>AdministrarMarcasView.xaml</DependentUpon>
+    <Compile Include="Views\AgregarMarcasView.xaml.cs">
+      <DependentUpon>AgregarMarcasView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\EditarCervezaView.xaml.cs">
       <DependentUpon>EditarCervezaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\EditarCervezaViewModel.cs" />
-    <Compile Include="ViewModels\AdministrarCervezaViewModel.cs" />
+    <Compile Include="ViewModels\AgregarCervezaViewModel.cs" />
     <Compile Include="ViewModels\DatosCervezasViewModel.cs" />
     <Compile Include="ViewModels\DatosClientesViewModel.cs" />
     <Compile Include="ViewModels\DatosMarcasViewModel.cs" />
-    <Compile Include="ViewModels\DatosModelosViewModel.cs" />
+    <Compile Include="ViewModels\DatosClasificacionesViewModel.cs" />
     <Compile Include="ViewModels\DatosOrdenesViewModel.cs" />
     <Compile Include="ViewModels\PrincipalViewModel.cs" />
-    <Compile Include="Views\AdministrarCervezaView.xaml.cs">
-      <DependentUpon>AdministrarCervezaView.xaml</DependentUpon>
+    <Compile Include="Views\AgregarCervezaView.xaml.cs">
+      <DependentUpon>AgregarCervezaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DatosCervezasView.xaml.cs">
       <DependentUpon>DatosCervezasView.xaml</DependentUpon>
@@ -154,8 +152,11 @@
     <Compile Include="Views\DatosOrdenesView.xaml.cs">
       <DependentUpon>DatosOrdenesView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\EditarModeloView.xaml.cs">
-      <DependentUpon>EditarModeloView.xaml</DependentUpon>
+    <Compile Include="Views\EditarClasificacionView.xaml.cs">
+      <DependentUpon>EditarClasificacionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditarTipoView.xaml.cs">
+      <DependentUpon>EditarTipoView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PrincipalView.xaml.cs">
       <DependentUpon>PrincipalView.xaml</DependentUpon>
@@ -202,15 +203,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\AdministrarClienteView.xaml">
+    <Page Include="Views\AgregarClasificacionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AdministrarModeloView.xaml">
+    <Page Include="Views\AgregarTipoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DatosModelosView.xaml">
+    <Page Include="Views\DatosClasificacionesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,7 +223,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AdministrarMarcasView.xaml">
+    <Page Include="Views\AgregarMarcasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,7 +231,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\AdministrarCervezaView.xaml">
+    <Page Include="Views\AgregarCervezaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -250,7 +251,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\EditarModeloView.xaml">
+    <Page Include="Views\EditarClasificacionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditarTipoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

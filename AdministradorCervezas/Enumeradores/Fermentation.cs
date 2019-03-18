@@ -1,4 +1,7 @@
-﻿public enum Fermentation
+﻿/// <summary>
+/// Beer Fermentation Level
+/// </summary>
+public enum Fermentation
 {
     Bajo,
     Espontaneo,

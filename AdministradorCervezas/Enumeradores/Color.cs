@@ -1,6 +1,9 @@
-﻿public enum Color
+﻿/// <summary>
+/// Beer Color
+/// </summary>
+public enum Color
 {
-    yellow,
+    Yellow,
     Golden,
     Brown
 }
