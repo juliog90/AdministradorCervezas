@@ -12,9 +12,5 @@ namespace AdministradorCervezas.Views
             InitializeComponent();
         }
 
-        private void Guardar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

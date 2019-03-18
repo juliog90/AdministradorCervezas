@@ -7,14 +7,14 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Agregar Cerveza" Height="400" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Agregar Cerveza" Height="400" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition />
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
@@ -80,7 +80,7 @@
         <!--2a Columna de controles-->
         <!--Etiquetas-->
         <Label Grid.Column="4"
-               Grid.Row="1">Unidad de Medida</Label>
+               Grid.Row="1">Unidad de Medida:</Label>
         <Label Grid.Column="4"
                Grid.Row="2">Grado de Alcohol:</Label>
         <Label Grid.Column="4"

@@ -80,7 +80,7 @@
         <!--2a Columna de controles-->
         <!--Etiquetas-->
         <Label Grid.Column="4"
-               Grid.Row="1">Unidad de Medida</Label>
+               Grid.Row="1">Unidad de Medida:</Label>
         <Label Grid.Column="4"
                Grid.Row="2">Grado de Alcohol:</Label>
         <Label Grid.Column="4"
