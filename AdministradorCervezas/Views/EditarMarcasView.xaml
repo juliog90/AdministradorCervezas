@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Editar Marca Existente" Height="300" Width="450">
+        Title="Editar Marca Existente" Height="200" Width="450" 
+        Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

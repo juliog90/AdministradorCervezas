@@ -7,7 +7,8 @@
         xmlns:cal="http://www.caliburnproject.org"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Nueva Cerveza" Height="400" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        Title="Nueva Cerveza" Height="350" Width="600" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

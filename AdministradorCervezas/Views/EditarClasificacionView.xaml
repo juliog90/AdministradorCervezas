@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Editar Clasificacion Existente" Height="180" Width="300">
+        Title="Editar Clasificacion Existente"
+        Height="150" Width="300"
+        Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

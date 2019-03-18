@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Nueva Clasificacón" Height="230" Width="300">
+        Title="Nueva Clasificación" Height="200" Width="300"
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -27,7 +29,7 @@
         <Label Grid.Row="2"
                Grid.Column="1">Nombre:</Label>
         <Label Grid.Row="3"
-               Grid.Column="1">Codigo</Label>
+               Grid.Column="1">Codigo:</Label>
         <ComboBox Grid.Row="1"
                  Grid.Column="2"
                  x:Name="Tipos"
