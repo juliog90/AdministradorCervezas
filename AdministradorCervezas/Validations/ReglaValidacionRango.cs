@@ -15,19 +15,19 @@ namespace AdministradorCervezas.Validations
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var age = 0;
+            var cantidad = 0;
 
             try
             {
                 if (((string)value).Length > 0)
-                    age = int.Parse((string)value);
+                    cantidad = int.Parse((string)value);
             }
             catch (Exception e)
             {
                 return new ValidationResult(false, "Illegal characters or " + e.Message);
             }
 
-            if ((age < Min) || (age > Max))
+            if ((cantidad < Min) || (cantidad > Max))
             {
                 return new ValidationResult(false,
                     "Introduce una cantidad en el rango..." + Min + " - " + Max + ".");

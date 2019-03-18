@@ -32,8 +32,6 @@
                 <Setter Property="TextBlock.TextAlignment" Value="Center"/>
             </Style>
             <Style TargetType="Button">
-                <!--<Setter Property="Margin" Value="10,10,5,5"/>-->
-                <!--<Setter Property="Background" Value="#FFF7E5A2" />-->
                 <Setter Property="FontFamily" Value="Verdana"/>
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="BorderBrush" Value="white"/>
@@ -45,15 +43,7 @@
                 <Setter Property="Background" Value="#FFEEE6CB"/>
                 <Setter Property="Margin" Value="5,5,3,3"/>
             </Style>
-
             <!--TextBox Con Estilo y Error-->
-            <ControlTemplate x:Key="ValidationTemplate">
-                <DockPanel>
-                    <TextBlock Foreground="Red" FontSize="20">!</TextBlock>
-                    <AdornedElementPlaceholder/>
-                </DockPanel>
-            </ControlTemplate>
-
             <Style TargetType="TextBox">
                 <Setter Property="Margin" Value="5,5,3,3"/>
                 <Setter Property="Background" Value="#FFEEE6CB"/>

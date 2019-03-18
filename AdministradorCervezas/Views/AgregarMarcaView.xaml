@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         xmlns:validation="clr-namespace:AdministradorCervezas.Validations"
+        xmlns:converter="clr-namespace:AdministradorCervezas.Views.Converters"
         mc:Ignorable="d"
-        Title="Agregar Marca" Height="300" Width="300">
+        Title="Agregar Marca" Height="200" Width="300" 
+        ResizeMode="NoResize" WindowStartupLocation="CenterOwner" 
+        Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="14*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -36,13 +40,15 @@
         <TextBox x:Name="MarcaCodigo"
                  MaxLength="3"
                  Grid.Row="2"
-                 Grid.Column="2"
-             Validation.ErrorTemplate="{StaticResource ValidationTemplate}">
+                 Grid.Column="2" Margin="5,5,103.003,3">
             <TextBox.Text>
-                <Binding Path="Age"
-                 UpdateSourceTrigger="PropertyChanged" >
+                <Binding Path="MarcaCodigo"
+                 UpdateSourceTrigger="PropertyChanged">
+                    <Binding.Converter>
+                        <converter:MayusculasConverter/>
+                    </Binding.Converter>
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionRango Min="21" Max="130"/>
+                        <validation:ReglaValidacionCodigo Min="3" Max="3" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -50,17 +56,17 @@
 
         <TextBox x:Name="NombreMarca"
                  Grid.Row="4"
-                 Grid.Column="2"></TextBox>
+                 Grid.Column="2" Grid.ColumnSpan="2"></TextBox>
         <ComboBox x:Name="Paises"
                  Grid.Row="6"
                  Grid.Column="2"
                   SelectedItem="{Binding PaisSeleccionado, Mode=TwoWay}"
                   IsEnabled="{Binding PuedesEscogerPais}"
-                  DisplayMemberPath="Name"></ComboBox>
+                  DisplayMemberPath="Name" Grid.ColumnSpan="2"></ComboBox>
         <Button x:Name="Guardar"
                 Grid.Column="1"
                 Grid.Row="8"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 IsEnabled="{Binding PuedeGuardar}"
             >Guardar</Button>
         <Button></Button>

@@ -116,6 +116,7 @@
     <Compile Include="Views\AgregarTipoView.xaml.cs">
       <DependentUpon>AgregarTipoView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\MayusculasConverter.cs" />
     <Compile Include="Views\DatosClasificacionesView.xaml.cs">
       <DependentUpon>DatosClasificacionesView.xaml</DependentUpon>
     </Compile>
@@ -272,9 +273,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\background.jpg" />
-    <Resource Include="Resources\icons\close.png" />
-    <Resource Include="Resources\icons\min.png" />
-    <Resource Include="Resources\icons\icon.png" />
+    <Resource Include="Resources\Icons\close.png" />
+    <Resource Include="Resources\Icons\min.png" />
+    <Resource Include="Resources\Icons\icon.png" />
+    <Resource Include="Resources\Icons\dark_icon.png" />
     <Content Include="ScriptBaseDatos\brewery.sql" />
   </ItemGroup>
   <ItemGroup />
