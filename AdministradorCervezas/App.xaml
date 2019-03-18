@@ -7,8 +7,9 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary>
+            <!--Arreglar Primer Elemento No Usa El Estilo-->
                     <Style TargetType="Window">
                         <Setter Property="Background" Value="#e5e1da"/>
                     </Style>
@@ -59,29 +60,20 @@
                         <Setter Property="Opacity" Value="1"/>
                         <Setter Property="Foreground" Value="White"/>
                     </Style>
-                    <Style x:Key="Secciones" TargetType="Button">
-                        <Setter Property="FontSize" Value="25"/>
-                        <Setter Property="FontFamily" Value="Verdana"/>
-                        <Setter Property="BorderBrush" Value="white"/>
-                        <Setter Property="Margin" Value="3"/>
-                        <Setter Property="Background" Value="#CFD8DC"/>
-                        <Setter Property="BorderBrush" Value="#ECEFF1"/>
-                    </Style>
-
-                    <Style x:Key="styleRow" TargetType="DataGridRowHeader">
-                        <Setter Property="Background" Value="#000"/>
-                        <Setter Property="Foreground" Value="#000"/>
-                        <Setter Property="BorderBrush" Value="#000"/>
-                
-
-                    </Style>
-
-
-
-
-
-
-                    <Style x:Key="Info" TargetType="DataGrid" >
+                <Style x:Key="Secciones" TargetType="Button">
+                    <Setter Property="FontSize" Value="25"/>
+                    <Setter Property="FontFamily" Value="Verdana"/>
+                    <Setter Property="BorderBrush" Value="white"/>
+                    <Setter Property="Margin" Value="3"/>
+                    <Setter Property="Background" Value="#CFD8DC"/>
+                    <Setter Property="BorderBrush" Value="#ECEFF1"/>
+                </Style>
+                <Style x:Key="styleRow" TargetType="DataGridRowHeader">
+                    <Setter Property="Background" Value="#000"/>
+                    <Setter Property="Foreground" Value="#000"/>
+                    <Setter Property="BorderBrush" Value="#000"/>
+                </Style>
+                <Style x:Key="Info" TargetType="DataGrid" >
                         <Setter Property="BorderBrush" Value="#e2e2e2"/>
                         <Setter Property="RowBackground" Value="#333"/>
                         <Setter Property="AlternatingRowBackground" Value="#111"/>
