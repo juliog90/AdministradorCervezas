@@ -28,7 +28,7 @@ namespace AdministradorCervezas.Validations
             }
             catch (Exception e)
             {
-                return new ValidationResult(false, "Illegal characters or " + e.Message);
+                return new ValidationResult(false, "No es valido o " + e.Message);
             }
 
             if ((cantidad < Min) || (cantidad > Max))
