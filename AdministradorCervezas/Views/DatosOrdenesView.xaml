@@ -33,17 +33,13 @@
                     <Setter Property="BorderThickness" Value="0.6"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
-
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
         <DataGrid x:Name="OrdenSeleccionada_AllDetails"
-                    SelectionMode="Single" 
-                    AutoGenerateColumns="False"
-                    IsReadOnly="True"
-                    CanUserAddRows="False"
-                    Grid.Column="1"
-                    Grid.Row="2">
+                  Style="{StaticResource Info}"
+                  Grid.Column="1"
+                  Grid.Row="2">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Beer.Brand.Name}" Header="Marca" Width="auto" />
                 <DataGridTextColumn Binding="{Binding UnitPrice}" Header="Precio Unitario" Width="auto" />
@@ -60,7 +56,6 @@
                     <Setter Property="BorderThickness" Value="0.6"/>
                     <Setter Property="HorizontalContentAlignment" Value="Center"/>
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
-
                 </Style>
             </DataGrid.Resources>
         </DataGrid>

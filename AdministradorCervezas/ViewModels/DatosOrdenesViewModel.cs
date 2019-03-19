@@ -10,7 +10,6 @@ namespace AdministradorCervezas.ViewModels
         public BindableCollection<Order> Ordenes
         {
             get { return _ordenes; }
-            set { _ordenes = value; }
         }
 
         public Order OrdenSeleccionada

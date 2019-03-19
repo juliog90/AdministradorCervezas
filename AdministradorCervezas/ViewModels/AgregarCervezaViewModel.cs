@@ -1,4 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using AdministradorCervezas.Validations;
+using Caliburn.Micro;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,8 @@ namespace AdministradorCervezas.ViewModels
         // Guarda la extension de la imagen subida por el usuario
         private string _extensionImagen;
 
+        // Validaciones
+        ValidacionesInternas validador = new ValidacionesInternas();
         #endregion
 
         #region Propiedades
@@ -129,6 +132,9 @@ namespace AdministradorCervezas.ViewModels
 
                 // Avisamos al metodo que activa el boton de carga de imagen
                 NotifyOfPropertyChange(() => PuedesCargarImagen);
+                NotifyOfPropertyChange(() => PuedesCrearCerveza);
+                NotifyOfPropertyChange(() => PuedesSeleccionarContenido);
+                NotifyOfPropertyChange(() => PuedesSeleccionarPrecio);
             }
         }
 
@@ -137,12 +143,14 @@ namespace AdministradorCervezas.ViewModels
         /// </summary>
         public double Precio
         {
-            get { return _gradoAlcohol; }
+            get { return _precio; }
             set
             {
-                _gradoAlcohol = value;
+                _precio = value;
                 NotifyOfPropertyChange(() => Precio);
                 NotifyOfPropertyChange(() => PuedesSeleccionarContenido);
+                NotifyOfPropertyChange(() => PuedesCargarImagen);
+                NotifyOfPropertyChange(() => PuedesCrearCerveza);
             }
         }
 
@@ -157,6 +165,8 @@ namespace AdministradorCervezas.ViewModels
                 _precio = value;
                 NotifyOfPropertyChange(() => GradoAlcohol);
                 NotifyOfPropertyChange(() => PuedesSeleccionarPrecio);
+                NotifyOfPropertyChange(() => PuedesCargarImagen);
+                NotifyOfPropertyChange(() => PuedesCrearCerveza);
             }
         }
 
@@ -289,10 +299,12 @@ namespace AdministradorCervezas.ViewModels
         public void CargarImagen()
         {
             // Escogemos la imagen
-            OpenFileDialog cargaImg = new OpenFileDialog();
+            OpenFileDialog cargaImg = new OpenFileDialog
+            {
 
-            // Filtramos los tipos de archivo
-            cargaImg.Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+                // Filtramos los tipos de archivo
+                Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
+            };
 
             // Asignamos valores de imagen cargada
             if (cargaImg.ShowDialog() == true)
@@ -438,7 +450,9 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(Convert.ToString(GradoAlcohol)) && GradoAlcohol != 0;
+                validador.min = 0;
+                validador.max = 20;
+                return validador.ValidaloDouble(GradoAlcohol);
             }
         }
 
@@ -449,7 +463,9 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(Convert.ToString(Precio)) && Precio != 0;
+                validador.min = 15;
+                validador.max = 5000;
+                return validador.ValidaloDouble(Precio);
             }
         }
 
@@ -460,7 +476,9 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(Convert.ToString(Contenido)) && Contenido != 0 && Precio != 0 && GradoAlcohol != 0;
+                validador.min = 355;
+                validador.max = 2000;
+                return validador.ValidaloDouble(Contenido);
             }
         }
 
@@ -470,8 +488,8 @@ namespace AdministradorCervezas.ViewModels
         public bool PuedesCrearCerveza
         {
             get
-            {
-                return ImagenCerveza != null && Contenido != 0 && Precio != 0 && GradoAlcohol != 0;
+            { 
+                return  PuedesCargarImagen && PuedesSeleccionarContenido && PuedesSeleccionarGradoAlcohol && PuedesCargarImagen && ImagenCerveza != null;
             }
         }
 
