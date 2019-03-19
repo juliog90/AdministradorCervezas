@@ -39,7 +39,7 @@
         <TextBox Grid.Row="2"
                  Grid.Column="2"
                  x:Name="Nombre"
-                 MaxLength="20">
+                 MaxL>
             <TextBox.Text>
                 <Binding Path="Nombre"
                  UpdateSourceTrigger="PropertyChanged">

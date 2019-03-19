@@ -61,18 +61,26 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button Style="{StaticResource Menu}" x:Name="CargaCervezas" 
+            <Button Style="{StaticResource Menu}" 
+                    x:Name="CargaCervezas" 
                     Grid.Row="0">Cervezas</Button>
-            <Button Style="{StaticResource Menu}" x:Name="CargaTipos" 
+            <Button Style="{StaticResource Menu}" 
+                    x:Name="CargaTipos" 
                     Grid.Row="1">Tipos</Button>
-            <Button Style="{StaticResource Menu}" x:Name="CargaMarcas" 
+            <Button Style="{StaticResource Menu}" 
+                    x:Name="CargaMarcas" 
                     Grid.Row="2">Marcas</Button>
-            <Button Style="{StaticResource Menu}" x:Name="CargaModelos" 
+            <Button Style="{StaticResource Menu}" 
+                    x:Name="CargaModelos" 
                     Grid.Row="3">Clasificaciones</Button>
-            <Button Style="{StaticResource Menu}" x:Name="CargaClientes" 
+            <Button Style="{StaticResource Menu}" 
+                    x:Name="CargaClientes" 
                     Grid.Row="4">Clientes</Button>
-            <Button Style="{StaticResource Menu}" x:Name="CargaOrdenes" 
-                    Grid.Row="5">Ordenes</Button>
+            <Button Style="{StaticResource Menu}" 
+                    x:Name="CargaOrdenes" 
+                    Grid.Row="5">
+                    Ordenes
+            </Button>
         </Grid>
 
         <!--Contenido -->
