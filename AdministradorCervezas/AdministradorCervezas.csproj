@@ -104,6 +104,7 @@
     <Compile Include="Validations\ReglaValidacionCodigo.cs" />
     <Compile Include="Validations\ReglaValidacionNombre.cs" />
     <Compile Include="Validations\ReglaValidacionRango.cs" />
+    <Compile Include="Validations\ReglaValidacionRangoDecimal.cs" />
     <Compile Include="ViewModels\AgregarClasificacionViewModel.cs" />
     <Compile Include="ViewModels\AgregarTipoViewModel.cs" />
     <Compile Include="ViewModels\DatosTiposViewModel.cs" />

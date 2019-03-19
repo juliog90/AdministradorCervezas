@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
+        xmlns:validation="clr-namespace:AdministradorCervezas.Validations"
         mc:Ignorable="d"
-        Title="Nueva Clasificación" Height="200" Width="300"
+        Title="Nueva Clasificación" Height="200" Width="250"
         ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
         Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition />
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
@@ -37,10 +38,30 @@
                   DisplayMemberPath="Name"></ComboBox>
         <TextBox Grid.Row="2"
                  Grid.Column="2"
-                 x:Name="Nombre"></TextBox>
+                 MaxLength="20"
+                 x:Name="Nombre">
+            <TextBox.Text>
+                <Binding Path="Nombre"
+                 UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBox Grid.Row="3"
                  Grid.Column="2"
-                 x:Name="Codigo"></TextBox>
+                 MaxLength="3"
+                 x:Name="Codigo" Margin="5,2,105,6">
+            <TextBox.Text>
+                <Binding Path="Codigo"
+                 UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:ReglaValidacionCodigo Min="2" Max="20" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button Grid.Column="1"
                 Grid.Row="4"
                 Grid.ColumnSpan="2"

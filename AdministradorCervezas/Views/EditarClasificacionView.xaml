@@ -38,7 +38,8 @@
                   DisplayMemberPath="Name"></ComboBox>
         <TextBox Grid.Row="2"
                  Grid.Column="2"
-                 x:Name="Nombre">
+                 x:Name="Nombre"
+                 MaxLength="20">
             <TextBox.Text>
                 <Binding Path="Nombre"
                  UpdateSourceTrigger="PropertyChanged">
@@ -54,7 +55,7 @@
                    TextWrapping="WrapWithOverflow"
                    TextAlignment="Center"
                    IsEnabled="{Binding PuedesEscribirNombre}">
-                2 - 15 Caracteres
+                2 - 20 Caracteres
         </TextBlock>
         <Button Grid.Column="1"
                 Grid.Row="3"

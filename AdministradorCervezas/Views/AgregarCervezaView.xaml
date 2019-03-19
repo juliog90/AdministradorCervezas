@@ -8,16 +8,16 @@
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         xmlns:validation="clr-namespace:AdministradorCervezas.Validations"
         mc:Ignorable="d"
-        Title="Nueva Cerveza" Height="350" Width="600" ResizeMode="NoResize"
+        Title="Nueva Cerveza" Height="350" Width="550" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner" Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0.8*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -74,7 +74,7 @@
         <ComboBox Grid.Column="2"
                   Grid.Row="5"
                   x:Name="Clasificaciones"
-                  IsEnabled="{Binding Path=PuedesSeleccionarClasificacion}"
+                  IsEnabled="{Binding PuedesSeleccionarClasificacion}"
                   SelectedItem="{Binding Path=ClasificacionSeleccionada, Mode=TwoWay}"
                   DisplayMemberPath="Name">
         </ComboBox>
@@ -96,7 +96,7 @@
               Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="60"/>
+                <ColumnDefinition Width="50"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
@@ -112,14 +112,15 @@
                Grid.Row="2">Contenido:</Label>
             <TextBox Grid.Column="1"
                  Grid.Row="0"
-                 MaxLength="2"
+                 MaxLength="4"
                  IsEnabled="{Binding Path=PuedesSeleccionarGradoAlcohol}"
                  x:Name="GradoAlcohol">
                 <TextBox.Text>
                     <Binding Path="GradoAlcohol"
-                 UpdateSourceTrigger="PropertyChanged">
+                 UpdateSourceTrigger="PropertyChanged"
+                             Delay="400">
                         <Binding.ValidationRules>
-                            <validation:ReglaValidacionRango Min="0" Max="20" />
+                            <validation:ReglaValidacionRangoDecimal Min="0" Max="20" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -133,7 +134,7 @@
                     <Binding Path="Precio"
                  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validation:ReglaValidacionRango Min="15" Max="5000" />
+                            <validation:ReglaValidacionRangoDecimal Min="15" Max="5000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -173,7 +174,6 @@
                 Grid.Column="4">
             Cargar Imagen
         </Button>
-
         <!--Botones Aceptar y Reiniciar-->
         <Button x:Name="Guardar"
                 Grid.Row="7"

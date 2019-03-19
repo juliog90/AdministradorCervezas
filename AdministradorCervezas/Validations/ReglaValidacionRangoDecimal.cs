@@ -8,22 +8,22 @@ using System.Windows.Controls;
 
 namespace AdministradorCervezas.Validations
 {
-    public class ReglaValidacionRango : ValidationRule
+    public class ReglaValidacionRangoDecimal : ValidationRule
     {
         public int Min { get; set; }
         public int Max { get; set; }
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            var cantidad = 0;
+            double cantidad = 0;
             var texto = "";
 
             try
             {
                 if (((string)value).Length > 0)
                 {
-                    cantidad = int.Parse((string)value);
-                    texto = (string)value;
+                    cantidad = Double.Parse((string)value, CultureInfo.CurrentCulture); 
+                    texto = Convert.ToString(cantidad); 
                 }
             }
             catch (Exception e)
@@ -36,13 +36,13 @@ namespace AdministradorCervezas.Validations
                 return new ValidationResult(false,
                     "Introduce una cantidad en el rango..." + Min + " - " + Max + ".");
             }
+
             if (texto.Any(char.IsWhiteSpace))
             {
                 return new ValidationResult(false,
                     "No introduzcas espacios");
-            }       
+            }
             return new ValidationResult(true, null);
         }
     }
-    
 }

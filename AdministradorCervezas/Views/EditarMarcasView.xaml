@@ -3,16 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:validation="clr-namespace:AdministradorCervezas.Validations"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Editar Marca Existente" Height="200" Width="450" 
+        Title="Editar Marca Existente" Height="200" Width="250" 
         Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png"
         ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -37,19 +38,29 @@
                Grid.Column="1">Pais</Label>
         <TextBox x:Name="NombreMarca"
                  Grid.Row="2"
-                 Grid.Column="2"></TextBox>
+                 Grid.Column="2"
+                 MaxLength="20">
+            <TextBox.Text>
+                <Binding Path="NombreMarca"
+                 UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <ComboBox x:Name="Paises"
                  Grid.Row="4"
                  Grid.Column="2"
                   SelectedItem="{Binding PaisSeleccionado, Mode=TwoWay}"
                   IsEnabled="{Binding PuedesEscogerPais}"
-                  DisplayMemberPath="Name"></ComboBox>
+                  DisplayMemberPath="Name"/>
         <Button x:Name="Editar"
                 Grid.Column="1"
                 Grid.Row="6"
                 Grid.ColumnSpan="2"
-                IsEnabled="{Binding PuedeEditar}"
-            >Guardar</Button>
-        <Button></Button>
+                IsEnabled="{Binding PuedeEditar}">
+            Guardar
+        </Button>
     </Grid>
 </Window>

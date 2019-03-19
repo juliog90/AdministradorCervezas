@@ -3,15 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:validation="clr-namespace:AdministradorCervezas.Validations"
         xmlns:local="clr-namespace:AdministradorCervezas.Views"
         mc:Ignorable="d"
-        Title="Nuevo Tipo" Height="180" Width="300"
+        Title="Nuevo Tipo" Height="210" Width="280"
         Icon="/AdministradorCervezas;component/Resources/icons/dark_icon.png"
         ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -22,44 +25,64 @@
         </Grid.RowDefinitions>
 
         <!--Fila 1 -->
-        <Label Grid.Column="0">
+        <Label Grid.Column="1">
             Código:
         </Label>
-        <TextBox Grid.Column="1"
-                 x:Name="CodigoTipo"/>
+        <TextBox Grid.Column="2"
+                 x:Name="CodigoTipo"
+                 MaxLength="3">
+            <TextBox.Text>
+                <Binding Path="CodigoTipo"
+                 UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:ReglaValidacionCodigo Min="3" Max="3" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <!--Fila 2-->
-        <Label Grid.Column="0"
+        <Label Grid.Column="1"
                Grid.Row="1">
             Nombre:
         </Label>
         <TextBox x:Name="NombreTipo"
-                 Grid.Column="1"
-                 Grid.Row="1"/>
+                 Grid.Column="2"
+                 Grid.Row="1"
+                 MaxLength="20">
+            <TextBox.Text>
+                <Binding Path="NombreTipo"
+                 UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <!--Fila 3-->
-        <Label Grid.Column="0"
+        <Label Grid.Column="1"
                Grid.Row="2">
             Color:
         </Label>
         <ComboBox x:Name="Colores"
-                  Grid.Column="1"
+                  Grid.Column="2"
                   Grid.Row="2"
                   SelectedItem="{Binding Path=ColorSeleccionado, Mode=TwoWay}"/>
 
         <!--Fila 4-->
-        <Label Grid.Column="0"
+        <Label Grid.Column="1"
                Grid.Row="3">
             Categoria:
         </Label>
         <ComboBox x:Name="Categorias"
-                  Grid.Column="1"
+                  Grid.Column="2"
                   Grid.Row="3"
                   SelectedItem="{Binding Path=CategoriaSeleccionada, Mode=TwoWay}"/>
 
         <!--Fila 5-->
         <Button x:Name="Guardar"
-                Grid.Column="0"
+                Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Grid.Row="4"
                 IsEnabled="{Binding PuedeGuardar}">
