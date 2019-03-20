@@ -128,11 +128,9 @@
                     Grid.Column="0"
                     Style="{StaticResource design}"
                     Grid.ColumnSpan="6">
-            <TextBlock Name="txtTitle" 
+            <TextBlock x:Name="Titulo" 
                        HorizontalAlignment="Left" 
-                       Style="{StaticResource Titulo}" >
-                Brewery - Home
-            </TextBlock>
+                       Style="{StaticResource Titulo}"/>
         </StackPanel>
     </Grid>
 </Window>
