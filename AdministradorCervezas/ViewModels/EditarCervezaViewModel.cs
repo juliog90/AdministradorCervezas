@@ -219,6 +219,7 @@ namespace AdministradorCervezas.ViewModels
                 _imagenCerveza = value;
                 NotifyOfPropertyChange(() => ImagenCerveza);
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
+                NotifyOfPropertyChange(() => PuedesActualizar);
             }
         }
 
@@ -507,6 +508,14 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        public bool PuedesActualizar
+        {
+            get
+            {
+                return Comparador();
+            }
+        }
+
         /// <summary>
         /// Determina si puedes reiniciar la forma
         /// </summary>
@@ -592,6 +601,11 @@ namespace AdministradorCervezas.ViewModels
                 contador++;
             }
             return null;
+        }
+
+        public bool Comparador()
+        {
+            return _rutaImagen != null;
         }
     }
 }
