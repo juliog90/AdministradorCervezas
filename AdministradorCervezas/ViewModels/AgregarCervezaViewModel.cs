@@ -181,6 +181,7 @@ namespace AdministradorCervezas.ViewModels
                 _imagenCerveza = value;
                 NotifyOfPropertyChange(() => ImagenCerveza);
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
+                NotifyOfPropertyChange(() => ImagenCargada);
             }
         }
 
@@ -501,6 +502,14 @@ namespace AdministradorCervezas.ViewModels
             get
             {
                 return MarcaSeleccionada != null;
+            }
+        }
+
+        public bool ImagenCargada
+        {
+            get
+            {
+                return ImagenCerveza == null;
             }
         }
 

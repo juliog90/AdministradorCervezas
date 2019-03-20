@@ -14,7 +14,6 @@ namespace AdministradorCervezas.ViewModels
                 _titulo = value;
                 NotifyOfPropertyChange(() => Titulo);
             }
-
         }
 
         public void CargaCervezas()

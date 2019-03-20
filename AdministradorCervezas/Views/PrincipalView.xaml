@@ -134,14 +134,3 @@
         </StackPanel>
     </Grid>
 </Window>
-<!--
-                <Button 
-                Style="{StaticResource Menu}"
-
-                    Click="Button_Click"  Grid.Row="0" Height="66" >Salir</Button>
-    
-    <Button Style="{StaticResource iconButton}">Min</Button>
-            <Button Style="{StaticResource iconButton}">Max</Button>
-            <Button Style="{StaticResource iconButton}">Clo</Button>
-
-    -->

@@ -39,6 +39,14 @@
                 <Setter Property="Background" Value="#CFD8DC"/>
                 <Setter Property="BorderBrush" Value="#ECEFF1"/>
             </Style>
+            <Style x:Key="Validado" TargetType="Button">
+                <Setter Property="FontFamily" Value="Verdana"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="BorderBrush" Value="white"/>
+                <Setter Property="Margin" Value="3"/>
+                <Setter Property="Background" Value="#CFD8DC"/>
+                <Setter Property="BorderBrush" Value="#ECEFF1"/>
+            </Style>
             <Style TargetType="ComboBox">
                 <Setter Property="Background" Value="#FFEEE6CB"/>
                 <Setter Property="Margin" Value="5,5,3,3"/>
