@@ -17,6 +17,31 @@ namespace AdministradorCervezas.Views
         {
             txtTitle.Text = "Brewery - Administrando Cervezas";
         }
+        
+        private void CargaTipos_Click(object sender, RoutedEventArgs e)
+        {
+            txtTitle.Text = "Brewery - Administrando Tipos De Cerveza";
+        }
+
+         private void CargaMarcas_Click(object sender, RoutedEventArgs e)
+        {
+            txtTitle.Text = "Brewery - Administrando Marcas De Cerveza";
+        }
+
+         private void CargaModelos_Click(object sender, RoutedEventArgs e)
+        {
+            txtTitle.Text = "Brewery - Administrando Clasificaciones";
+        }
+
+         private void CargaClientes_Click(object sender, RoutedEventArgs e)
+        {
+            txtTitle.Text = "Brewery - Supervisando Clientes";
+        }
+
+         private void CargaOrdenes_Click(object sender, RoutedEventArgs e)
+        {
+            txtTitle.Text = "Brewery - Supervisando Ordenes";
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
