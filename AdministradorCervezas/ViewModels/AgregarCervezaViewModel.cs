@@ -159,10 +159,10 @@ namespace AdministradorCervezas.ViewModels
         /// </summary>
         public double GradoAlcohol
         {
-            get { return _precio; }
+            get { return _gradoAlcohol; }
             set
             {
-                _precio = value;
+                _gradoAlcohol = value;
                 NotifyOfPropertyChange(() => GradoAlcohol);
                 NotifyOfPropertyChange(() => PuedesSeleccionarPrecio);
                 NotifyOfPropertyChange(() => PuedesCargarImagen);

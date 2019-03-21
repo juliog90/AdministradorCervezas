@@ -97,9 +97,9 @@ namespace AdministradorCervezas.ViewModels
                 }
             }
 
-            for (int i = 0; i < UnidadesDeMedida.Count ; i++)
+            for (int i = 0; i < UnidadesDeMedida.Count; i++)
             {
-                if(Enum.GetName(typeof(MeasurementUnit), editarCerveza.MeasurementUnit) == UnidadesDeMedida[i])
+                if (Enum.GetName(typeof(MeasurementUnit), editarCerveza.MeasurementUnit) == UnidadesDeMedida[i])
                 {
                     UnidadDeMedidaSeleccionada = UnidadesDeMedida[i];
                     break;
@@ -108,7 +108,7 @@ namespace AdministradorCervezas.ViewModels
 
             for (int i = 0; i < TiposFermentacion.Count; i++)
             {
-                if(Enum.GetName(typeof(Fermentation), editarCerveza.Fermlevel) == TiposFermentacion[i])
+                if (Enum.GetName(typeof(Fermentation), editarCerveza.Fermlevel) == TiposFermentacion[i])
                 {
                     TiposFermentacionSeleccionado = TiposFermentacion[i];
                     break;
@@ -219,7 +219,6 @@ namespace AdministradorCervezas.ViewModels
                 _imagenCerveza = value;
                 NotifyOfPropertyChange(() => ImagenCerveza);
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
-                NotifyOfPropertyChange(() => PuedesActualizar);
             }
         }
 
@@ -345,6 +344,14 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
+        public bool ImagenCargada
+        {
+            get
+            {
+                return ImagenCerveza == null;
+            }
+        }
+
         /// <summary>
         /// Guardamos la cerveza creada en la base de datos
         /// </summary>
@@ -357,25 +364,29 @@ namespace AdministradorCervezas.ViewModels
             nueva.Content = Contenido;
             nueva.Price = Precio;
             nueva.GradoAlcohol = GradoAlcohol;
-            nueva.Image = generaNombreImagen();
+            nueva.Image = _editarCerveza.Image;
             // Convertimos de String a Enum
             nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
             nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
             nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
-            // Subimos imagen a servidor
-            // datos ftp
-            string ftpuser = "ftpuser";
-            string pass = "";
-            string rutaFTPImagen = _fuenteImagenes + nueva.Image;
 
-            // cliente ftp
-            WebClient client = new WebClient();
-            client.Credentials = new NetworkCredential(ftpuser, pass);
-            client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
-            // Agregamos a base de datos
+            // checamos si cambio la imagen
+            if (_rutaImagen != null)
+            {
+                // Subimos imagen a servidor
+                // datos ftp
+                string ftpuser = "ftpuser";
+                string pass = "";
+                string rutaFTPImagen = _fuenteImagenes + nueva.Image;
+
+                // cliente ftp
+                WebClient client = new WebClient();
+                client.Credentials = new NetworkCredential(ftpuser, pass);
+                client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
+
+            }
+            // Agregamos los cambios a la base de datos
             nueva.Edit();
-            // Reiniciamos la forma
-            Reiniciar(_editarCerveza.Id);
         }
 
         /// <summary>
@@ -508,14 +519,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public bool PuedesActualizar
-        {
-            get
-            {
-                return Comparador();
-            }
-        }
-
         /// <summary>
         /// Determina si puedes reiniciar la forma
         /// </summary>
@@ -601,11 +604,6 @@ namespace AdministradorCervezas.ViewModels
                 contador++;
             }
             return null;
-        }
-
-        public bool Comparador()
-        {
-            return _rutaImagen != null;
         }
     }
 }

@@ -166,10 +166,24 @@
                Stretch="Uniform">
         </Image>
         <Button x:Name="CargarImagen"
-                IsEnabled="{Binding PuedesCargarImagen}"
                 Grid.Row="7"
                 Grid.ColumnSpan="2"
                 Grid.Column="4">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Contenido}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GradoAlcohol}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Precio}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             Cargar Imagen
         </Button>
 
@@ -177,7 +191,24 @@
         <Button x:Name="Actualizar"
                 Grid.Row="7"
                 Grid.Column="1"
-                Grid.ColumnSpan="2"
-                IsEnabled="{Binding PuedesActualizar}">Actualizar</Button>
+                Grid.ColumnSpan="2">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Contenido}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=GradoAlcohol}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Precio}" Value="False"/>
+                                <Condition Binding="{Binding Path=ImagenCargada, Mode=OneWay}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            Actualizar
+        </Button>
     </Grid>
 </Window>
