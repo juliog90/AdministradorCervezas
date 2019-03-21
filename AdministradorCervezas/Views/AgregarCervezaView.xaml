@@ -50,34 +50,33 @@
                   Grid.Row="1"
                   x:Name="Marcas"
                   SelectedItem="{Binding Path=MarcaSeleccionada, Mode=TwoWay}"
-                  DisplayMemberPath="Name">
-        </ComboBox>
+                  DisplayMemberPath="Name"/>
+
         <ComboBox Grid.Column="2"
                   Grid.Row="2"
                   x:Name="Paises"
                   IsEnabled="{Binding PuedesSeleccionarPaises}"
                   SelectedItem="{Binding Path=PaisSeleccionado, Mode=TwoWay}"
-                  DisplayMemberPath="Name"
-               ></ComboBox>
+                  DisplayMemberPath="Name" />
         <ComboBox Grid.Column="2"
                   Grid.Row="3"
                   x:Name="Tipos"
                   IsEnabled="{Binding PuedesSeleccionarTipos}"
-                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=TwoWay}">
-        </ComboBox>
+                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=TwoWay}"/>
+
         <ComboBox Grid.Column="2"
                   Grid.Row="4"
                   x:Name="TiposFermentacion"
                   IsEnabled="{Binding PuedesSeleccionarFermentado}"
-                  SelectedItem="{Binding Path=TiposFermentacionSeleccionado, Mode=TwoWay}">
-        </ComboBox>
+                  SelectedItem="{Binding Path=TiposFermentacionSeleccionado, Mode=TwoWay}"/>
+
         <ComboBox Grid.Column="2"
                   Grid.Row="5"
                   x:Name="Clasificaciones"
                   IsEnabled="{Binding PuedesSeleccionarClasificacion}"
                   SelectedItem="{Binding Path=ClasificacionSeleccionada, Mode=TwoWay}"
-                  DisplayMemberPath="Name">
-        </ComboBox>
+                  DisplayMemberPath="Name"/>
+
 
         <!--2a Columna de controles-->
         <!--Etiquetas-->
@@ -88,8 +87,8 @@
                   Grid.Row="1"
                   x:Name="UnidadesDeMedida"
                   IsEnabled="{Binding Path=PuedesSeleccionarUnidadesDeMedida}"
-                  SelectedItem="{Binding Path=UnidadDeMedidaSeleccionada, Mode=TwoWay}">
-        </ComboBox>
+                  SelectedItem="{Binding Path=UnidadDeMedidaSeleccionada, Mode=TwoWay}"/>
+
         <Grid Grid.Column="4"
               Grid.Row="2"
               Grid.RowSpan="3"
