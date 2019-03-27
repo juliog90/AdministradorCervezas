@@ -132,7 +132,7 @@ public class Order
         {
             Brand brand = new Brand((string)row["br_code"], (string)row["br_name"]);
             Clasification clasification = new Clasification((string)row["cla_code"], (string)row["cla_name"]);
-            Beer beer = new Beer((int)row["be_id"], (double)row["be_grd_alcoh"], (PresentationType)(int)row["be_presentation"], (Fermentation)(int)row["be_level_ferm"], (MeasurementUnit)(int)row["be_unitMeas"], (double)row["be_content"], brand, clasification, (double)row["be_price"], (string)row["be_image"]);
+            Beer beer = new Beer((int)row["be_id"], (double)row["be_grd_alcoh"], (PresentationType)(int)row["be_presentation"], (Fermentation)(int)row["be_level_ferm"], (MeasurementUnit)(int)row["be_unitMeas"], (double)row["be_content"], brand, clasification, (double)row["be_price"], (byte[])row["be_image"]);
             OrderDetail detail = new OrderDetail(beer, (int)row["ordDet_quantity"], (double)row["ordDet_UnitPrice"]);
         }
     }

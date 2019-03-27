@@ -15,7 +15,7 @@ public class Beer
     private Brand _brand = new Brand();
     private Clasification _clasification = new Clasification();
     private double _price;
-    private string _image;
+    private byte[] _image;
 
     #endregion
 
@@ -73,7 +73,7 @@ public class Beer
         set { _price = value; }
     }
 
-    public string Image
+    public byte[] Image
     {
         get { return _image; }
         set { _image = value; }
@@ -135,7 +135,7 @@ public class Beer
             _fermentation = (Fermentation)(int)row["be_level_ferm"];
             _measurementUnit = (MeasurementUnit)row["be_unitMeas"];
             _content = (double)row["be_content"];
-            _image = (string)row["be_image"];
+            _image = (byte[])row["be_image"];
             _brand = (new Brand((string)row["br_code"]));
             _clasification = (new Clasification((string)row["cla_code"]));
             _price = (double)row["be_price"];
@@ -157,7 +157,7 @@ public class Beer
     /// <param name="image">Imagen</param>
     public Beer(int id, double gradoalcohol, PresentationType presentation, Fermentation fermentation,
         MeasurementUnit measurementUnit, double content, Brand brand, Clasification clasification, 
-        double price, string image)
+        double price, byte[] image)
     {
         _id = id;
         _gradoAlcohol = gradoalcohol;
@@ -312,7 +312,7 @@ public class Beer
             Brand brand = new Brand((string)row["br_code"]);
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
-            string image = (string)row["be_image"];
+            byte[] image = (byte[])row["be_image"];
             // Agregar Cerveza a la lista
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
@@ -349,7 +349,7 @@ public class Beer
             Brand brand = new Brand((string)row["br_code"]);
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
-            string image = (string)row["be_image"];
+            byte[] image = (byte[])row["be_image"];
             //add beer to list
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
@@ -385,15 +385,13 @@ public class Beer
             Brand brand = new Brand((string)row["br_code"]);
             Clasification clasification = new Clasification((string)row["cla_code"]);
             double price = (double)row["be_price"];
-            string image = (string)row["be_image"];
+            byte[] image = (byte[])row["be_image"];
             //add beer to list
             list.Add(new Beer(id, gradoalcohol, presentation, fermentation, measurementUnit, content, brand, clasification, price, image));
         }
         //return list
         return list;
     }
-
-
 
     #endregion
 }

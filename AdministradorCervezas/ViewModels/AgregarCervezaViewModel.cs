@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Net;
 using System.Windows;
 using System.Windows.Media;
@@ -41,12 +42,8 @@ namespace AdministradorCervezas.ViewModels
         //Nombre Marca, Pais, Tipo y Clasificacion
         private string _name;
 
-        // Ruta del servidor donde se guardan las imagenes
-        private string _fuenteImagenes = @"ftp://localhost/images/";
-        // Guarda la ruta del explorador de archivos de la imagen
-        private string _rutaImagen;
-        // Guarda la extension de la imagen subida por el usuario
-        private string _extensionImagen;
+        // ruta de imagen
+        private string path;
 
         // Validaciones
         ValidacionesInternas validador = new ValidacionesInternas();
@@ -310,13 +307,9 @@ namespace AdministradorCervezas.ViewModels
             // Asignamos valores de imagen cargada
             if (cargaImg.ShowDialog() == true)
             {
-                _rutaImagen = cargaImg.FileName;
-
-                // Obtenemos extension
-                _extensionImagen = _rutaImagen.Split('.')[1];
-
                 // Cargamos en interfaz
                 ImagenCerveza = new BitmapImage(new Uri(cargaImg.FileName, UriKind.Absolute));
+                path = cargaImg.FileName;
             }
         }
 
@@ -336,22 +329,13 @@ namespace AdministradorCervezas.ViewModels
                 nueva.Content = Contenido;
                 nueva.Price = Precio;
                 nueva.GradoAlcohol = GradoAlcohol;
-                nueva.Image = generaNombreImagen();
+                nueva.Image = GenerarImagen();
                 // Convertimos de String a Enum
                 nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
                 nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
                 nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
                 // Subimos imagen a servidor
 
-                // Datos ftp
-                string ftpuser = "ftpuser";
-                string pass = "";
-                string rutaFTPImagen = _fuenteImagenes + nueva.Image;
-
-                // Cliente ftp
-                WebClient client = new WebClient();
-                client.Credentials = new NetworkCredential(ftpuser, pass);
-                client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
 
                 // Agregamos a base de datos
                 nueva.Add();
@@ -489,8 +473,8 @@ namespace AdministradorCervezas.ViewModels
         public bool PuedesCrearCerveza
         {
             get
-            { 
-                return  PuedesCargarImagen && PuedesSeleccionarContenido && PuedesSeleccionarGradoAlcohol && PuedesCargarImagen && ImagenCerveza != null;
+            {
+                return PuedesCargarImagen && PuedesSeleccionarContenido && PuedesSeleccionarGradoAlcohol && PuedesCargarImagen && ImagenCerveza != null;
             }
         }
 
@@ -534,46 +518,13 @@ namespace AdministradorCervezas.ViewModels
             TipoSeleccionado = null;
         }
 
-        /// <summary>
-        /// Generar Nombre Imagen
-        /// </summary>
-        /// <returns></returns>
-        private string generaNombreImagen()
+        private byte[] GenerarImagen()
         {
-            // Obtenemos lista de cervezas para comparar nombres
-            List<Beer> cervezas = Beer.GetAll();
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read);
+            BinaryReader binary = new BinaryReader(file);
+            byte[] datosImagen = binary.ReadBytes((int)file.Length);
 
-            // Prefijo de Nombre de Imagen
-            string prefijo = "beer";
-
-            // Contador que cambia nombre de imagen prefijo + contador = nombre
-            int contador = 0;
-
-            // Guarda el nuevo nombre
-            string nuevoNombre;
-
-            // Iteramos cervezas para obtener nombres
-            foreach (Beer cerveza in cervezas)
-            {
-                // Generamos el nombre
-                nuevoNombre = prefijo + contador;
-
-                // Comparamos un nombre con todas las cervezas
-                foreach (Beer cerveza2 in cervezas)
-                {
-                    // si no existe en la base de datos regresamos el nombre generado actual
-                    if (nuevoNombre != cerveza2.Image.Split('.')[0])
-                    {
-                        return nuevoNombre + "." + _extensionImagen;
-                    }
-                }
-
-                // le sumamos uno al nombre de la imagen
-                contador++;
-            }
-
-            // si no llegara a poder crearse un nombre regresamos un nulo
-            return null;
+            return datosImagen;
         }
 
         #endregion

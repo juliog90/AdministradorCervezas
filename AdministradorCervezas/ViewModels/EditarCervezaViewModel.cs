@@ -3,6 +3,8 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
+using System.IO;
 using System.Net;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -40,10 +42,8 @@ namespace AdministradorCervezas.ViewModels
         //Nombre Marca, Pais, Tipo y Clasificacion
         private string _name;
 
-        //imagenes servidor
-        private string _fuenteImagenes = @"ftp://localhost/images/";
-        private string _rutaImagen;
-        private string _extensionImagen;
+        // ruta de imagen
+        private string path;
 
         public int Id
         {
@@ -119,7 +119,9 @@ namespace AdministradorCervezas.ViewModels
             Precio = editarCerveza.Price;
             GradoAlcohol = editarCerveza.GradoAlcohol;
             _id = editarCerveza.Id;
-            ImagenCerveza = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + editarCerveza.Image, UriKind.Absolute));
+            MemoryStream ms = new MemoryStream(editarCerveza.Image);
+            Bitmap mapaDeBits = new Bitmap(ms);
+            ImagenCerveza = BitmapToImageSource(mapaDeBits);
         }
 
         /// <summary>
@@ -337,9 +339,6 @@ namespace AdministradorCervezas.ViewModels
 
             if (cargaImg.ShowDialog() == true)
             {
-                _rutaImagen = cargaImg.FileName;
-                _extensionImagen = _rutaImagen.Split('.')[1];
-                // la pasamos a la interfaz
                 ImagenCerveza = new BitmapImage(new Uri(cargaImg.FileName, UriKind.Absolute));
             }
         }
@@ -364,27 +363,22 @@ namespace AdministradorCervezas.ViewModels
             nueva.Content = Contenido;
             nueva.Price = Precio;
             nueva.GradoAlcohol = GradoAlcohol;
+
+            if(ImagenCargada)
+            {
+                nueva.Image = GenerarImagen();
+            }
+            else
+            {
+                nueva.Image = _editarCerveza.Image;
+            }
+
             nueva.Image = _editarCerveza.Image;
             // Convertimos de String a Enum
             nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
             nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);
             nueva.Presentation = (PresentationType)Enum.Parse(typeof(PresentationType), TipoSeleccionado);
 
-            // checamos si cambio la imagen
-            if (_rutaImagen != null)
-            {
-                // Subimos imagen a servidor
-                // datos ftp
-                string ftpuser = "ftpuser";
-                string pass = "";
-                string rutaFTPImagen = _fuenteImagenes + nueva.Image;
-
-                // cliente ftp
-                WebClient client = new WebClient();
-                client.Credentials = new NetworkCredential(ftpuser, pass);
-                client.UploadFile(rutaFTPImagen, WebRequestMethods.Ftp.UploadFile, _rutaImagen);
-
-            }
             // Agregamos los cambios a la base de datos
             nueva.Edit();
         }
@@ -569,41 +563,25 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        // metodos para la clase
-        private string generaNombreImagen()
+        private byte[] GenerarImagen()
         {
-            // Obtenemos lista de cervezaas
-            List<Beer> cervezas = Beer.GetAll();
-            // Prefijo de Nombre de Imagen
-            string prefijo = "beer";
-            // Contador que cambia nombre de imagen prefijo+contador = nombre
-            int contador = 0;
-            // Guarda el nuevo nombre
-            string nuevoNombre;
-            // Guarda si existe una imagen de igual nombre
-            bool existe = false;
+            FileStream file = new FileStream(path, FileMode.Open, FileAccess.Read);
+            BinaryReader binary = new BinaryReader(file);
+            byte[] datosImagen = binary.ReadBytes((int)file.Length);
 
-            foreach (Beer cerveza in cervezas)
-            {
-                nuevoNombre = prefijo + contador;
-                existe = false;
+            return datosImagen;
+        }
 
-                foreach (Beer cerveza2 in cervezas)
-                {
-                    if (nuevoNombre == cerveza2.Image)
-                    {
-                        existe = true;
-                    }
-                }
-                if (!existe)
-                {
-                    // si no existe devolvemos el nombre de la imagen
-                    return nuevoNombre + "." + _extensionImagen;
-                }
-                // le sumamos uno al nombre de la imagen
-                contador++;
-            }
-            return null;
+        public BitmapImage BitmapToImageSource(Bitmap src)
+        {
+            MemoryStream ms = new MemoryStream();
+            ((System.Drawing.Bitmap)src).Save(ms, System.Drawing.Imaging.ImageFormat.Bmp);
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            ms.Seek(0, SeekOrigin.Begin);
+            image.StreamSource = ms;
+            image.EndInit();
+            return image;
         }
     }
 }

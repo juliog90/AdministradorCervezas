@@ -76,7 +76,7 @@ CREATE TABLE `beer` (
   `br_code` char(3) NOT NULL,
   `cla_code` char(3) NOT NULL,
   `be_price` double NOT NULL,
-  `be_image` varchar(250) NOT NULL
+  `be_image`mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
