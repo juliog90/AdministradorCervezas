@@ -40,7 +40,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _nombreTipo = value;
                 NotifyOfPropertyChange(() => NombreTipo);
-                NotifyOfPropertyChange(() => PuedesEscogerTipo);
+                NotifyOfPropertyChange(() => PuedesEscogerColor);
             }
         }
 
@@ -51,6 +51,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _tipoCodigo = value;
                 NotifyOfPropertyChange(() => CodigoTipo);
+                NotifyOfPropertyChange(() => PuedesEscogerColor);
                 NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
@@ -96,11 +97,19 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public bool PuedesEscogerTipo
+        public bool PuedesEscogerColor
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(NombreTipo);
+                return !string.IsNullOrWhiteSpace(NombreTipo) && !string.IsNullOrWhiteSpace(CodigoTipo);
+            }
+        }
+
+        public bool PuedesEscogerCategoria
+        {
+            get
+            {
+                return ColorSeleccionado != null;
             }
         }
 

@@ -44,7 +44,7 @@ namespace AdministradorCervezas.Tests.Integracion
         /// </summary>
         [Test]
         public void TodasLasCervezas()
-        {
+        { 
             List<Beer> cervezas = Beer.GetAll();
 
             bool existenCervezas = cervezas.Count > 0;
