@@ -7,7 +7,6 @@ namespace AdministradorCervezas.ViewModels
     {
         private string _nombre;
         private string _codigo;
-        private BindableCollection<BeerType> _tipos = new BindableCollection<BeerType>(BeerType.GetAll());
         private BeerType _tipoSeleccionado;
 
         public string Nombre
@@ -17,6 +16,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _nombre = value;
                 NotifyOfPropertyChange(() => Nombre);
+                NotifyOfPropertyChange(() => PuedesGuardar);
             }
         }
 
@@ -27,13 +27,11 @@ namespace AdministradorCervezas.ViewModels
             {
                 _codigo = value;
                 NotifyOfPropertyChange(() => Codigo);
+                NotifyOfPropertyChange(() => PuedesGuardar);
             }
         }
 
-        public BindableCollection<BeerType> Tipos
-        {
-            get { return _tipos; }
-        }
+        public BindableCollection<BeerType> Tipos { get; } = new BindableCollection<BeerType>(BeerType.GetAll());
 
         public BeerType TipoSeleccionado
         {
@@ -42,6 +40,16 @@ namespace AdministradorCervezas.ViewModels
             {
                 _tipoSeleccionado = value;
                 NotifyOfPropertyChange(() => TipoSeleccionado);
+                NotifyOfPropertyChange(() => PuedesGuardar);
+                NotifyOfPropertyChange(() => PuedesEscribirNombre);
+            }
+        }
+
+        public bool PuedesGuardar
+        {
+            get
+            {
+                return !string.IsNullOrWhiteSpace(Codigo) && !string.IsNullOrWhiteSpace(Nombre) && TipoSeleccionado != null;
             }
         }
 
@@ -53,7 +61,7 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public bool PuedesEscibirCodigo
+        public bool PuedesEscribirCodigo
         {
             get
             {

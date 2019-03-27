@@ -100,6 +100,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\IDatabase.cs" />
     <Compile Include="Settings\AppSettings.cs" />
     <Compile Include="Settings\ISettings.cs" />
     <Compile Include="AccesoDatos\MysqlConnection.cs" />

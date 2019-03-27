@@ -12,6 +12,7 @@ public class Order
     private DateTime _deliveryDate;
     private Customer _customer;
     private double _total;
+    private List<OrderDetail> _details;
 
     #endregion
 
@@ -70,6 +71,8 @@ public class Order
 
             return details;
         }
+
+        set { _details = value; }
     }
 
     public double Total
@@ -143,6 +146,10 @@ public class Order
         _requestDate = requestDate;
         _deliveryDate = deliveryDate;
         _customer = customer;
+    }
+
+    public Order()
+    {
     }
 
     #region Instance Methods

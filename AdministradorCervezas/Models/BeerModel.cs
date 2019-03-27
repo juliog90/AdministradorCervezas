@@ -1,9 +1,10 @@
-﻿using MySql.Data.MySqlClient;
+﻿using AdministradorCervezas.Models;
+using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Data;
 
 
-public class Beer
+public class Beer : IDatabaseCrud
 {
     #region attributes
     private int _id;

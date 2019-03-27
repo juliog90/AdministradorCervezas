@@ -40,7 +40,7 @@
                  Grid.Column="2"
                  MaxLength="20"
                  x:Name="Nombre">
-            <TextBox.Text>
+        <TextBox.Text>
                 <Binding Path="Nombre"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
@@ -52,12 +52,13 @@
         <TextBox Grid.Row="3"
                  Grid.Column="2"
                  MaxLength="3"
-                 x:Name="Codigo" Margin="5,2,105,6">
-            <TextBox.Text>
+                 x:Name="Codigo" 
+                 Margin="5,2,105,6">
+        <TextBox.Text>
                 <Binding Path="Codigo"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionCodigo Min="2" Max="20" />
+                        <validation:ReglaValidacionCodigo Min="3" Max="3" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -65,6 +66,23 @@
         <Button Grid.Column="1"
                 Grid.Row="4"
                 Grid.ColumnSpan="2"
-                x:Name="Guardar">Guardar</Button>
+                x:Name="Guardar">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Nombre}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Codigo}" Value="False"/>
+                                <Condition Binding="{Binding PuedesGuardar}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            Guardar
+        </Button>
     </Grid>
 </Window>
