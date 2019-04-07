@@ -383,25 +383,7 @@ namespace AdministradorCervezas.ViewModels
             nueva.Edit();
         }
 
-        /// <summary>
-        /// Reiniciamos el Formulario
-        /// </summary>
-        public void Reiniciar(int beer_id)
-        {
-            Beer editarCerveza = new Beer(_editarCerveza.Id);
-            MarcaSeleccionada = editarCerveza.Brand;
-            ClasificacionSeleccionada = editarCerveza.Clasification;
-            PaisSeleccionado = editarCerveza.Brand.Country;
-            Contenido = editarCerveza.Content;
-            Precio = editarCerveza.Price;
-            GradoAlcohol = editarCerveza.GradoAlcohol;
-            ImagenCerveza = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + editarCerveza.Image, UriKind.Absolute));
-            UnidadDeMedidaSeleccionada = nameof(editarCerveza.MeasurementUnit);
-            TiposFermentacionSeleccionado = nameof(editarCerveza.Fermlevel);
-            TipoSeleccionado = nameof(editarCerveza.Presentation);
-        }
-
-        // logica de activacion de controles
+         // logica de activacion de controles
 
         /// <summary>
         /// Determina si puedes seleccionar paises
