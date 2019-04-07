@@ -340,6 +340,7 @@ namespace AdministradorCervezas.ViewModels
             if (cargaImg.ShowDialog() == true)
             {
                 ImagenCerveza = new BitmapImage(new Uri(cargaImg.FileName, UriKind.Absolute));
+                path = cargaImg.FileName;
             }
         }
 
@@ -364,7 +365,7 @@ namespace AdministradorCervezas.ViewModels
             nueva.Price = Precio;
             nueva.GradoAlcohol = GradoAlcohol;
 
-            if(ImagenCargada)
+            if(path.Length > 0)
             {
                 nueva.Image = GenerarImagen();
             }
@@ -373,7 +374,6 @@ namespace AdministradorCervezas.ViewModels
                 nueva.Image = _editarCerveza.Image;
             }
 
-            nueva.Image = _editarCerveza.Image;
             // Convertimos de String a Enum
             nueva.MeasurementUnit = (MeasurementUnit)Enum.Parse(typeof(MeasurementUnit), UnidadDeMedidaSeleccionada);
             nueva.Fermlevel = (Fermentation)Enum.Parse(typeof(Fermentation), TiposFermentacionSeleccionado);

@@ -12,8 +12,6 @@ namespace AdministradorCervezas.ViewModels
         private BindableCollection<Beer> _cervezas = new BindableCollection<Beer>(Beer.GetAll());
 
         private Beer _cervezaSeleccionada;
-        private ImageSource _cervezaImagen;
-
 
         public BindableCollection<Beer> Cervezas
         {
@@ -34,20 +32,6 @@ namespace AdministradorCervezas.ViewModels
                 NotifyOfPropertyChange(() => CervezaSeleccionada);
                 NotifyOfPropertyChange(() => PuedeEditarBorrar);
 
-            }
-        }
-
-        public ImageSource CervezaImagen
-        {
-            get
-            {
-                return _cervezaImagen;
-            }
-            set
-            {
-                _cervezaImagen = value;
-                NotifyOfPropertyChange(() => CervezaImagen);
-                CargaImagen();
             }
         }
 
@@ -77,20 +61,16 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        public void CargaImagen()
-        {
-            CervezaImagen = new BitmapImage(new Uri("http://localhost/the_brewery/images/" + CervezaSeleccionada.Image, UriKind.Absolute));
-        }
-
         public void Borrar()
         {
             MessageBoxResult resultado = MessageBox.Show("Estas seguro de eliminar el elemento?", "Eliminando", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (resultado == MessageBoxResult.Yes)
             {
-                CervezaSeleccionada.Delete();
-                Cervezas = null;
-                Cervezas = new BindableCollection<Beer>(Beer.GetAll());
+                if (CervezaSeleccionada.Delete())
+                {
+                    Cervezas.Remove(CervezaSeleccionada);
+                }
             }
 
         }

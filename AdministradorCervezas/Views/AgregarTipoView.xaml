@@ -86,8 +86,21 @@
         <Button x:Name="Guardar"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
-                Grid.Row="4"
-                IsEnabled="{Binding PuedeGuardar}">
+                Grid.Row="4">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=NombreTipo}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=CodigoTipo}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             Guardar
         </Button>
     </Grid>

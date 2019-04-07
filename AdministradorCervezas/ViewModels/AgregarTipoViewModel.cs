@@ -74,6 +74,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _colorSeleccionado = value;
                 NotifyOfPropertyChange(() => ColorSeleccionado);
+                NotifyOfPropertyChange(() => PuedesEscogerCategoria);
                 NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }

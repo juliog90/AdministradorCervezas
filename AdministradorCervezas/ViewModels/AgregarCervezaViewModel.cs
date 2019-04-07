@@ -14,8 +14,6 @@ namespace AdministradorCervezas.ViewModels
 {
     class AgregarCervezaViewModel : Screen, INotifyPropertyChanged
     {
-        #region Atributos
-
         // Colecciones de Datos
         private BindableCollection<Beer> _cervezas;
         private BindableCollection<Brand> _marcas = new BindableCollection<Brand>(Brand.GetAll());
@@ -44,12 +42,6 @@ namespace AdministradorCervezas.ViewModels
 
         // ruta de imagen
         private string path;
-
-        // Validaciones
-        ValidacionesInternas validador = new ValidacionesInternas();
-        #endregion
-
-        #region Propiedades
 
         /// <summary>
         /// Lista de Cervezas
@@ -92,6 +84,9 @@ namespace AdministradorCervezas.ViewModels
         }
 
         /// <summary>
+        /// <summary>
+        /// <summary>
+        /// <summary>
         /// Marcas
         /// </summary>
         public BindableCollection<Brand> Marcas
@@ -128,10 +123,7 @@ namespace AdministradorCervezas.ViewModels
                 NotifyOfPropertyChange(() => Contenido);
 
                 // Avisamos al metodo que activa el boton de carga de imagen
-                NotifyOfPropertyChange(() => PuedesCargarImagen);
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
-                NotifyOfPropertyChange(() => PuedesSeleccionarContenido);
-                NotifyOfPropertyChange(() => PuedesSeleccionarPrecio);
             }
         }
 
@@ -145,8 +137,6 @@ namespace AdministradorCervezas.ViewModels
             {
                 _precio = value;
                 NotifyOfPropertyChange(() => Precio);
-                NotifyOfPropertyChange(() => PuedesSeleccionarContenido);
-                NotifyOfPropertyChange(() => PuedesCargarImagen);
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
             }
         }
@@ -161,8 +151,6 @@ namespace AdministradorCervezas.ViewModels
             {
                 _gradoAlcohol = value;
                 NotifyOfPropertyChange(() => GradoAlcohol);
-                NotifyOfPropertyChange(() => PuedesSeleccionarPrecio);
-                NotifyOfPropertyChange(() => PuedesCargarImagen);
                 NotifyOfPropertyChange(() => PuedesCrearCerveza);
             }
         }
@@ -287,9 +275,6 @@ namespace AdministradorCervezas.ViewModels
             }
         }
 
-        #endregion
-
-        #region Botones
 
         /// <summary>
         /// Permite cargar una imagen en la ventana
@@ -429,52 +414,13 @@ namespace AdministradorCervezas.ViewModels
         }
 
         /// <summary>
-        /// Determina si puedes escoger un precio
-        /// </summary>
-        public bool PuedesSeleccionarPrecio
-        {
-            get
-            {
-                validador.min = 0;
-                validador.max = 20;
-                return validador.ValidaloDouble(GradoAlcohol);
-            }
-        }
-
-        /// <summary>
-        /// Determina si puedes escoger un contenido
-        /// </summary>
-        public bool PuedesSeleccionarContenido
-        {
-            get
-            {
-                validador.min = 15;
-                validador.max = 5000;
-                return validador.ValidaloDouble(Precio);
-            }
-        }
-
-        /// <summary>
-        /// Determina si puedes cargar una imagen
-        /// </summary>
-        public bool PuedesCargarImagen
-        {
-            get
-            {
-                validador.min = 355;
-                validador.max = 2000;
-                return validador.ValidaloDouble(Contenido);
-            }
-        }
-
-        /// <summary>
         /// Determina si puedes guardar la cerveza
         /// </summary>
         public bool PuedesCrearCerveza
         {
             get
             {
-                return PuedesCargarImagen && PuedesSeleccionarContenido && PuedesSeleccionarGradoAlcohol && PuedesCargarImagen && ImagenCerveza != null;
+                return PuedesSeleccionarGradoAlcohol && ImagenCerveza != null;
             }
         }
 
@@ -496,10 +442,6 @@ namespace AdministradorCervezas.ViewModels
                 return ImagenCerveza == null;
             }
         }
-
-        #endregion
-
-        #region MetodosClase
 
         /// <summary>
         /// Limpia los campos de la forma 
@@ -527,6 +469,5 @@ namespace AdministradorCervezas.ViewModels
             return datosImagen;
         }
 
-        #endregion
     }
 }
