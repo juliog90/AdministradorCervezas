@@ -94,7 +94,7 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return ColorSeleccionado != null && CategoriaSeleccionada != null && !string.IsNullOrWhiteSpace(NombreTipo) && !string.IsNullOrWhiteSpace(CodigoTipo);
+                return ColorSeleccionado != null && CategoriaSeleccionada != null;
             }
         }
 

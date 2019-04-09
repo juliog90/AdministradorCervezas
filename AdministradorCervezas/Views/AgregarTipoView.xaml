@@ -35,7 +35,7 @@
                 <Binding Path="CodigoTipo"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionCodigo Min="3" Max="3" />
+                        <validation:ReglaValidacionCodigo ValidatesOnTargetUpdated="True" Min="3" Max="3" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -54,7 +54,7 @@
                 <Binding Path="NombreTipo"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                        <validation:ReglaValidacionNombre ValidatesOnTargetUpdated="True" Min="2" Max="20" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -88,13 +88,14 @@
                 Grid.ColumnSpan="2"
                 Grid.Row="4">
             <Button.Style>
-                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource Validado}">
                     <Setter Property="IsEnabled" Value="False"/>
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=NombreTipo}" Value="False"/>
                                 <Condition Binding="{Binding Path=(Validation.HasError), ElementName=CodigoTipo}" Value="False"/>
+                                <Condition Binding="{Binding Path=PuedeGuardar, Mode=OneWay}" Value="True"/>
                             </MultiDataTrigger.Conditions>
                             <Setter Property="IsEnabled" Value="True"/>
                         </MultiDataTrigger>

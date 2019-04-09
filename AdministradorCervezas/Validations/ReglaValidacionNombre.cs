@@ -28,6 +28,11 @@ namespace AdministradorCervezas.Validations
             {
                 return new ValidationResult(false, "No es valido o" + e.Message);
             }
+            if(texto == "")
+            {
+                return new ValidationResult(false,
+                    "Introduce un valor");
+            }
 
             if ((texto.Length < Min) || (texto.Length > Max))
             {

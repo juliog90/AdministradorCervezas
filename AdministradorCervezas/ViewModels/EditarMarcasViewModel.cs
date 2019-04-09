@@ -67,7 +67,7 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return PaisSeleccionado != null && !string.IsNullOrWhiteSpace(NombreMarca) && !string.IsNullOrWhiteSpace(_marcaCodigo);
+                return PaisSeleccionado != null;
             }
         }
 

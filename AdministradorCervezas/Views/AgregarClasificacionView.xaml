@@ -25,17 +25,13 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Label 
-               Grid.Row="1"
+               Grid.Row="3"
                Grid.Column="1">Tipo:</Label>
         <Label Grid.Row="2"
                Grid.Column="1">Nombre:</Label>
-        <Label Grid.Row="3"
+        <Label Grid.Row="1"
                Grid.Column="1">Codigo:</Label>
-        <ComboBox Grid.Row="1"
-                 Grid.Column="2"
-                 x:Name="Tipos"
-                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=TwoWay}"
-                  DisplayMemberPath="Name"></ComboBox>
+
         <TextBox Grid.Row="2"
                  Grid.Column="2"
                  MaxLength="20"
@@ -44,12 +40,12 @@
                 <Binding Path="Nombre"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                        <validation:ReglaValidacionNombre ValidatesOnTargetUpdated="True" Min="2" Max="20" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox Grid.Row="3"
+        <TextBox Grid.Row="1"
                  Grid.Column="2"
                  MaxLength="3"
                  x:Name="Codigo" Margin="5,2,105,6">
@@ -57,14 +53,36 @@
                 <Binding Path="Codigo"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionCodigo Min="2" Max="20" />
+                        <validation:ReglaValidacionCodigo ValidatesOnTargetUpdated="True" Min="2" Max="20" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
+        <ComboBox Grid.Row="3"
+                 Grid.Column="2"
+                 x:Name="Tipos"
+                  SelectedItem="{Binding Path=TipoSeleccionado, Mode=TwoWay}"
+                  DisplayMemberPath="Name"></ComboBox>
         <Button Grid.Column="1"
                 Grid.Row="4"
                 Grid.ColumnSpan="2"
-                x:Name="Guardar">Guardar</Button>
+                x:Name="Guardar">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Codigo}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Nombre}" Value="False"/>
+                                <Condition Binding="{Binding Path=PuedesEscribirNombre}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            Guardar
+        </Button>
     </Grid>
 </Window>

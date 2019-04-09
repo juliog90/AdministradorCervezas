@@ -44,7 +44,7 @@
                 <Binding Path="Nombre"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                        <validation:ReglaValidacionNombre ValidatesOnTargetUpdated="True" Min="2" Max="20" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -60,8 +60,21 @@
         <Button Grid.Column="1"
                 Grid.Row="3"
                 Grid.ColumnSpan="3"
-                x:Name="Editar"
-                IsEnabled="{Binding PuedesEditar}">
-            Guardar</Button>
+                x:Name="Edita">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=Nombre}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            Guardar
+        </Button>
     </Grid>
 </Window>

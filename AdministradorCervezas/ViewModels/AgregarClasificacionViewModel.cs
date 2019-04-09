@@ -42,6 +42,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _tipoSeleccionado = value;
                 NotifyOfPropertyChange(() => TipoSeleccionado);
+                NotifyOfPropertyChange(() => PuedesEscribirNombre);
             }
         }
 

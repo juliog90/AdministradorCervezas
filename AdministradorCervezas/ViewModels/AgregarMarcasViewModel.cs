@@ -5,8 +5,8 @@ namespace AdministradorCervezas.ViewModels
     class AgregarMarcaViewModel : Screen
     {
         private BindableCollection<Country> _paises = new BindableCollection<Country>(Country.GetAll());
-        private string _nombreMarca;
-        private string _marcaCodigo;
+        private string _nombreMarca = "";
+        private string _marcaCodigo = "";
         private string _name;
         private Country _paisSeleccionado;
 
@@ -33,6 +33,7 @@ namespace AdministradorCervezas.ViewModels
             {
                 _marcaCodigo = value;
                 NotifyOfPropertyChange(() => MarcaCodigo);
+                NotifyOfPropertyChange(() => PuedesEscogerPais);
             }
         }
 
@@ -43,7 +44,6 @@ namespace AdministradorCervezas.ViewModels
             {
                 _name = value;
                 NotifyOfPropertyChange(() => Name);
-                NotifyOfPropertyChange(() => PuedeGuardar);
             }
         }
 
@@ -62,7 +62,7 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return PaisSeleccionado != null && !string.IsNullOrWhiteSpace(NombreMarca) && !string.IsNullOrWhiteSpace(MarcaCodigo);
+                return PaisSeleccionado != null;
             }
         }
 
@@ -70,7 +70,7 @@ namespace AdministradorCervezas.ViewModels
         {
             get
             {
-                return !string.IsNullOrWhiteSpace(NombreMarca);
+                return !string.IsNullOrWhiteSpace(NombreMarca) && !string.IsNullOrWhiteSpace(MarcaCodigo);
             }
         }
 

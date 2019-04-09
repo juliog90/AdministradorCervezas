@@ -39,6 +39,11 @@ namespace AdministradorCervezas.Validations
                 return new ValidationResult(false,
                     "Introduce solo mayusculas..." + Min + " - " + Max + ".");
             }
+            if(texto == null)
+            {
+                return new ValidationResult(false,
+                    "Introduce un valor");
+            }
             if (texto.Any(char.IsWhiteSpace))
             {
                 return new ValidationResult(false,

@@ -120,7 +120,7 @@
                  UpdateSourceTrigger="PropertyChanged"
                              Delay="400">
                         <Binding.ValidationRules>
-                            <validation:ReglaValidacionRangoDecimal Min="0" Max="20" />
+                            <validation:ReglaValidacionRangoDecimal ValidatesOnTargetUpdated="True" Min="0" Max="20" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -134,7 +134,7 @@
                     <Binding Path="Precio"
                  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validation:ReglaValidacionRangoDecimal Min="15" Max="5000" />
+                            <validation:ReglaValidacionRangoDecimal ValidatesOnTargetUpdated="True" Min="15" Max="5000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>
@@ -148,7 +148,7 @@
                     <Binding Path="Contenido"
                  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <validation:ReglaValidacionRango Min="355" Max="2000" />
+                            <validation:ReglaValidacionRango ValidatesOnTargetUpdated="True" Min="355" Max="2000" />
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox.Text>

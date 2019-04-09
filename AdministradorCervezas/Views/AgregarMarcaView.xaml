@@ -44,7 +44,7 @@
                 <Binding Path="MarcaCodigo"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionCodigo Min="3" Max="3" />
+                        <validation:ReglaValidacionCodigo ValidatesOnTargetUpdated="True" Min="3" Max="3" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -59,7 +59,7 @@
                 <Binding Path="NombreMarca"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                        <validation:ReglaValidacionNombre ValidatesOnTargetUpdated="True" Min="2" Max="20" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -73,8 +73,22 @@
         <Button x:Name="Guardar"
                 Grid.Column="1"
                 Grid.Row="8"
-                Grid.ColumnSpan="3"
-                IsEnabled="{Binding PuedeGuardar}">
+                Grid.ColumnSpan="3" >
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=MarcaCodigo}" Value="False"/>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=NombreMarca}" Value="False"/>
+                                <Condition Binding="{Binding Path=PuedeGuardar}" Value="True"/> 
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             Guardar
         </Button>
     </Grid>

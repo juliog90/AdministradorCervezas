@@ -30,12 +30,12 @@
         <TextBlock Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Grid.Row="1">
-            Cambia los valores da la marca.
+            Cambia los valores de la marca.
         </TextBlock>
         <Label Grid.Row="2"
                Grid.Column="1">Nombre:</Label>
         <Label Grid.Row="4"
-               Grid.Column="1">Pais</Label>
+               Grid.Column="1">Pais: </Label>
         <TextBox x:Name="NombreMarca"
                  Grid.Row="2"
                  Grid.Column="2"
@@ -44,7 +44,7 @@
                 <Binding Path="NombreMarca"
                  UpdateSourceTrigger="PropertyChanged">
                     <Binding.ValidationRules>
-                        <validation:ReglaValidacionNombre Min="2" Max="20" />
+                        <validation:ReglaValidacionNombre ValidatesOnTargetUpdated="True" Min="2" Max="20" />
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
@@ -58,8 +58,21 @@
         <Button x:Name="Editar"
                 Grid.Column="1"
                 Grid.Row="6"
-                Grid.ColumnSpan="2"
-                IsEnabled="{Binding PuedeEditar}">
+                Grid.ColumnSpan="2">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource Validado}">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=NombreMarca}" Value="False"/>
+                                <Condition Binding="{Binding Path=PuedeEditar}" Value="True"/> 
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             Guardar
         </Button>
     </Grid>
