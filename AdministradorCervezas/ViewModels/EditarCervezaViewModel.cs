@@ -335,7 +335,12 @@ namespace AdministradorCervezas.ViewModels
         public void CargarImagen()
         {
             // Escogemos la imagen
-            OpenFileDialog cargaImg = new OpenFileDialog();
+            // Escogemos la imagen
+            OpenFileDialog cargaImg = new OpenFileDialog
+            {
+                // Filtramos los tipos de archivo
+                Filter = "Imagenes (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png"
+            };
 
             if (cargaImg.ShowDialog() == true)
             {

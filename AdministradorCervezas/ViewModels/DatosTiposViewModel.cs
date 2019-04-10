@@ -44,6 +44,14 @@ namespace AdministradorCervezas.ViewModels
             NotifyOfPropertyChange(() => Tipos);
         }
 
+        public void Borrar()
+        {
+            if(TipoSeleccionado.Delete())
+            {
+                Tipos.Remove(TipoSeleccionado);
+            }
+        }
+
         public bool PuedeEditarBorrar
         {
             get
