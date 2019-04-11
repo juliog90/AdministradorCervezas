@@ -329,6 +329,7 @@ namespace AdministradorCervezas.ViewModels
                 // Limpiamos la forma
                 Limpiar();
             }
+            MessageBox.Show("Cerveza guardada","Completo",MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>

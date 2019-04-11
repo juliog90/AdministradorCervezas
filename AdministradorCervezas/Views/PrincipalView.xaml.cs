@@ -31,5 +31,6 @@ namespace AdministradorCervezas.Views
         {
             this.WindowState = WindowState.Minimized;
         }
+
     }
 }
