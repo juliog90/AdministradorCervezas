@@ -48,6 +48,7 @@
         <TextBox Grid.Row="1"
                  Grid.Column="2"
                  MaxLength="3"
+                 CharacterCasing="Upper"
                  x:Name="Codigo" Margin="5,2,105,6">
             <TextBox.Text>
                 <Binding Path="Codigo"

@@ -28,7 +28,8 @@
         <Label Grid.Column="1">
             Código:
         </Label>
-        <TextBox Grid.Column="2"
+        <TextBox CharacterCasing="Upper"
+                 Grid.Column="2"
                  x:Name="CodigoTipo"
                  MaxLength="3">
             <TextBox.Text>

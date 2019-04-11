@@ -14,7 +14,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
             <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
@@ -39,6 +39,7 @@
         <TextBox x:Name="MarcaCodigo"
                  MaxLength="3"
                  Grid.Row="2"
+                 CharacterCasing="Upper"
                  Grid.Column="2">
             <TextBox.Text>
                 <Binding Path="MarcaCodigo"
