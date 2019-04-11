@@ -335,7 +335,6 @@ namespace AdministradorCervezas.ViewModels
         public void CargarImagen()
         {
             // Escogemos la imagen
-            // Escogemos la imagen
             OpenFileDialog cargaImg = new OpenFileDialog
             {
                 // Filtramos los tipos de archivo
